@@ -19,23 +19,18 @@ class Rule:
     text: str
 
 
-class BaseRuleTemplate(abc.ABC):
+@dataclasses.dataclass
+class UnresolvedRule:
+    depth: int
     content: typing.List[str | "ForwardReference"]
+    nodes: typing.List[str]
+    reference_anchor: typing.List[str | "ForwardReference"]
 
+
+class BaseRuleTemplate(abc.ABC):
     @abc.abstractmethod
-    def generate(self, graph: nx.DiGraph) -> typing.List[Rule]:
+    def generate(self, graph: nx.DiGraph) -> typing.List[UnresolvedRule]:
         raise NotImplementedError()
-
-    def to_text(self, rules_by_nodes: typing.Dict[str, Rule]) -> str:
-        ret = []
-        for c in self.content:
-            if isinstance(c, str):
-                ret += c
-            elif isinstance(c, ForwardReference):
-                ret += c.resolve(rules_by_nodes)
-            else:
-                raise TypeError(f"Unsupported rule content type {type(c)}.")
-        return " ".join(ret)
 
 
 class BaseFactTemplate(abc.ABC):

@@ -3,40 +3,38 @@ import typing
 import networkx as nx
 
 import patterns
-from templating import base, Rule, util
+from templating import base, util
 
 
 class StructuredLoopTemplate(base.BaseRuleTemplate):
-    def generate(self, graph: nx.DiGraph) -> typing.List[Rule]:
-        rules = []
-        labels = nx.get_node_attributes(graph, "label")
-
-        depths = patterns.get_node_depths(graph)
-
+    @staticmethod
+    def pattern():
         pattern = nx.DiGraph()
 
-        pattern.add_node("Pre", type="Activity")
-        pattern.add_node("PreToMergeFlow", type="Flow")
+        pattern.add_node("IncomingFlow", type="Flow")
         pattern.add_node("Merge", type="Exclusive")
-        pattern.add_node("MergeToRepeatedFlow", type="Flow")
-        pattern.add_node("Repeated", type="Activity")
-        pattern.add_node("RepeatedToSplitFlow", type="Flow")
+        pattern.add_node("Ref1Flow", type="Flow")
+        pattern.add_node("Ref2Flow", type="Flow")
         pattern.add_node("Split", type="Exclusive")
-        pattern.add_node("SplitToMergeFlow", type="Flow")
-        pattern.add_node("SplitToPostFlow", type="Flow")
-        pattern.add_node("Post", type="Activity")
+        pattern.add_node("RepeatFlow", type="Flow")
+        pattern.add_node("OutgoingFlow", type="Flow")
 
-        pattern.add_edge("Pre", "PreToMergeFlow")
-        pattern.add_edge("PreToMergeFlow", "Merge")
-        pattern.add_edge("Merge", "MergeToRepeatedFlow")
-        pattern.add_edge("MergeToRepeatedFlow", "Repeated")
-        pattern.add_edge("Repeated", "RepeatedToSplitFlow")
-        pattern.add_edge("RepeatedToSplitFlow", "Split")
-        pattern.add_edge("Split", "SplitToMergeFlow")
-        pattern.add_edge("Split", "SplitToPostFlow")
-        pattern.add_edge("SplitToPostFlow", "Post")
+        pattern.add_edge("IncomingFlow", "Merge")
+        pattern.add_edge("Merge", "Ref1Flow")
+        pattern.add_edge("Ref2Flow", "Split")
+        pattern.add_edge("Split", "RepeatFlow")
+        pattern.add_edge("RepeatFlow", "Merge")
+        pattern.add_edge("Split", "OutgoingFlow")
 
-        for match in patterns.find_graph_pattern(graph, pattern):
+        return pattern
+
+    def generate(self, graph: nx.DiGraph) -> typing.List[base.UnresolvedRule]:
+        rules = []
+        matches = patterns.find_graph_pattern(graph, self.pattern())
+        labels = nx.get_node_attributes(graph, "label")
+        depths = patterns.get_node_depths(graph)
+
+        for match in matches:
             if util.match_is_visited(graph, match):
                 continue
 
@@ -44,35 +42,88 @@ class StructuredLoopTemplate(base.BaseRuleTemplate):
                 # not a real loop
                 continue
 
-            activity_actor = patterns.get_actor(graph, match["Pre"])
-            activity_actor_label = labels[activity_actor]
-            activity_label = labels[match["Pre"]]
+            incoming_ref = patterns.get_predecessors_of_type(
+                graph,
+                match["IncomingFlow"],
+                types=["Actor", "Uses", "DataObject"]
+            )[0]
+            ref1 = patterns.get_successors_not_of_type(
+                graph,
+                match["Ref1Flow"],
+                types=["Actor", "Uses", "DataObject"]
+            )[0]
+            nodes = [
+                match["IncomingFlow"],
+                match["Ref1Flow"],
+            ]
+            content = [
+                "It is obligatory that",
+                base.ForwardReference(ref1),
+                "after",
+                base.ForwardReference(incoming_ref),
+            ]
 
-            split_label = labels[match["Split"]]
-            repeat_condition_label = labels[match["SplitToMergeFlow"]]
-            continue_condition_label = labels[match["SplitToPostFlow"]]
-
-            repeated_activity_label = labels[match["Repeated"]]
-            repeated_activity_actor = patterns.get_actor(graph, match["Repeated"])
-            repeated_activity_actor_label = labels[repeated_activity_actor]
-
-            post_activity_label = labels[match["Post"]]
-            post_activity_actor = patterns.get_actor(graph, match["Post"])
-            post_activity_actor_label = labels[post_activity_actor]
-
-            text = (f"It is permitted that "
-                    f"{repeated_activity_actor_label} {repeated_activity_label} "
-                    f"in case {split_label} {repeat_condition_label} "
-                    f"or {post_activity_actor_label} {post_activity_label} "
-                    f"in case {split_label} {continue_condition_label} "
-                    f"after {activity_actor_label} {activity_label}")
-
-            rules.append(base.Rule(
-                text=text,
-                depth_in_process=min(depths[n] for n in match.values() if n in depths),
-                described_sub_graph=util.match_to_subgraph(graph, match),
+            rules.append(base.UnresolvedRule(
+                content=content,
+                nodes=nodes,
+                depth=min(depths[n] for n in nodes)
             ))
 
-            util.visit_match(graph, match)
+            nodes = [
+                match["Split"],
+                match["RepeatFlow"],
+                match["OutgoingFlow"],
+            ]
+
+            split_label = labels[match["Split"]]
+            repeat_condition_label = labels[match["RepeatFlow"]]
+            continue_condition_label = labels[match["OutgoingFlow"]]
+
+            nodes.append(match["OutgoingFlow"])
+            outgoing_ref = patterns.get_successors_not_of_type(
+                graph,
+                match["OutgoingFlow"],
+                types=["Actor", "Uses", "DataObject"]
+            )[0]
+            nodes.append(match["Ref1Flow"])
+            ref2 = patterns.get_successors_not_of_type(
+                graph,
+                match["Ref2Flow"],
+                types=["Actor", "Uses", "DataObject"]
+            )[0]
+            content = [
+                "It is obligatory that either",
+                base.ForwardReference(ref1),
+                "is repeated"
+            ]
+            repeat_condition = split_label + " " + repeat_condition_label
+            repeat_condition = repeat_condition.strip()
+            if len(repeat_condition) > 0:
+                content += [
+                    "in case",
+                    repeat_condition,
+                ]
+
+            content += [
+                "or",
+                base.ForwardReference(outgoing_ref),
+            ]
+            break_condition = split_label + " " + continue_condition_label
+            break_condition = break_condition.strip()
+            if len(break_condition) > 0:
+                content += [
+                    "in case",
+                    break_condition,
+                ]
+
+            content += [
+                "after",
+                base.ForwardReference(ref2)
+            ]
+            rules.append(base.UnresolvedRule(
+                content=content,
+                nodes=nodes,
+                depth=min(depths[n] for n in nodes)
+            ))
 
         return rules

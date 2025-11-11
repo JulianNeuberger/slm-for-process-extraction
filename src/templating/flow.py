@@ -2,56 +2,49 @@ import typing
 
 import networkx as nx
 
-import mappings
 import patterns
 from templating import base, util
 
 
 class SequenceFlowTemplate(base.BaseRuleTemplate):
-    def generate(self, graph: nx.DiGraph) -> typing.List[base.Rule]:
-        rules = []
-        labels = nx.get_node_attributes(graph, "label")
-        types = nx.get_node_attributes(graph, "type")
+    @staticmethod
+    def pattern():
+        pattern = nx.DiGraph()
+        pattern.add_node("Flow", type="Flow")
 
+        return pattern
+
+    def generate(self, graph: nx.DiGraph) -> typing.List[base.UnresolvedRule]:
+        rules: typing.List[base.UnresolvedRule] = []
         depths = patterns.get_node_depths(graph)
 
-        pattern = nx.DiGraph()
-        pattern.add_node("Left", type="Activity+StartEvent")
-        pattern.add_node("Flow", type="Flow")
-        pattern.add_node("Right", type="Activity+EndEvent")
-
-        pattern.add_edge("Left", "Flow")
-        pattern.add_edge("Flow", "Right")
-
-        for match in patterns.find_graph_pattern(graph, pattern):
+        for match in patterns.find_graph_pattern(graph, self.pattern()):
             if util.match_is_visited(graph, match):
                 continue
 
+            left_ref = patterns.get_predecessors_not_of_type(
+                graph,
+                match["Flow"],
+                types=["Actor", "Uses", "DataObject"]
+            )
+            right_ref = patterns.get_predecessors_not_of_type(
+                graph,
+                match["Flow"],
+                types=["Actor", "Uses", "DataObject"]
+            )
 
-            if types[match["Left"]] == "StartEvent":
-                left_text = "the process starts"
-            else:
-                left_label = labels[match["Left"]]
-                left_actor = patterns.get_actor(graph, match["Left"])
-                left_actor_label = labels[left_actor]
-                left_text = f"{left_actor_label} {left_label}"
+            content = [
+                "It is obligatory that",
+                base.ForwardReference(right_ref),
+                "after",
+                base.ForwardReference(left_ref),
+            ]
 
-            if types[match["Right"]] == "EndEvent":
-                right_text = "the process ends"
-            else:
-                right_label = labels[match["Right"]]
-                right_actor = patterns.get_actor(graph, match["Right"])
-                right_actor_label = labels[right_actor]
-                right_text = f"{right_actor_label} {right_label}"
-
-            text = (f"It is obligatory that {right_text} "
-                    f"after {left_text}")
-
-            rules.append(base.Rule(
-                text=text,
-                depth_in_process=min(depths[n] for n in match.values() if n in depths),
-                described_sub_graph=util.match_to_subgraph(graph, match),
+            rules.append(base.UnresolvedRule(
+                content=content,
+                nodes=[match["Flow"]],
+                depth=depths[match["Flow"]],
             ))
 
-            util.visit_match(graph, match)
+            util.visit_nodes(graph, [match["Flow"]])
         return rules

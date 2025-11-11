@@ -190,10 +190,27 @@ def get_successors_of_type(graph: nx.DiGraph, node: str, types: typing.List[str]
     return successors
 
 
+def get_successors_not_of_type(graph: nx.DiGraph, node: str, types: typing.List[str]) -> typing.List[str]:
+    successors = []
+    for edge in graph.out_edges(node):
+        if graph.nodes[edge[1]]["type"] in types:
+            continue
+        successors.append(edge[1])
+    return successors
+
+
 def get_predecessors_of_type(graph: nx.DiGraph, node: str, types: typing.List[str]) -> typing.List[str]:
     predecessors = []
     for edge in graph.in_edges(node):
         if graph.nodes[edge[0]]["type"] not in types:
+            continue
+        predecessors.append(edge[1])
+    return predecessors
+
+def get_predecessors_not_of_type(graph: nx.DiGraph, node: str, types: typing.List[str]) -> typing.List[str]:
+    predecessors = []
+    for edge in graph.in_edges(node):
+        if graph.nodes[edge[0]]["type"] in types:
             continue
         predecessors.append(edge[1])
     return predecessors

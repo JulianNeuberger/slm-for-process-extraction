@@ -11,10 +11,10 @@ import tqdm
 
 import annotate
 import conversion
+import data
 import description
 import load
 import mappings
-import pet
 import postprocess
 import prompts
 import show
@@ -53,13 +53,14 @@ def apply_fact_templates(graph: nx.DiGraph) -> typing.List[templating.Fact]:
 def apply_rule_templates(graph: nx.DiGraph) -> typing.List[templating.Rule]:
     rule_templates = [
         templating.StructuredLoopTemplate(),
+        templating.OptionalRuleTemplate(),
         templating.ExclusiveChoiceTemplate(),
         templating.ExplicitMergeTemplate(),
         templating.ImplicitMergeTemplate(),
         templating.ParallelSplitTemplate(),
         templating.SynchronizationTemplate(),
-        templating.InclusiveSplitTemplate(),
-        templating.StructuredSynchronizingMergeTemplate(),
+        templating.InclusiveSplitRuleTemplate(),
+        templating.StructuredSynchronizingMergeRuleTemplate(),
         templating.SequenceFlowTemplate(),
         templating.TaskRuleTemplate()
     ]
@@ -175,7 +176,7 @@ def generate_descriptions(*,
             writer.writerow(described_model.row.values())
 
 
-def annotate_document(document: pet.PetDocument,
+def annotate_document(document: data.PetDocument,
                       client: openai.OpenAI,
                       model: str,
                       image_path: typing.Optional[pathlib.Path],
@@ -219,7 +220,7 @@ def annotate_descriptions(*,
                           model: str):
     out_file.parent.mkdir(parents=True, exist_ok=True)
 
-    exporter = pet.PetDictExporter()
+    exporter = data.PetDictExporter()
 
     hint_template_path = resources_folder / "prompts" / "hints" / "sbvr.txt"
     hint_template = prompts.Prompt(hint_template_path)
