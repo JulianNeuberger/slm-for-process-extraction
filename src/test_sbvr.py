@@ -9,9 +9,10 @@ import load
 import mappings
 import postprocess
 import templating
+from templating import util
 
 
-def apply_rule_templates(graph: nx.DiGraph) -> typing.List[templating.UnresolvedRule]:
+def apply_rule_templates(graph: nx.DiGraph) -> typing.List[templating.Rule]:
     rule_templates = [
         templating.StructuredLoopTemplate(),
         templating.OptionalRuleTemplate(),
@@ -22,24 +23,51 @@ def apply_rule_templates(graph: nx.DiGraph) -> typing.List[templating.Unresolved
         templating.SynchronizationTemplate(),
         templating.InclusiveSplitRuleTemplate(),
         templating.StructuredSynchronizingMergeRuleTemplate(),
-        templating.SequenceFlowTemplate(),
-        templating.TaskRuleTemplate()
+        templating.SequenceFlowTemplate()
     ]
 
-    rules_by_node: typing.Dict[str, ] = {}
     unresolved_rules: typing.List[templating.UnresolvedRule] = []
     for t in rule_templates:
         for r in t.generate(graph):
-
             unresolved_rules.append(r)
     unresolved_rules.sort(key=lambda _r: _r.depth)
 
-    rules = []
+    rule_id_by_node: typing.Dict[str, int] = {}
+    for i, r in enumerate(unresolved_rules):
+        for n in r.nodes:
+            rule_id_by_node[n] = i
+
+    max_resolve_steps = 20
+    while max_resolve_steps > 0:
+        max_resolve_steps -= 1
+        for r in unresolved_rules:
+            refs = [c for c in r.content if isinstance(c, templating.ForwardReference)]
+            for ref in refs:
+                ref_index = r.content.index(ref)
+                resolved = util.resolve_reference(ref, graph)
+                # splice in the (possible partially) resolved ref
+                r.content = r.content[0:ref_index] + resolved + r.content[ref_index + 1:]
+
+    # resolve all unresolved references to their ids
     for r in unresolved_rules:
+        refs = [c for c in r.content if isinstance(c, templating.ForwardReference)]
+        for ref in refs:
+            ref_index = r.content.index(ref)
+            if ref.node not in rule_id_by_node:
+                print(f"Reference to node {ref.node} does not belong to any rule")
+                print(f"type: {graph.nodes[ref.node]['type']}, label: {graph.nodes[ref.node]['label']}")
+
+            r.content[ref_index] = f"rule {rule_id_by_node[ref.node]}"
+
+    return [
+        templating.Rule(
+            id=str(i),
+            text=" ".join(r.content),
+        )
+        for i, r in enumerate(unresolved_rules)
+    ]
 
 
-        rules.extend(new_rules)
-    return rules
 
 
 def post_process_graph(graph: nx.DiGraph):
@@ -60,7 +88,6 @@ def generate_sbvr(model: load.ModelInfo):
 
     post_process_graph(g)
     rules = apply_rule_templates(g)
-    rules.sort(key=lambda r: r.depth_in_process)
 
     unvisited = []
     for node, attr in g.nodes(data=True):
@@ -69,8 +96,8 @@ def generate_sbvr(model: load.ModelInfo):
         if attr["type"] not in mapping.behaviour.values():
             continue
         unvisited.append(f"{attr['label']} ({attr['type']})")
-    # if len(unvisited) > 0:
-    #     print(f"Unvisited nodes in {model.id}: {unvisited}")
+    if len(unvisited) > 0:
+        print(f"Unvisited nodes in {model.id}: {unvisited}")
 
     print("\n".join([r.text for r in rules]))
 
@@ -92,11 +119,9 @@ def main():
             if m.id != model_id:
                 continue
 
+            print(m.id)
+            generate_sbvr(m)
+            exit()
 
-        print("\tDrawing models and storing them ...")
-        show.draw_models_from_file(in_file=f,
-                                   image_directory=resources_dir / "images",
-                                   store=False, overwrite=False)
-        print("\tGenerating SBVR from models ...")
-        generate_sbvr(in_file=f,
-                      out_file=(resources_dir / "models" / "sbvr" / f"{f.stem}.csv"))
+if __name__ == "__main__":
+    main()

@@ -28,8 +28,6 @@ class TaskRuleTemplate(base.BaseRuleTemplate):
             text = f"{actor_label} {activity_label}"
             rules.append(base.Rule(
                 text=text,
-                depth_in_process=min(depths[n] for n in match.values() if n in depths),
-                described_sub_graph=util.match_to_subgraph(graph, match),
             ))
 
             util.visit_match(graph, match)

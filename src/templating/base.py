@@ -4,6 +4,8 @@ import typing
 
 import networkx as nx
 
+import patterns
+
 
 @dataclasses.dataclass
 class Fact:
@@ -14,17 +16,14 @@ class Fact:
 @dataclasses.dataclass
 class Rule:
     id: str
-    ref_name: str
-    depth_in_process: int
     text: str
 
 
 @dataclasses.dataclass
 class UnresolvedRule:
     depth: int
-    content: typing.List[str | "ForwardReference"]
+    content: typing.List[typing.Union[str, "ForwardReference"]]
     nodes: typing.List[str]
-    reference_anchor: typing.List[str | "ForwardReference"]
 
 
 class BaseRuleTemplate(abc.ABC):
@@ -42,6 +41,4 @@ class BaseFactTemplate(abc.ABC):
 @dataclasses.dataclass
 class ForwardReference:
     node: str
-
-    def resolve(self, rules_by_nodes: typing.Dict[str, Rule]) -> str:
-        return rules_by_nodes[self.node].ref_name
+    resolve_direction: typing.Literal["forward", "backward"]

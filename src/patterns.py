@@ -204,7 +204,7 @@ def get_predecessors_of_type(graph: nx.DiGraph, node: str, types: typing.List[st
     for edge in graph.in_edges(node):
         if graph.nodes[edge[0]]["type"] not in types:
             continue
-        predecessors.append(edge[1])
+        predecessors.append(edge[0])
     return predecessors
 
 def get_predecessors_not_of_type(graph: nx.DiGraph, node: str, types: typing.List[str]) -> typing.List[str]:
@@ -212,5 +212,5 @@ def get_predecessors_not_of_type(graph: nx.DiGraph, node: str, types: typing.Lis
     for edge in graph.in_edges(node):
         if graph.nodes[edge[0]]["type"] in types:
             continue
-        predecessors.append(edge[1])
+        predecessors.append(edge[0])
     return predecessors

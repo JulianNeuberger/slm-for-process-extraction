@@ -1,4 +1,4 @@
-from templating.base import BaseRuleTemplate, UnresolvedRule, Rule, Fact
+from templating.base import BaseRuleTemplate, UnresolvedRule, Rule, Fact, ForwardReference
 from templating.exclusive import ExclusiveChoiceTemplate, ExplicitMergeTemplate, ImplicitMergeTemplate
 from templating.facts import TaskFactTemplate, ActorFactTemplate
 from templating.flow import SequenceFlowTemplate

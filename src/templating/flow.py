@@ -26,18 +26,20 @@ class SequenceFlowTemplate(base.BaseRuleTemplate):
                 graph,
                 match["Flow"],
                 types=["Actor", "Uses", "DataObject"]
-            )
-            right_ref = patterns.get_predecessors_not_of_type(
+            )[0]
+            assert graph.nodes[left_ref]["type"] != "Flow"
+            right_ref = patterns.get_successors_not_of_type(
                 graph,
                 match["Flow"],
                 types=["Actor", "Uses", "DataObject"]
-            )
+            )[0]
+            assert graph.nodes[right_ref]["type"] != "Flow"
 
             content = [
                 "It is obligatory that",
-                base.ForwardReference(right_ref),
+                base.ForwardReference(right_ref, resolve_direction="forward"),
                 "after",
-                base.ForwardReference(left_ref),
+                base.ForwardReference(left_ref, resolve_direction="backward"),
             ]
 
             rules.append(base.UnresolvedRule(
@@ -47,4 +49,5 @@ class SequenceFlowTemplate(base.BaseRuleTemplate):
             ))
 
             util.visit_nodes(graph, [match["Flow"]])
+            util.assert_match_visited(graph, match)
         return rules

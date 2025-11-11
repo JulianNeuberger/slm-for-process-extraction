@@ -39,7 +39,6 @@ class BaseGatewayRuleTemplate(base.BaseRuleTemplate, abc.ABC):
         matches = patterns.find_graph_pattern(graph, self.pattern())
         labels = nx.get_node_attributes(graph, "label")
         depths = patterns.get_node_depths(graph)
-        nodes = []
 
         for match in matches:
             if util.match_is_visited(graph, match):
@@ -47,7 +46,7 @@ class BaseGatewayRuleTemplate(base.BaseRuleTemplate, abc.ABC):
 
             options = []
             out_flows = patterns.get_successors_of_type(graph, match["Gateway"], ["Flow"])
-            nodes.extend(out_flows)
+
             for out_flow in out_flows:
                 options.append((
                     out_flow,
@@ -62,7 +61,6 @@ class BaseGatewayRuleTemplate(base.BaseRuleTemplate, abc.ABC):
                 self.leading_clause(),
             ]
             gateway_label = labels[match["Gateway"]]
-            nodes.append(match["Gateway"])
             first = True
             for flow, ref in options:
                 if first:
@@ -70,7 +68,8 @@ class BaseGatewayRuleTemplate(base.BaseRuleTemplate, abc.ABC):
                 else:
                     content.append(self.join_clause())
 
-                content.append(ForwardReference(ref))
+                assert graph.nodes[ref]["type"] != "Flow"
+                content.append(ForwardReference(ref, resolve_direction="forward"))
 
                 flow_label = labels[flow]
                 condition = f"{gateway_label} {flow_label}".strip()
@@ -85,16 +84,22 @@ class BaseGatewayRuleTemplate(base.BaseRuleTemplate, abc.ABC):
                 match["FlowToGateway"],
                 types=["DataObject", "Uses", "Actor"]
             )[0]
-            nodes.append(match["FlowToGateway"])
 
+            assert graph.nodes[incoming_ref]["type"] != "Flow"
             content += [
                 f"after",
-                base.ForwardReference(incoming_ref),
+                base.ForwardReference(incoming_ref, resolve_direction="backward"),
             ]
 
             depth = min(depths[n] for n in match.values())
-            util.visit_nodes(graph, nodes)
+            nodes = [
+                match["Gateway"],
+                match["FlowToGateway"],
+                *out_flows
+            ]
             rules.append(base.UnresolvedRule(content=content, depth=depth, nodes=nodes))
+            util.visit_nodes(graph, nodes)
+            util.assert_match_visited(graph, match)
 
         return rules
 
@@ -129,7 +134,6 @@ class BaseGatewayMergeRuleTemplate(base.BaseRuleTemplate, abc.ABC):
         rules = []
         matches = patterns.find_graph_pattern(graph, self.pattern())
         depths = patterns.get_node_depths(graph)
-        nodes = []
 
         for match in matches:
             if util.match_is_visited(graph, match):
@@ -142,16 +146,14 @@ class BaseGatewayMergeRuleTemplate(base.BaseRuleTemplate, abc.ABC):
                 match["FlowFromGateway"],
                 types=["DataObject", "Uses", "Actor"]
             )[0]
-            nodes.append(match["FlowFromGateway"])
-
+            assert graph.nodes[outgoing_ref]["type"] != "Flow"
             content += [
-                base.ForwardReference(outgoing_ref),
+                base.ForwardReference(outgoing_ref, resolve_direction="forward"),
                 "after",
                 self.leading_clause(),
             ]
 
             in_flows = patterns.get_predecessors_of_type(graph, match["Gateway"], ["Flow"])
-            nodes.extend(in_flows)
             first = True
             for in_flow in in_flows:
                 if first:
@@ -164,10 +166,17 @@ class BaseGatewayMergeRuleTemplate(base.BaseRuleTemplate, abc.ABC):
                     in_flow,
                     types=["DataObject", "Uses", "Actor"]
                 )[0]
-                content.append(ForwardReference(predecessor_ref))
+                assert graph.nodes[predecessor_ref]["type"] != "Flow"
+                content.append(ForwardReference(predecessor_ref, resolve_direction="backward"))
 
             depth = min(depths[n] for n in match.values())
-            util.visit_nodes(graph, nodes)
+            nodes = [
+                match["Gateway"],
+                match["FlowFromGateway"],
+                *in_flows
+            ]
             rules.append(base.UnresolvedRule(content=content, depth=depth, nodes=nodes))
+            util.visit_nodes(graph, nodes)
+            util.assert_match_visited(graph, match)
 
         return rules
