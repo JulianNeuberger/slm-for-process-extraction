@@ -3,7 +3,7 @@ import typing
 
 import dotenv
 
-import pet
+import data
 import prompts
 from annotate import util, base
 
@@ -11,7 +11,7 @@ dotenv.load_dotenv()
 
 
 class RelationParser(base.BaseParser):
-    def parse(self, document: pet.PetDocument, string: str) -> pet.PetDocument:
+    def parse(self, document: data.PetDocument, string: str) -> data.PetDocument:
         document = document.copy(clear=["relations"])
         total_errors = 0
         for line in string.splitlines(keepends=False):
@@ -41,7 +41,7 @@ class RelationParser(base.BaseParser):
             if tail_index >= len(document.mentions):
                 continue
             document.relations.append(
-                pet.PetRelation(
+                data.PetRelation(
                     type=relation_type,
                     head_mention_index=head_index,
                     tail_mention_index=tail_index,
@@ -54,7 +54,7 @@ class LLMRelationsAnnotator(base.BaseAnnotator):
     def get_parser(self) -> base.BaseParser:
         return RelationParser()
 
-    def get_text_formatter(self) -> typing.Callable[[pet.PetDocument], str]:
+    def get_text_formatter(self) -> typing.Callable[[data.PetDocument], str]:
         return util.format_document_text_with_entity_mentions
 
     def get_prompt_template(self) -> prompts.Prompt:

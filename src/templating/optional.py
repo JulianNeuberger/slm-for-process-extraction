@@ -29,8 +29,10 @@ class OptionalRuleTemplate(base.BaseRuleTemplate):
 
         return pattern
 
-    @staticmethod
-    def generate_skip_rule(graph: nx.DiGraph, match: typing.Dict[str, str], depths: typing.Dict[str, int]) -> base.UnresolvedRule:
+    def generate_skip_rule(self,
+                           graph: nx.DiGraph,
+                           match: typing.Dict[str, str],
+                           depths: typing.Dict[str, int]) -> base.UnresolvedRule:
         labels = nx.get_node_attributes(graph, "label")
         nodes = [match["Split"], match["SkipFlow"], match["Ref1Flow"], match["IncomingFlow"]]
         skipped_ref = patterns.get_successors_not_of_type(
@@ -51,15 +53,19 @@ class OptionalRuleTemplate(base.BaseRuleTemplate):
             base.ForwardReference(skipped_ref, resolve_direction="forward")
         ]
         if len(execute_condition) > 0:
-            content += [
-                "in case",
-                execute_condition,
-            ]
+            content.append("in case")
+            if self._include_tags:
+                content.append("<cond>")
+            content.append(execute_condition)
+            if self._include_tags:
+                content.append("</cond>")
         if len(skip_condition) > 0:
-            content += [
-                "or not in case",
-                skip_condition,
-            ]
+            content.append("or not in case")
+            if self._include_tags:
+                content.append("<cond>")
+            content.append(skip_condition)
+            if self._include_tags:
+                content.append("</cond>")
 
         incoming_ref = patterns.get_predecessors_not_of_type(
             graph,

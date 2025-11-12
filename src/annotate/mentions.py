@@ -4,7 +4,7 @@ import typing
 
 import dotenv
 
-import pet
+import data
 import prompts
 from annotate import base
 
@@ -14,8 +14,8 @@ dotenv.load_dotenv()
 class MentionParser(base.BaseParser):
     @staticmethod
     def parse_line(
-            line: str, document: pet.PetDocument
-    ) -> typing.List[pet.PetMention]:
+            line: str, document: data.PetDocument
+    ) -> typing.List[data.PetMention]:
         split_line = line.split("\t")
         split_line = tuple(e for e in split_line if e.strip() != "")
 
@@ -53,7 +53,7 @@ class MentionParser(base.BaseParser):
                 continue
 
             res.append(
-                pet.PetMention(
+                data.PetMention(
                     token_document_indices=tuple(
                         c.index_in_document for c in candidates
                     ),
@@ -65,8 +65,8 @@ class MentionParser(base.BaseParser):
             print(f"Did not find predicted mention '{mention_text}'.")
         return res
 
-    def parse(self, document: pet.PetDocument, string: str) -> pet.PetDocument:
-        parsed_mentions: typing.List[pet.PetMention] = []
+    def parse(self, document: data.PetDocument, string: str) -> data.PetDocument:
+        parsed_mentions: typing.List[data.PetMention] = []
         num_parse_errors = 0
         for line in string.splitlines(keepends=False):
             line = line.strip()
@@ -83,7 +83,7 @@ class MentionParser(base.BaseParser):
                 print("Error during parsing of line, skipping line. Error was:")
                 print(traceback.format_exc())
 
-        doc = pet.PetDocument(
+        doc = data.PetDocument(
             id=document.id,
             text=document.text,
             name=document.name,
@@ -104,8 +104,8 @@ class LLMMentionAnnotator(base.BaseAnnotator):
         prompt_folder = pathlib.Path(__file__).parent.parent.parent.resolve() / "resources" / "prompts"
         return prompts.Prompt(prompt_folder / "annotate-mentions.txt")
 
-    def _format(self, document: pet.PetDocument) -> str:
+    def _format(self, document: data.PetDocument) -> str:
         return "\n".join(f"{i}: {' '.join(t.text for t in s)}" for i, s in enumerate(document.sentences))
 
-    def get_text_formatter(self) -> typing.Callable[[pet.PetDocument], str]:
+    def get_text_formatter(self) -> typing.Callable[[data.PetDocument], str]:
         return self._format

@@ -4,8 +4,6 @@ import typing
 
 import networkx as nx
 
-import patterns
-
 
 @dataclasses.dataclass
 class Fact:
@@ -27,6 +25,9 @@ class UnresolvedRule:
 
 
 class BaseRuleTemplate(abc.ABC):
+    def __init__(self, include_tags: bool):
+        self._include_tags = include_tags
+
     @abc.abstractmethod
     def generate(self, graph: nx.DiGraph) -> typing.List[UnresolvedRule]:
         raise NotImplementedError()

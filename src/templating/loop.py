@@ -63,8 +63,8 @@ class StructuredLoopTemplate(base.BaseRuleTemplate):
             depth=min(depths[n] for n in nodes)
         )
 
-    @staticmethod
-    def generate_loop_back(graph: nx.DiGraph, match: typing.Dict[str, str],
+    def generate_loop_back(self,
+                           graph: nx.DiGraph, match: typing.Dict[str, str],
                            depths: typing.Dict[str, int]) -> base.UnresolvedRule:
         labels = nx.get_node_attributes(graph, "label")
 
@@ -92,10 +92,12 @@ class StructuredLoopTemplate(base.BaseRuleTemplate):
         repeat_condition = split_label + " " + repeat_condition_label
         repeat_condition = repeat_condition.strip()
         if len(repeat_condition) > 0:
-            content += [
-                "in case",
-                repeat_condition,
-            ]
+            content.append("in case")
+            if self._include_tags:
+                content.append("<cond>")
+            content.append(repeat_condition)
+            if self._include_tags:
+                content.append("</cond>")
 
         assert graph.nodes[outgoing_ref]["type"] != "Flow"
         content += [
@@ -105,17 +107,18 @@ class StructuredLoopTemplate(base.BaseRuleTemplate):
         break_condition = split_label + " " + continue_condition_label
         break_condition = break_condition.strip()
         if len(break_condition) > 0:
-            content += [
-                "in case",
-                break_condition,
-            ]
+            content.append("in case")
+            if self._include_tags:
+                content.append("<cond>")
+            content.append(break_condition)
+            if self._include_tags:
+                content.append("</cond>")
 
         ref2 = patterns.get_predecessors_not_of_type(
             graph,
             match["Ref2Flow"],
             types=["Actor", "Uses", "DataObject"]
         )[0]
-        print("------", graph.nodes[ref2]["label"])
         assert graph.nodes[ref2]["type"] != "Flow"
         content += [
             "after",

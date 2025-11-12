@@ -74,10 +74,12 @@ class BaseGatewayRuleTemplate(base.BaseRuleTemplate, abc.ABC):
                 flow_label = labels[flow]
                 condition = f"{gateway_label} {flow_label}".strip()
                 if len(condition) > 0:
-                    content += [
-                        "in case",
-                        condition
-                    ]
+                    content.append("in case")
+                    if self._include_tags:
+                        content.append("<cond>")
+                    content.append(condition)
+                    if self._include_tags:
+                        content.append("</cond>")
 
             incoming_ref = patterns.get_predecessors_not_of_type(
                 graph,

@@ -13,17 +13,18 @@ from templating import util
 
 
 def apply_rule_templates(graph: nx.DiGraph) -> typing.List[templating.Rule]:
+    include_tags = True
     rule_templates = [
-        templating.StructuredLoopTemplate(),
-        templating.OptionalRuleTemplate(),
-        templating.ExclusiveChoiceTemplate(),
-        templating.ExplicitMergeTemplate(),
-        templating.ImplicitMergeTemplate(),
-        templating.ParallelSplitTemplate(),
-        templating.SynchronizationTemplate(),
-        templating.InclusiveSplitRuleTemplate(),
-        templating.StructuredSynchronizingMergeRuleTemplate(),
-        templating.SequenceFlowTemplate()
+        templating.StructuredLoopTemplate(include_tags),
+        templating.OptionalRuleTemplate(include_tags),
+        templating.ExclusiveChoiceTemplate(include_tags),
+        templating.ExplicitMergeTemplate(include_tags),
+        templating.ImplicitMergeTemplate(include_tags),
+        templating.ParallelSplitTemplate(include_tags),
+        templating.SynchronizationTemplate(include_tags),
+        templating.InclusiveSplitRuleTemplate(include_tags),
+        templating.StructuredSynchronizingMergeRuleTemplate(include_tags),
+        templating.SequenceFlowTemplate(include_tags)
     ]
 
     unresolved_rules: typing.List[templating.UnresolvedRule] = []
@@ -44,7 +45,7 @@ def apply_rule_templates(graph: nx.DiGraph) -> typing.List[templating.Rule]:
             refs = [c for c in r.content if isinstance(c, templating.ForwardReference)]
             for ref in refs:
                 ref_index = r.content.index(ref)
-                resolved = util.resolve_reference(ref, rule_id_by_node, graph)
+                resolved = util.resolve_reference(ref, rule_id_by_node, graph, with_tags=include_tags)
                 # splice in the (possible partially) resolved ref
                 r.content = r.content[0:ref_index] + resolved + r.content[ref_index + 1:]
 

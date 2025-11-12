@@ -10,7 +10,7 @@ from openai.types.chat import ChatCompletionContentPartTextParam, ChatCompletion
     ChatCompletionUserMessageParam
 from openai.types.chat.chat_completion_content_part_image_param import ImageURL
 
-import pet
+import data
 import prompts
 
 dotenv.load_dotenv()
@@ -18,13 +18,13 @@ dotenv.load_dotenv()
 
 @dataclasses.dataclass
 class LLMAnnotation:
-    doc: pet.PetDocument
+    doc: data.PetDocument
     prompt_tokens: int
     completion_tokens: int
 
 
 class BaseParser(abc.ABC):
-    def parse(self, document: pet.PetDocument, string: str) -> pet.PetDocument:
+    def parse(self, document: data.PetDocument, string: str) -> data.PetDocument:
         raise NotImplementedError()
 
 
@@ -41,7 +41,7 @@ class BaseAnnotator(abc.ABC):
     def get_prompt_template(self) -> prompts.Prompt:
         raise NotImplementedError()
 
-    def get_text_formatter(self) -> typing.Callable[[pet.PetDocument], str]:
+    def get_text_formatter(self) -> typing.Callable[[data.PetDocument], str]:
         raise NotImplementedError()
 
     def get_parser(self) -> BaseParser:
@@ -50,7 +50,7 @@ class BaseAnnotator(abc.ABC):
     def get_params(
             self,
             *,
-            doc: pet.PetDocument,
+            doc: data.PetDocument,
             hints: typing.Optional[str] = None,
             image_path: typing.Optional[pathlib.Path | str] = None
     ):
@@ -99,7 +99,7 @@ class BaseAnnotator(abc.ABC):
     def batch_line(
             self,
             *,
-            doc: pet.PetDocument,
+            doc: data.PetDocument,
             hints: typing.Optional[str] = None,
             image_path: typing.Optional[pathlib.Path | str] = None
     ) -> typing.Dict:
@@ -126,7 +126,7 @@ class BaseAnnotator(abc.ABC):
     def annotate(
             self,
             *,
-            doc: pet.PetDocument,
+            doc: data.PetDocument,
             hints: typing.Optional[str] = None,
             image_path: typing.Optional[pathlib.Path | str] = None
     ) -> LLMAnnotation:

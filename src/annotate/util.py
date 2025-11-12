@@ -2,24 +2,24 @@ import typing
 
 import spacy
 
-import pet
+import data
 
 nlp = spacy.load("en_core_web_sm")
 
 
-def parse_text_to_pet_doc(text: str, doc_id: str) -> pet.PetDocument:
+def parse_text_to_pet_doc(text: str, doc_id: str) -> data.PetDocument:
     tokens = []
     spacy_doc = nlp(text)
     for i, s in enumerate(spacy_doc.sents):
         for t in s:
-            tokens.append(pet.PetToken(
+            tokens.append(data.PetToken(
                 text=t.text.strip(),
                 index_in_document=t.i,
                 sentence_index=i,
                 pos_tag=t.pos_,
             ))
 
-    return pet.PetDocument(
+    return data.PetDocument(
         id=doc_id,
         name=doc_id,
         text=text,
@@ -58,7 +58,7 @@ def ner_to_tag(
     return f"<{ner}>", f"</{ner}>"
 
 
-def format_document_text_with_entity_mentions(document: pet.PetDocument,
+def format_document_text_with_entity_mentions(document: data.PetDocument,
                                               only_types: typing.Optional[typing.List[str]] = None) -> str:
     """
 
@@ -73,7 +73,7 @@ def format_document_text_with_entity_mentions(document: pet.PetDocument,
         only_types = [t.lower() for t in only_types]
 
     token_texts = [t.text for t in document.tokens]
-    mentions: typing.List[typing.Tuple[int, pet.PetMention]] = list(
+    mentions: typing.List[typing.Tuple[int, data.PetMention]] = list(
         enumerate(m.copy() for m in document.mentions)
     )
 
