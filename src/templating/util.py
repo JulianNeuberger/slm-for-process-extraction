@@ -42,18 +42,24 @@ def match_to_subgraph(graph: nx.Graph, match: typing.Dict[str, str]) -> nx.DiGra
 
 
 def resolve_reference(ref: base.ForwardReference,
+                      rule_id_by_node: typing.Dict[str, int],
                       graph: nx.DiGraph) -> typing.List[str | base.ForwardReference]:
     node_type = graph.nodes[ref.node]["type"]
     if node_type == "StartEvent":
+        nx.set_node_attributes(graph, {ref.node: True}, "visited")
         return ["the process starts"]
     if node_type == "EndEvent":
+        nx.set_node_attributes(graph, {ref.node: True}, "visited")
         return ["the process ends"]
     if node_type == "Activity":
+        nx.set_node_attributes(graph, {ref.node: True}, "visited")
         actor = patterns.get_actor(graph, ref.node)
         actor_label = graph.nodes[actor]["label"]
         node_label = graph.nodes[ref.node]["label"]
         return [f"{actor_label} {node_label}"]
     if node_type in ["Exclusive", "Inclusive", "Parallel"]:
+        return [f"R{rule_id_by_node[ref.node]}"]
+
         join_clause = "and"
         if node_type == "Exclusive" or node_type == "Inclusive":
             join_clause = "or"

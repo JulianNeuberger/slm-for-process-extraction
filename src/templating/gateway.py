@@ -141,7 +141,7 @@ class BaseGatewayMergeRuleTemplate(base.BaseRuleTemplate, abc.ABC):
 
             content: typing.List[str | base.ForwardReference] = ["It is obligatory that"]
 
-            outgoing_ref = patterns.get_predecessors_not_of_type(
+            outgoing_ref = patterns.get_successors_not_of_type(
                 graph,
                 match["FlowFromGateway"],
                 types=["DataObject", "Uses", "Actor"]

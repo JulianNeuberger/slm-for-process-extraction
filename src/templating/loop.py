@@ -110,11 +110,12 @@ class StructuredLoopTemplate(base.BaseRuleTemplate):
                 break_condition,
             ]
 
-        ref2 = patterns.get_successors_not_of_type(
+        ref2 = patterns.get_predecessors_not_of_type(
             graph,
             match["Ref2Flow"],
             types=["Actor", "Uses", "DataObject"]
         )[0]
+        print("------", graph.nodes[ref2]["label"])
         assert graph.nodes[ref2]["type"] != "Flow"
         content += [
             "after",

@@ -44,7 +44,7 @@ def apply_rule_templates(graph: nx.DiGraph) -> typing.List[templating.Rule]:
             refs = [c for c in r.content if isinstance(c, templating.ForwardReference)]
             for ref in refs:
                 ref_index = r.content.index(ref)
-                resolved = util.resolve_reference(ref, graph)
+                resolved = util.resolve_reference(ref, rule_id_by_node, graph)
                 # splice in the (possible partially) resolved ref
                 r.content = r.content[0:ref_index] + resolved + r.content[ref_index + 1:]
 
@@ -68,8 +68,6 @@ def apply_rule_templates(graph: nx.DiGraph) -> typing.List[templating.Rule]:
     ]
 
 
-
-
 def post_process_graph(graph: nx.DiGraph):
     postprocessing_pipeline = [
         postprocess.NounActivityProcessor(),
@@ -82,7 +80,6 @@ def post_process_graph(graph: nx.DiGraph):
 
 
 def generate_sbvr(model: load.ModelInfo):
-    print(model.id)
     mapping = mappings.SapSamMappingCollection()
     g = conversion.sam_json_to_networkx(model.model_json, mapping.all)
 
@@ -97,9 +94,9 @@ def generate_sbvr(model: load.ModelInfo):
             continue
         unvisited.append(f"{attr['label']} ({attr['type']})")
     if len(unvisited) > 0:
-        print(f"Unvisited nodes in {model.id}: {unvisited}")
+        print(f"\t!!! UNVISITED nodes in {model.id}: {unvisited}")
 
-    print("\n".join([r.text for r in rules]))
+    print("\n".join([f"R{i}: {r.text}" for i, r in enumerate(rules)]))
 
 
 def main():
@@ -108,20 +105,19 @@ def main():
     # model = "gpt-5-nano-2025-08-07"
     # model = "gpt-5-2025-08-07"
     resources_dir = pathlib.Path(__file__).parent.parent / "resources"
-    model_id = "0a6881c195c145aa89533984c15e900d"
 
     for f in (resources_dir / "models" / "selected").iterdir():
         if f.suffix != ".csv":
             continue
-        print(f"Working on file {f.name}")
         models = list(load.load_raw_models(f))
         for m in models:
-            if m.id != model_id:
-                continue
-
-            print(m.id)
+            print(m.id + " ----------------------------")
             generate_sbvr(m)
-            exit()
+            print("------------------------------------")
+            print()
+
+        exit()
+
 
 if __name__ == "__main__":
     main()

@@ -47,7 +47,7 @@ class OptionalRuleTemplate(base.BaseRuleTemplate):
 
         assert graph.nodes[skipped_ref]["type"] != "Flow"
         content = [
-            "It is permitted that optionally",
+            "It is obligatory that either",
             base.ForwardReference(skipped_ref, resolve_direction="forward")
         ]
         if len(execute_condition) > 0:

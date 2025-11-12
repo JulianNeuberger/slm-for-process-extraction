@@ -187,6 +187,65 @@ class ConnectivityConstraint(BaseConstraint):
         raise AssertionError()
 
 
+class GatewayConnectivityConstraint(BaseConstraint):
+    def __init__(self, stencil_mapping: typing.Dict[str, str]):
+        super().__init__()
+        self._stencil_mapping = stencil_mapping
+        self._root_seen = False
+
+    def update(self, shape: typing.Dict):
+        if self._root_seen:
+            print("WARN: GatewayConnectivityConstraint was called twice, "
+                  "possible with a non-root stencil, which will "
+                  "result in undefined behavior.")
+        self._root_seen = True
+        g = conversion.sam_json_to_networkx(shape, self._stencil_mapping)
+
+        for node, node_type in g.nodes(data="type"):
+            if node_type not in ["Parallel", "Exclusive"]:
+                continue
+            num_in_edges = len(g.in_edges(node))
+            num_out_edges = len(g.out_edges(node))
+            if num_in_edges < 2 and num_out_edges < 2:
+                return ConstraintState.VIOLATED
+        return ConstraintState.HOLDS
+
+    def holds_finally(self):
+        print(f"WARN: Called holds_finally on {self.__class__.__name__}, "
+              f"which should not happen, "
+              f"the first shape should evaluate this constraint.")
+        raise AssertionError()
+
+
+class SequenceFlowConnectivityConstraint(BaseConstraint):
+    def __init__(self, stencil_mapping: typing.Dict[str, str]):
+        super().__init__()
+        self._stencil_mapping = stencil_mapping
+        self._root_seen = False
+
+    def update(self, shape: typing.Dict):
+        if self._root_seen:
+            print("WARN: Connectivity Constraint was called twice, "
+                  "possible with a non-root stencil, which will "
+                  "result in undefined behavior.")
+        self._root_seen = True
+        g = conversion.sam_json_to_networkx(shape, self._stencil_mapping)
+
+        for node, node_type in g.nodes(data="type"):
+            if node_type != "Flow":
+                continue
+            if len(g.out_edges(node)) != 1:
+                return ConstraintState.VIOLATED
+            if len(g.in_edges(node)) != 1:
+                return ConstraintState.VIOLATED
+        return ConstraintState.HOLDS
+
+    def holds_finally(self):
+        print(f"WARN: Called holds_finally on {self.__class__.__name__}, "
+              f"which should not happen, "
+              f"the first shape should evaluate this constraint.")
+        raise AssertionError()
+
 class ReachabilityConstraint(BaseConstraint):
     def __init__(self, stencil_mapping: mappings.MappingCollection):
         super().__init__()
@@ -384,7 +443,9 @@ if __name__ == "__main__":
             ConnectivityConstraint(mapping.behaviour),
             ProcessStartConstraint(mapping.behaviour, {"StartEvent"}),
             ExplicitActorConstraint(mapping, actor_type="Actor", checked_types={"Activity"}),
-            ReachabilityConstraint(mapping)
+            ReachabilityConstraint(mapping),
+            SequenceFlowConnectivityConstraint(mapping.behaviour),
+            GatewayConnectivityConstraint(mapping.behaviour),
         ]
 
     def main():
