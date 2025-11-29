@@ -1,0 +1,90 @@
+The process begins when the Geologist detects a condition and the associated potential events are identified .
+Geologist	Actor	0
+detects	Activity	0
+a condition	Activity Data	0
+the associated potential events	Activity Data	0
+are identified	Activity	0
+After identifying a potential event , the geologist analyzes the geological condition and reports a potential event .
+the geologist	Actor	1
+identifying	Activity	1
+a potential event	Activity Data	1
+analyzes	Activity	1
+the geological condition	Activity Data	1
+reports	Activity	1
+a potential event	Activity Data	1
+Next , the meteorologist is involved .
+the meteorologist	Actor	2
+involved	Activity	2
+Next , the meteorologist is involved .
+The meteorologist reports the weather condition , identifies areas of attention , and then reports areas for further analysis , combining these inputs to determine what to do next .
+the meteorologist	Actor	3
+reports	Activity	3
+the weather condition	Activity Data	3
+identifies	Activity	3
+areas of attention	Activity Data	3
+reports	areas for further analysis	Activity	3
+combining these inputs	Activity Data	3
+to determine what to do next	Activity	3
+The team evaluates the potential event by analyzing the potential event , and then decides whether to proceed with an open warning or to conduct an team meeting .
+The team	Actor	4
+evaluates	Activity	4
+the potential event	Activity Data	4
+analyzing the potential event	Activity	4
+decides	Activity	4
+whether to proceed with an open warning or to conduct an team meeting	Activity	4
+If the team decides to hold a meeting , the team executes the meeting and then proceeds to open the warning .
+the team	Actor	5
+decides	Activity	5
+to hold a meeting	Activity 5
+the team	executes	Activity	5
+the meeting	Activity Data	5
+proceeds	Activity	5
+to open the warning	Activity 5
+If there is no meeting , the team directly determines the warning level and identifies the warning member .
+the team	Actor	6
+no meeting	Condition?	6
+directly determines	Activity	6
+the warning level	Activity Data	6
+identifies	Activity	6
+the warning member	Activity Data	6
+With the warning level determined , the hydrologist describes the hydrological conditions around the area and then describes the localized hydrological conditions at the area .
+the hydrologist	Actor	7
+describes	Activity	7
+the hydrological conditions around the area	Activity Data	7
+describes	Activity	7
+the localized hydrological conditions at the area	Activity Data	7
+The hydrologist also participates in describing the hydrological conditions as needed .
+the hydrologist	Actor	8
+participates in describing	Activity	8
+the hydrological conditions	Activity Data	8
+as needed	Specification	8
+If a warning is issued , the disaster analyst analyzes the community ’s condition and reports a potential event , identifying potential events as part of this analysis .
+the disaster analyst	Actor	9
+analyzes	Activity	9
+the community ’s condition	Activity Data	9
+reports	Activity	9
+a potential event	Activity Data	9
+identifying potential events	Activity	9
+as part of this analysis	Specification	9
+The disaster analyst then revsises the warning file and communicates the warning to the appropriate organizational systems .
+the disaster analyst	Actor	10
+revsises	Activity	10
+the warning file	Activity Data	10
+communicates	Activity	10
+the warning	Activity Data	10
+to the appropriate organizational systems	Specification	10
+Separately , the hydrogeologist ’s task is to describe geological conditions at the area and , if required , to describe hydrological conditions at the area , ensuring all relevant conditions are recorded .
+the hydrogeologist ’s	Actor?	11
+task	Activity	11
+to describe	Activity	11
+geological conditions at the area	Activity Data	11
+if required , to describe hydrological conditions at the area	Activity 11
+ensuring all relevant conditions are recorded	Specification	11
+Throughout the process , information is shared with the appropriate stakeholders , and when a potential event is confirmed , the team proceeds to communicate and document the warning as part of the ongoing monitoring and response activities .
+information	Activity Data?	12
+shared	Activity	12
+appropriate stakeholders	Actor Data	12
+a potential event	Activity Data	12
+team	Actor?	12
+proceeds to communicate and document the warning	Activity	12
+ongoing monitoring and response activities	Activity Data	12

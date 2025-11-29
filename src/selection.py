@@ -206,6 +206,8 @@ class GatewayConnectivityConstraint(BaseConstraint):
                 continue
             num_in_edges = len(g.in_edges(node))
             num_out_edges = len(g.out_edges(node))
+            if num_in_edges == 0 or num_out_edges == 0:
+                return ConstraintState.VIOLATED
             if num_in_edges < 2 and num_out_edges < 2:
                 return ConstraintState.VIOLATED
         return ConstraintState.HOLDS

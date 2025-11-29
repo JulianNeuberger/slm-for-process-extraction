@@ -72,7 +72,7 @@ class ImplicitMergeTemplate(base.BaseRuleTemplate):
                 assert graph.nodes[predecessor_ref]["type"] != "Flow"
                 content.append(base.ForwardReference(predecessor_ref, resolve_direction="backward"))
 
-            depth = min(depths[n] for n in match.values())
+            depth = depths[match["Merge"]]
             nodes = [
                 match["Merge"],
                 *in_flows

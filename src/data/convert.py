@@ -4,7 +4,7 @@ import random
 
 import data
 from data.conll03 import to_conll03
-from data.pet import PetImporter, PetDocument, PetRelation
+from data.pet import PetImporter, PetDocument, PetRelation, PetMention
 from data.piqn import to_piqn, types_from_pet
 from data.plmarker import to_plmarker
 from data.unirel import to_unirel
@@ -65,6 +65,13 @@ def sanitize_doc(doc: PetDocument) -> None:
     # normalize document text
     doc.text = " ".join(t.text for t in doc.tokens)
 
+    mentions_by_token_index = {}
+    for m in doc.mentions:
+        for i in m.token_document_indices:
+            if i not in mentions_by_token_index:
+                mentions_by_token_index[i] = []
+            mentions_by_token_index[i].append(m)
+
     # fix common llm mistakes
     for i, r in enumerate(doc.relations):
         if r.type == "condition specification":
@@ -73,20 +80,97 @@ def sanitize_doc(doc: PetDocument) -> None:
                 head_mention_index=r.head_mention_index,
                 tail_mention_index=r.tail_mention_index
             )
+        if "_" in r.type:
+            doc.relations[i] = PetRelation(
+                type=r.type.replace("_", " "),
+                head_mention_index=r.head_mention_index,
+                tail_mention_index=r.tail_mention_index
+            )
 
-    # remove duplicate relations
-    r_set = set()
-    for r in doc.relations:
-        r_tup = (r.head_mention_index, r.tail_mention_index, r.type)
-        r_set.add(r_tup)
-    doc.relations = [
-        PetRelation(
-            head_mention_index=r[0],
-            tail_mention_index=r[1],
-            type=r[2]
+    for i, m in enumerate(doc.mentions):
+        if "_" in m.type:
+            doc.mentions[i] = PetMention(
+                type=m.type.replace("_", " "),
+                token_document_indices=m.token_document_indices,
+            )
+
+    # remove bad relations
+    allowed_relations = {
+        "activity": {
+            "activity": {"flow"},
+            "actor": {"actor performer", "actor recipient"},
+            "xor gateway": {"flow"},
+            "and gateway": {"flow"},
+            "further specification": {"further specification"},
+            "activity data": {"uses"}
+        },
+        "xor gateway": {
+            "activity": {"flow"},
+            "condition specification": {"flow"},
+            "xor gateway": {"same gateway", "flow"},
+            "and gateway": {"flow"},
+        },
+        "and gateway": {
+            "activity": {"flow"},
+            "and gateway": {"same gateway", "flow"},
+            "xor gateway": {"flow"},
+        },
+        "condition specification": {
+            "activity": {"flow"},
+            "xor gateway": {"flow"},
+            "and gateway": {"flow"},
+        }
+    }
+    to_remove = []
+    for i, r in enumerate(doc.relations):
+        head_type = doc.mentions[r.head_mention_index].type
+        tail_type = doc.mentions[r.tail_mention_index].type
+
+        forward_allowed = (
+                head_type in allowed_relations
+                and tail_type in allowed_relations[head_type]
+                and r.type in allowed_relations[head_type][tail_type]
         )
-        for r in r_set
-    ]
+
+        if forward_allowed:
+            continue
+
+        backward_allowed = (
+                tail_type in allowed_relations
+                and head_type in allowed_relations[tail_type]
+                and r.type in allowed_relations[tail_type][head_type]
+        )
+
+        head = doc.mentions[r.head_mention_index]
+        tail = doc.mentions[r.tail_mention_index]
+
+        if backward_allowed:
+            print(f"Fixing {head.text(doc)} ({head_type}) -{r.type}-> {tail.text(doc)} ({tail_type}) by reversing")
+            # reverse relation
+            doc.relations[i] = PetRelation(
+                type=r.type,
+                head_mention_index=r.tail_mention_index,
+                tail_mention_index=r.head_mention_index
+            )
+            continue
+
+        print(f"Removing {head.text(doc)} ({head_type}) -{r.type}-> {tail.text(doc)} ({tail_type})")
+        to_remove.append(r)
+
+    for r in to_remove:
+        doc.relations.remove(r)
+
+    # remove invalid relations
+    to_remove = []
+    for r in doc.relations:
+        if r.head_mention_index < 0 or r.head_mention_index >= len(doc.mentions):
+            to_remove.append(r)
+            continue
+        if r.tail_mention_index < 0 or r.tail_mention_index >= len(doc.mentions):
+            to_remove.append(r)
+            continue
+    for r in to_remove:
+        doc.relations.remove(r)
 
     # sanitize overlapping mentions
     priority = [
@@ -105,22 +189,6 @@ def sanitize_doc(doc: PetDocument) -> None:
     for m in to_remove:
         doc.remove_mention(doc.mentions.index(m))
 
-    to_remove = []
-    for i, r in enumerate(doc.relations):
-        if "_" in r.type:
-            r = PetRelation(
-                type=r.type.replace("_", " "),
-                head_mention_index=r.head_mention_index,
-                tail_mention_index=r.tail_mention_index,
-            )
-            doc.relations[i] = r
-        if r.type not in [
-            "flow", "uses", "actor performer", "actor recipient", "further specification", "same gateway"
-        ]:
-            to_remove.append(r)
-    for r in to_remove:
-        doc.relations.remove(r)
-
     for m_type in priority:
         mentions_to_remove: typing.Set[data.PetMention] = set()
         for mid, m in enumerate(doc.mentions):
@@ -129,21 +197,67 @@ def sanitize_doc(doc: PetDocument) -> None:
             for oid, o in enumerate(doc.mentions):
                 if oid == mid:
                     continue
-                mentions_overlapping = len(
-                    set(m.token_document_indices).intersection(set(o.token_document_indices))) > 0
+                overlapping_tokens = set(m.token_document_indices).intersection(set(o.token_document_indices))
+                mentions_overlapping = len(overlapping_tokens) > 0
                 if not mentions_overlapping:
                     continue
                 if o.type == m_type:
                     # same priority, remove longer mention
                     if len(m.token_document_indices) < len(o.token_document_indices):
                         mentions_to_remove.add(o)
+                        for rid, r in enumerate(doc.relations):
+                            doc.relations[rid] = PetRelation(
+                                type=r.type,
+                                head_mention_index=r.head_mention_index if r.head_mention_index != oid else mid,
+                                tail_mention_index=r.tail_mention_index if r.tail_mention_index != oid else mid,
+                            )
                     else:
                         mentions_to_remove.add(m)
+                        for rid, r in enumerate(doc.relations):
+                            doc.relations[rid] = PetRelation(
+                                type=r.type,
+                                head_mention_index=r.head_mention_index if r.head_mention_index != mid else oid,
+                                tail_mention_index=r.tail_mention_index if r.tail_mention_index != mid else oid,
+                            )
+                elif o.type == "xor gateway" and m.type == "condition specification":
+                    # keep xor gate and remove its indices from the condition spec
+                    print("previous: ==========================")
+                    print(doc.mentions[oid].type, doc.mentions[oid].text(doc))
+                    print(doc.mentions[mid].type, doc.mentions[mid].text(doc))
+                    print("now: -------------------------------")
+
+                    o_tokens = [tid for tid in o.token_document_indices if tid < m.token_document_indices[0]]
+                    if len(o_tokens) == 0:
+                        to_remove.append(o)
+                        continue
+
+                    doc.mentions[oid] = data.PetMention(
+                        type=o.type,
+                        token_document_indices=tuple(o_tokens),
+                    )
+
+                    print(doc.mentions[oid].type, doc.mentions[oid].text(doc))
+                    print(doc.mentions[mid].type, doc.mentions[mid].text(doc))
+                    print("====================================")
                 else:
                     # lower priority
                     mentions_to_remove.add(o)
         for to_remove in mentions_to_remove:
             doc.remove_mention(doc.mentions.index(to_remove))
+
+    # remove duplicate relations
+    r_set = set()
+    for r in doc.relations:
+        r_tup = (r.head_mention_index, r.tail_mention_index, r.type)
+        r_set.add(r_tup)
+    doc.relations = [
+        PetRelation(
+            head_mention_index=r[0],
+            tail_mention_index=r[1],
+            type=r[2]
+        )
+        for r in r_set
+    ]
 
 
 def create_all_data(base_dir: pathlib.Path, subset: str, *, train: typing.List[PetDocument],
@@ -205,39 +319,48 @@ if __name__ == "__main__":
         test_ratio = 0.2
         seeds = [42, 43, 44, 45, 46]
         resources_dir = pathlib.Path(__file__).parent.parent.parent / "resources"
+        out_dir = resources_dir / "processed-small"
+        docs_dir = "docs-small"
 
         for seed in seeds:
             print("Only PET data")
-            pet_only_out_dir = resources_dir / "processed" / "pet"
-            docs = PetImporter(resources_dir / "docs" / "pet" / "pet.jsonl").do_import()
+            docs = PetImporter(resources_dir / docs_dir / "pet" / "pet.jsonl").do_import()
             for d in docs:
                 sanitize_doc(d)
             pet_train, pet_dev, pet_test = build_splits(docs, dev=dev_ratio, test=test_ratio, seed=seed)
-            create_all_data(pet_only_out_dir, subset=f"{seed}", train=pet_train, test=pet_test, dev=pet_dev)
+            create_all_data(out_dir, subset=f"pet/{seed}", train=pet_train, test=pet_test, dev=pet_dev)
 
-            print("Only SBVR hint data")
-            sbvr_only_out_dir = resources_dir / "processed" / "sbvr"
-            docs = collect_synth_data(resources_dir / "docs" / "sbvr")
-            for d in docs:
-                sanitize_doc(d)
-            sbvr_train, sbvr_dev, _ = build_splits(docs, dev=dev_ratio, test=0, seed=seed)
-            create_all_data(sbvr_only_out_dir, subset=f"{seed}", train=sbvr_train, test=pet_test, dev=sbvr_dev)
+            if (resources_dir / docs_dir / "sbvr").exists():
+                print("Only SBVR hint data")
+                docs = collect_synth_data(resources_dir / docs_dir / "sbvr")
+                for d in docs:
+                    sanitize_doc(d)
+                sbvr_train, sbvr_dev, _ = build_splits(docs, dev=dev_ratio, test=0, seed=seed)
+                create_all_data(out_dir, subset=f"sbvr/{seed}", train=sbvr_train, test=pet_test, dev=sbvr_dev)
 
-            print("Only image hint data")
-            combined_out_dir = resources_dir / "processed" / "image"
-            docs = collect_synth_data(resources_dir / "docs" / "image")
-            for d in docs:
-                sanitize_doc(d)
-            image_train, image_dev, _ = build_splits(docs, dev=dev_ratio, test=0, seed=seed)
-            create_all_data(combined_out_dir, subset=f"{seed}", train=image_train, test=pet_test, dev=image_dev)
+            if (resources_dir / docs_dir / "no_hints").exists():
+                print("Only no hint data")
+                docs = collect_synth_data(resources_dir / docs_dir / "no_hints")
+                for d in docs:
+                    sanitize_doc(d)
+                no_hints_train, no_hints_dev, _ = build_splits(docs, dev=dev_ratio, test=0, seed=seed)
+                create_all_data(out_dir, subset=f"no_hints/{seed}", train=no_hints_train, test=pet_test, dev=no_hints_dev)
 
-            print("Combined hint data")
-            combined_out_dir = resources_dir / "processed" / "combined"
-            docs = collect_synth_data(resources_dir / "docs" / "combined")
-            for d in docs:
-                sanitize_doc(d)
-            comb_train, comb_dev, _ = build_splits(docs, dev=dev_ratio, test=0, seed=seed)
-            create_all_data(combined_out_dir, subset=f"{seed}", train=comb_train, test=pet_test, dev=comb_dev)
+            if (resources_dir / docs_dir / "image").exists():
+                print("Only image hint data")
+                docs = collect_synth_data(resources_dir / docs_dir / "image")
+                for d in docs:
+                    sanitize_doc(d)
+                image_train, image_dev, _ = build_splits(docs, dev=dev_ratio, test=0, seed=seed)
+                create_all_data(out_dir, subset=f"image/{seed}", train=image_train, test=pet_test, dev=image_dev)
+
+            if (resources_dir / docs_dir / "combined").exists():
+                print("Combined hint data")
+                docs = collect_synth_data(resources_dir / docs_dir / "combined")
+                for d in docs:
+                    sanitize_doc(d)
+                comb_train, comb_dev, _ = build_splits(docs, dev=dev_ratio, test=0, seed=seed)
+                create_all_data(out_dir, subset=f"combined/{seed}", train=comb_train, test=pet_test, dev=comb_dev)
 
 
     main()

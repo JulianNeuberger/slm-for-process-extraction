@@ -60,7 +60,7 @@ class StructuredLoopTemplate(base.BaseRuleTemplate):
         return base.UnresolvedRule(
             content=content,
             nodes=nodes,
-            depth=min(depths[n] for n in nodes)
+            depth=depths[match["Merge"]]
         )
 
     def generate_loop_back(self,
@@ -134,7 +134,7 @@ class StructuredLoopTemplate(base.BaseRuleTemplate):
         return base.UnresolvedRule(
             content=content,
             nodes=nodes,
-            depth=min(depths[n] for n in nodes)
+            depth=depths[match["Split"]],
         )
 
     def generate(self, graph: nx.DiGraph) -> typing.List[base.UnresolvedRule]:

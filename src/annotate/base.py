@@ -7,7 +7,7 @@ import typing
 import dotenv
 import openai
 from openai.types.chat import ChatCompletionContentPartTextParam, ChatCompletionContentPartImageParam, \
-    ChatCompletionUserMessageParam
+    ChatCompletionUserMessageParam, ChatCompletionDeveloperMessageParam
 from openai.types.chat.chat_completion_content_part_image_param import ImageURL
 
 import data
@@ -58,38 +58,46 @@ class BaseAnnotator(abc.ABC):
 
         prompt = self.prompt_template.apply()
 
-        content: typing.List = [
+        dev_content: typing.List = [
             ChatCompletionContentPartTextParam(
                 text=prompt,
                 type="text"
             )
         ]
+
+        user_content = []
         if hints is not None:
-            content.append(ChatCompletionContentPartTextParam(
-                text=f"You are given a SBVR vocabulary and rules to help you in the task:\n{hints}",
+            user_content.append(ChatCompletionContentPartTextParam(
+                text=f"Use the following SBVR as guidance in your task. You can find the original "
+                     f"activities (<activity>), actors (<actor>), and conditions (<cond>) marked with "
+                     f"XML-style tags to help you identifying relevant mentions.:\n{hints}",
                 type="text"
             ))
         if image_path is not None:
-            content.append(ChatCompletionContentPartTextParam(
+            user_content.append(ChatCompletionContentPartTextParam(
                 text="You are also given this image the description is based on to help you.",
                 type="text"
             ))
             with open(image_path, "rb") as f:
                 image_b64 = base64.b64encode(f.read()).decode("utf-8")
-            content.append(ChatCompletionContentPartImageParam(
+            user_content.append(ChatCompletionContentPartImageParam(
                 image_url=ImageURL(url=f"data:image/png;base64,{image_b64}"),
                 type="image_url"
             ))
-        content.append(ChatCompletionContentPartTextParam(
+        user_content.append(ChatCompletionContentPartTextParam(
             text=f"Here is the text in question: \n\n{text}",
             type="text"
         ))
 
         return {
             "messages": [
+                ChatCompletionDeveloperMessageParam(
+                    role="developer",
+                    content=dev_content
+                ),
                 ChatCompletionUserMessageParam(
                     role="user",
-                    content=content
+                    content=user_content
                 )
             ],
             "model": self.model,

@@ -33,7 +33,8 @@ def generate_descriptions_batch(*,
                                 out_file: pathlib.Path,
                                 example: typing.Optional[str],
                                 client: openai.OpenAI,
-                                model: str):
+                                model: str,
+                                versions: typing.List[typing.Literal["sbvr", "image", "combined", "no_hints"]], ):
     models = list(load.load_sbvr_models(in_file))
     out_file.parent.mkdir(parents=True, exist_ok=True)
 
@@ -42,23 +43,27 @@ def generate_descriptions_batch(*,
     with open(out_file, "w", encoding="utf-8") as out_f:
         for model_sbvr in tqdm.tqdm(models):
             text = "\n".join(model_sbvr.sbvr.rules)
-            sbvr_request = description.LLMSBVRDescriber(client, model).request_params(sbvr=text,
-                                                                                      image_path=None,
-                                                                                      example=example)
 
-            image_path = resources_folder / "images" / f"{model_sbvr.model.id}.png"
-            image_request = description.LLMPictureDescriber(client, model).request_params(sbvr=None,
-                                                                                          image_path=image_path,
+            if "sbvr" in versions:
+                sbvr_request = description.LLMSBVRDescriber(client, model).request_params(sbvr=text,
+                                                                                          image_path=None,
                                                                                           example=example)
+                out_f.write(batch_line(custom_id=f"describe-{model_sbvr.model.id}-sbvr", body=sbvr_request) + "\n")
 
-            image_path = resources_folder / "images" / f"{model_sbvr.model.id}.png"
-            combined_request = description.LLMCombinedDescriber(client, model).request_params(sbvr=text,
+            if "image" in versions:
+                image_path = resources_folder / "images" / f"{model_sbvr.model.id}.png"
+                image_request = description.LLMPictureDescriber(client, model).request_params(sbvr=None,
                                                                                               image_path=image_path,
                                                                                               example=example)
+                out_f.write(batch_line(custom_id=f"describe-{model_sbvr.model.id}-image", body=image_request) + "\n")
 
-            out_f.write(batch_line(custom_id=f"describe-{model_sbvr.model.id}-sbvr", body=sbvr_request) + "\n")
-            out_f.write(batch_line(custom_id=f"describe-{model_sbvr.model.id}-image", body=image_request) + "\n")
-            out_f.write(batch_line(custom_id=f"describe-{model_sbvr.model.id}-combined", body=combined_request) + "\n")
+            if "combined" in versions:
+                image_path = resources_folder / "images" / f"{model_sbvr.model.id}.png"
+                combined_request = description.LLMCombinedDescriber(client, model).request_params(sbvr=text,
+                                                                                                  image_path=image_path,
+                                                                                                  example=example)
+                out_f.write(
+                    batch_line(custom_id=f"describe-{model_sbvr.model.id}-combined", body=combined_request) + "\n")
 
 
 def write_batch_answers(batch_info_paths: typing.List[pathlib.Path], client: openai.OpenAI, ):
@@ -103,6 +108,7 @@ def write_described(*,
     answers_by_model_id = load_answers_by_model_id(answers_file_path)
 
     wrote_header = False
+    output_file_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_file_path, "w", encoding="utf-8") as f:
         writer = csv.writer(f, lineterminator="\n")
         for model_sbvr in load.load_sbvr_models(models_sbvr_file_path):
@@ -110,9 +116,9 @@ def write_described(*,
                 model=model_sbvr.model,
                 sbvr=model_sbvr.sbvr,
                 descriptions=load.ProcessDescriptions(
-                    from_sbvr=answers_by_model_id[model_sbvr.model.id]["sbvr"],
-                    from_picture=answers_by_model_id[model_sbvr.model.id]["image"],
-                    from_both=answers_by_model_id[model_sbvr.model.id]["combined"]
+                    from_sbvr=answers_by_model_id[model_sbvr.model.id].get("sbvr", None),
+                    from_picture=answers_by_model_id[model_sbvr.model.id].get("image", None),
+                    from_both=answers_by_model_id[model_sbvr.model.id].get("combined", None)
                 )
             )
             if not wrote_header:
@@ -125,7 +131,8 @@ def generate_mention_annotations_batch(*,
                                        in_file: pathlib.Path,
                                        out_file: pathlib.Path,
                                        client: openai.OpenAI,
-                                       model: str):
+                                       model: str,
+                                       versions: typing.List[typing.Literal["sbvr", "image", "combined", "no_hints"]]):
     models = list(load.load_described_models(in_file))
     out_file.parent.mkdir(parents=True, exist_ok=True)
 
@@ -142,24 +149,33 @@ def generate_mention_annotations_batch(*,
             assert rules is not None and len(rules) > 0
             assert facts is not None and len(facts) > 0
 
-            hint = hint_template(rules=rules, vocabulary=facts)
+            hint = hint_template(rules=rules)
 
             annotator = annotate.LLMMentionAnnotator(client, model, reasoning_effort="low")
 
-            from_sbvr_doc = annotate.parse_text_to_pet_doc(described_model.descriptions.from_sbvr.text,
-                                                           described_model.model.id)
-            sbvr_annotation = annotator.batch_line(doc=from_sbvr_doc, hints=hint, image_path=None)
-            out_f.write(json.dumps(sbvr_annotation) + "\n")
-
-            from_image_doc = annotate.parse_text_to_pet_doc(described_model.descriptions.from_picture.text,
-                                                            described_model.model.id)
-            image_annotation = annotator.batch_line(doc=from_image_doc, hints=None, image_path=image_path)
-            out_f.write(json.dumps(image_annotation) + "\n")
-
-            from_combined_doc = annotate.parse_text_to_pet_doc(described_model.descriptions.from_both.text,
+            if "no_hints" in versions:
+                from_sbvr_doc = annotate.parse_text_to_pet_doc(described_model.descriptions.from_sbvr.text,
                                                                described_model.model.id)
-            combined_annotation = annotator.batch_line(doc=from_combined_doc, hints=hint, image_path=image_path)
-            out_f.write(json.dumps(combined_annotation) + "\n")
+                none_annotation = annotator.batch_line(doc=from_sbvr_doc, hints=None, image_path=None)
+                out_f.write(json.dumps(none_annotation) + "\n")
+
+            if "sbvr" in versions:
+                from_sbvr_doc = annotate.parse_text_to_pet_doc(described_model.descriptions.from_sbvr.text,
+                                                               described_model.model.id)
+                sbvr_annotation = annotator.batch_line(doc=from_sbvr_doc, hints=hint, image_path=None)
+                out_f.write(json.dumps(sbvr_annotation) + "\n")
+
+            if "image" in versions:
+                from_image_doc = annotate.parse_text_to_pet_doc(described_model.descriptions.from_picture.text,
+                                                                described_model.model.id)
+                image_annotation = annotator.batch_line(doc=from_image_doc, hints=None, image_path=image_path)
+                out_f.write(json.dumps(image_annotation) + "\n")
+
+            if "combined" in versions:
+                from_combined_doc = annotate.parse_text_to_pet_doc(described_model.descriptions.from_both.text,
+                                                                   described_model.model.id)
+                combined_annotation = annotator.batch_line(doc=from_combined_doc, hints=hint, image_path=image_path)
+                out_f.write(json.dumps(combined_annotation) + "\n")
 
 
 def generate_entity_annotations_batch(*,
@@ -167,7 +183,8 @@ def generate_entity_annotations_batch(*,
                                       mention_answers_file: pathlib.Path,
                                       out_file: pathlib.Path,
                                       client: openai.OpenAI,
-                                      model: str):
+                                      model: str,
+                                      versions: typing.List[typing.Literal["sbvr", "image", "combined", "no_hints"]]):
     models = list(load.load_described_models(in_file))
     out_file.parent.mkdir(parents=True, exist_ok=True)
 
@@ -186,34 +203,45 @@ def generate_entity_annotations_batch(*,
             assert rules is not None and len(rules) > 0
             assert facts is not None and len(facts) > 0
 
-            hint = hint_template(rules=rules, vocabulary=facts)
+            hint = hint_template(rules=rules)
 
             mentions_annotator = annotate.LLMMentionAnnotator(client, model, reasoning_effort="low")
             entities_annotator = annotate.LLMEntitiesAnnotator(client, model, reasoning_effort="low")
 
             mention_answers = mention_answers_by_id[described_model.model.id]
 
-            from_sbvr_doc = annotate.parse_text_to_pet_doc(described_model.descriptions.from_sbvr.text,
-                                                           described_model.model.id)
-            from_sbvr_doc = mentions_annotator.parser.parse(document=from_sbvr_doc,
-                                                            string=mention_answers["sbvr"].text)
-            sbvr_annotation = entities_annotator.batch_line(doc=from_sbvr_doc, hints=hint, image_path=None)
-            out_f.write(json.dumps(sbvr_annotation) + "\n")
-
-            from_image_doc = annotate.parse_text_to_pet_doc(described_model.descriptions.from_picture.text,
-                                                            described_model.model.id)
-            from_image_doc = mentions_annotator.parser.parse(document=from_image_doc,
-                                                             string=mention_answers["image"].text)
-            image_annotation = entities_annotator.batch_line(doc=from_image_doc, hints=None, image_path=image_path)
-            out_f.write(json.dumps(image_annotation) + "\n")
-
-            from_combined_doc = annotate.parse_text_to_pet_doc(described_model.descriptions.from_both.text,
+            if "no_hints" in versions:
+                from_sbvr_doc = annotate.parse_text_to_pet_doc(described_model.descriptions.from_sbvr.text,
                                                                described_model.model.id)
-            from_combined_doc = mentions_annotator.parser.parse(document=from_combined_doc,
-                                                                string=mention_answers["combined"].text)
-            combined_annotation = entities_annotator.batch_line(doc=from_combined_doc, hints=hint,
-                                                                image_path=image_path)
-            out_f.write(json.dumps(combined_annotation) + "\n")
+                from_sbvr_doc = mentions_annotator.parser.parse(document=from_sbvr_doc,
+                                                                string=mention_answers["no_hints"].text)
+                none_annotation = entities_annotator.batch_line(doc=from_sbvr_doc, hints=None, image_path=None)
+                out_f.write(json.dumps(none_annotation) + "\n")
+
+            if "sbvr" in versions:
+                from_sbvr_doc = annotate.parse_text_to_pet_doc(described_model.descriptions.from_sbvr.text,
+                                                               described_model.model.id)
+                from_sbvr_doc = mentions_annotator.parser.parse(document=from_sbvr_doc,
+                                                                string=mention_answers["sbvr"].text)
+                sbvr_annotation = entities_annotator.batch_line(doc=from_sbvr_doc, hints=hint, image_path=None)
+                out_f.write(json.dumps(sbvr_annotation) + "\n")
+
+            if "image" in versions:
+                from_image_doc = annotate.parse_text_to_pet_doc(described_model.descriptions.from_picture.text,
+                                                                described_model.model.id)
+                from_image_doc = mentions_annotator.parser.parse(document=from_image_doc,
+                                                                 string=mention_answers["image"].text)
+                image_annotation = entities_annotator.batch_line(doc=from_image_doc, hints=None, image_path=image_path)
+                out_f.write(json.dumps(image_annotation) + "\n")
+
+            if "combined" in versions:
+                from_combined_doc = annotate.parse_text_to_pet_doc(described_model.descriptions.from_both.text,
+                                                                   described_model.model.id)
+                from_combined_doc = mentions_annotator.parser.parse(document=from_combined_doc,
+                                                                    string=mention_answers["combined"].text)
+                combined_annotation = entities_annotator.batch_line(doc=from_combined_doc, hints=hint,
+                                                                    image_path=image_path)
+                out_f.write(json.dumps(combined_annotation) + "\n")
 
 
 def generate_relation_annotations_batch(*,
@@ -222,7 +250,8 @@ def generate_relation_annotations_batch(*,
                                         entities_answers_file: pathlib.Path,
                                         out_file: pathlib.Path,
                                         client: openai.OpenAI,
-                                        model: str):
+                                        model: str,
+                                        versions: typing.List[typing.Literal["sbvr", "image", "combined", "no_hints"]]):
     models = list(load.load_described_models(in_file))
     out_file.parent.mkdir(parents=True, exist_ok=True)
 
@@ -242,7 +271,7 @@ def generate_relation_annotations_batch(*,
             assert rules is not None and len(rules) > 0
             assert facts is not None and len(facts) > 0
 
-            hint = hint_template(rules=rules, vocabulary=facts)
+            hint = hint_template(rules=rules)
 
             mentions_annotator = annotate.LLMMentionAnnotator(client, model, reasoning_effort="low")
             entities_annotator = annotate.LLMEntitiesAnnotator(client, model, reasoning_effort="low")
@@ -251,33 +280,46 @@ def generate_relation_annotations_batch(*,
             mention_answers = mention_answers_by_id[described_model.model.id]
             entity_answers = entity_answers_by_id[described_model.model.id]
 
-            from_sbvr_doc = annotate.parse_text_to_pet_doc(described_model.descriptions.from_sbvr.text,
-                                                           described_model.model.id)
-            from_sbvr_doc = mentions_annotator.parser.parse(document=from_sbvr_doc,
-                                                            string=mention_answers["sbvr"].text)
-            from_sbvr_doc = entities_annotator.parser.parse(document=from_sbvr_doc,
-                                                            string=entity_answers["sbvr"].text)
-            sbvr_annotation = relations_annotator.batch_line(doc=from_sbvr_doc, hints=hint, image_path=None)
-            out_f.write(json.dumps(sbvr_annotation) + "\n")
-
-            from_image_doc = annotate.parse_text_to_pet_doc(described_model.descriptions.from_picture.text,
-                                                            described_model.model.id)
-            from_image_doc = mentions_annotator.parser.parse(document=from_image_doc,
-                                                             string=mention_answers["image"].text)
-            from_image_doc = entities_annotator.parser.parse(document=from_image_doc,
-                                                             string=entity_answers["image"].text)
-            image_annotation = relations_annotator.batch_line(doc=from_image_doc, hints=None, image_path=image_path)
-            out_f.write(json.dumps(image_annotation) + "\n")
-
-            from_combined_doc = annotate.parse_text_to_pet_doc(described_model.descriptions.from_both.text,
+            if "no_hints" in versions:
+                from_sbvr_doc = annotate.parse_text_to_pet_doc(described_model.descriptions.from_sbvr.text,
                                                                described_model.model.id)
-            from_combined_doc = mentions_annotator.parser.parse(document=from_combined_doc,
-                                                                string=mention_answers["combined"].text)
-            from_combined_doc = entities_annotator.parser.parse(document=from_combined_doc,
-                                                                string=entity_answers["combined"].text)
-            combined_annotation = relations_annotator.batch_line(doc=from_combined_doc, hints=hint,
-                                                                 image_path=image_path)
-            out_f.write(json.dumps(combined_annotation) + "\n")
+                from_sbvr_doc = mentions_annotator.parser.parse(document=from_sbvr_doc,
+                                                                string=mention_answers["no_hints"].text)
+                from_sbvr_doc = entities_annotator.parser.parse(document=from_sbvr_doc,
+                                                                string=entity_answers["no_hints"].text)
+                sbvr_annotation = relations_annotator.batch_line(doc=from_sbvr_doc, hints=None, image_path=None)
+                out_f.write(json.dumps(sbvr_annotation) + "\n")
+
+            if "sbvr" in versions:
+                from_sbvr_doc = annotate.parse_text_to_pet_doc(described_model.descriptions.from_sbvr.text,
+                                                               described_model.model.id)
+                from_sbvr_doc = mentions_annotator.parser.parse(document=from_sbvr_doc,
+                                                                string=mention_answers["sbvr"].text)
+                from_sbvr_doc = entities_annotator.parser.parse(document=from_sbvr_doc,
+                                                                string=entity_answers["sbvr"].text)
+                sbvr_annotation = relations_annotator.batch_line(doc=from_sbvr_doc, hints=hint, image_path=None)
+                out_f.write(json.dumps(sbvr_annotation) + "\n")
+
+            if "image" in versions:
+                from_image_doc = annotate.parse_text_to_pet_doc(described_model.descriptions.from_picture.text,
+                                                                described_model.model.id)
+                from_image_doc = mentions_annotator.parser.parse(document=from_image_doc,
+                                                                 string=mention_answers["image"].text)
+                from_image_doc = entities_annotator.parser.parse(document=from_image_doc,
+                                                                 string=entity_answers["image"].text)
+                image_annotation = relations_annotator.batch_line(doc=from_image_doc, hints=None, image_path=image_path)
+                out_f.write(json.dumps(image_annotation) + "\n")
+
+            if "combined" in versions:
+                from_combined_doc = annotate.parse_text_to_pet_doc(described_model.descriptions.from_both.text,
+                                                                   described_model.model.id)
+                from_combined_doc = mentions_annotator.parser.parse(document=from_combined_doc,
+                                                                    string=mention_answers["combined"].text)
+                from_combined_doc = entities_annotator.parser.parse(document=from_combined_doc,
+                                                                    string=entity_answers["combined"].text)
+                combined_annotation = relations_annotator.batch_line(doc=from_combined_doc, hints=hint,
+                                                                     image_path=image_path)
+                out_f.write(json.dumps(combined_annotation) + "\n")
 
 
 def count_selected_models(*, models_dir: pathlib.Path) -> int:
@@ -375,7 +417,8 @@ def models_from_answers(*,
                         mention_answers_path: pathlib.Path,
                         entities_answers_path: pathlib.Path,
                         relations_answers_path: pathlib.Path,
-                        out_directory: pathlib.Path):
+                        out_directory: pathlib.Path,
+                        version: typing.Literal["sbvr", "image", "combined", "no_hints"]):
     models = list(load.load_described_models(model_path))
     out_directory.parent.mkdir(parents=True, exist_ok=True)
 
@@ -383,16 +426,10 @@ def models_from_answers(*,
     entity_answers_by_id = load_answers_by_model_id(entities_answers_path)
     relation_answers_by_id = load_answers_by_model_id(relations_answers_path)
 
-    from_sbvr_out_file = out_directory / "sbvr" / f"{model_path.stem}.jsonl"
-    from_sbvr_out_file.parent.mkdir(parents=True, exist_ok=True)
-    from_image_out_file = out_directory / "image" / f"{model_path.stem}.jsonl"
-    from_image_out_file.parent.mkdir(parents=True, exist_ok=True)
-    from_combined_out_file = out_directory / "combined" / f"{model_path.stem}.jsonl"
-    from_combined_out_file.parent.mkdir(parents=True, exist_ok=True)
+    out_file = out_directory / version / f"{model_path.stem}.jsonl"
+    out_file.parent.mkdir(parents=True, exist_ok=True)
 
-    with (open(from_sbvr_out_file, "w") as sbvr_out,
-          open(from_image_out_file, "w") as image_out,
-          open(from_combined_out_file, "w") as combined_out):
+    with open(out_file, "w") as f:
         for described_model in tqdm.tqdm(models):
             mentions_annotator = annotate.LLMMentionAnnotator(client, model)
             entities_annotator = annotate.LLMEntitiesAnnotator(client, model)
@@ -402,35 +439,19 @@ def models_from_answers(*,
             entity_answers = entity_answers_by_id[described_model.model.id]
             relation_answers = relation_answers_by_id[described_model.model.id]
 
-            from_sbvr_doc = annotate.parse_text_to_pet_doc(described_model.descriptions.from_sbvr.text,
-                                                           described_model.model.id)
-            from_sbvr_doc = mentions_annotator.parser.parse(document=from_sbvr_doc,
-                                                            string=mention_answers["sbvr"].text)
-            from_sbvr_doc = entities_annotator.parser.parse(document=from_sbvr_doc,
-                                                            string=entity_answers["sbvr"].text)
-            from_sbvr_doc = relations_annotator.parser.parse(document=from_sbvr_doc,
-                                                             string=relation_answers["sbvr"].text)
-            sbvr_out.write(json.dumps(data.PetDictExporter().export_document(from_sbvr_doc)) + "\n")
-
-            from_image_doc = annotate.parse_text_to_pet_doc(described_model.descriptions.from_picture.text,
-                                                            described_model.model.id)
-            from_image_doc = mentions_annotator.parser.parse(document=from_image_doc,
-                                                             string=mention_answers["image"].text)
-            from_image_doc = entities_annotator.parser.parse(document=from_image_doc,
-                                                             string=entity_answers["image"].text)
-            from_image_doc = relations_annotator.parser.parse(document=from_image_doc,
-                                                              string=relation_answers["image"].text)
-            image_out.write(json.dumps(data.PetDictExporter().export_document(from_image_doc)) + "\n")
-
-            from_combined_doc = annotate.parse_text_to_pet_doc(described_model.descriptions.from_both.text,
-                                                               described_model.model.id)
-            from_combined_doc = mentions_annotator.parser.parse(document=from_combined_doc,
-                                                                string=mention_answers["combined"].text)
-            from_combined_doc = entities_annotator.parser.parse(document=from_combined_doc,
-                                                                string=entity_answers["combined"].text)
-            from_combined_doc = relations_annotator.parser.parse(document=from_combined_doc,
-                                                                 string=relation_answers["combined"].text)
-            combined_out.write(json.dumps(data.PetDictExporter().export_document(from_combined_doc)) + "\n")
+            if version == "sbvr" or version == "no_hints":
+                text = described_model.descriptions.from_sbvr.text
+            elif version == "image":
+                text = described_model.descriptions.from_picture.text
+            elif version == "combined":
+                text = described_model.descriptions.from_both.text
+            else:
+                raise ValueError(f"Unknown version {version}")
+            doc = annotate.parse_text_to_pet_doc(text, described_model.model.id)
+            doc = mentions_annotator.parser.parse(document=doc, string=mention_answers[version].text)
+            doc = entities_annotator.parser.parse(document=doc, string=entity_answers[version].text)
+            doc = relations_annotator.parser.parse(document=doc, string=relation_answers[version].text)
+            f.write(json.dumps(data.PetDictExporter().export_document(doc)) + "\n")
 
 
 def main():
@@ -448,8 +469,10 @@ def main():
     with open(resources_dir / "prompts" / "examples" / "pet-example.txt") as f:
         example = f.read()
 
+    versions: typing.List[typing.Literal["sbvr", "image", "combined", "no_hints"]] = ["no_hints"]
+
     print("Generating batches for process description ...")
-    max_files = 2
+    max_files: typing.Optional[int] = 10
     for f in tqdm.tqdm((resources_dir / "models" / "sbvr").iterdir()):
         batch_file_path = (resources_dir / "batches" / "descriptions" / "inputs" / f"{f.stem}.jsonl")
         batch_file_path.parent.mkdir(parents=True, exist_ok=True)
@@ -459,12 +482,13 @@ def main():
                                     out_file=batch_file_path,
                                     client=client,
                                     model="gpt-5-nano-2025-08-07",
-                                    example=example)
+                                    example=example,
+                                    versions=versions)
 
-        max_files -= 1
-        if max_files <= 0:
-            # TODO: run entire folder if everything looks fine
-            break
+        if max_files is not None:
+            max_files -= 1
+            if max_files <= 0:
+                break
 
     print("Uploading batches ...")
     for batch_file_path in (resources_dir / "batches" / "descriptions" / "inputs").iterdir():
@@ -487,7 +511,8 @@ def main():
     for f in tqdm.tqdm((resources_dir / "models" / "described").iterdir()):
         out_f = resources_dir / "batches" / "mentions" / "inputs" / f"{f.stem}.jsonl"
         generate_mention_annotations_batch(in_file=f, out_file=out_f,
-                                           client=client, model="gpt-5-mini-2025-08-07")
+                                           client=client, model="gpt-5-mini-2025-08-07",
+                                           versions=versions)
 
     print("Uploading batches ...")
     batch_file_path = resources_dir / "batches" / "mentions" / "inputs"
@@ -504,7 +529,8 @@ def main():
         out_f = resources_dir / "batches" / "entities" / "inputs" / f"{f.stem}.jsonl"
         mentions_answer_f = resources_dir / "batches" / "mentions" / "outputs" / f"{f.stem}.jsonl"
         generate_entity_annotations_batch(in_file=f, out_file=out_f, mention_answers_file=mentions_answer_f,
-                                          client=client, model="gpt-5-mini-2025-08-07")
+                                          client=client, model="gpt-5-mini-2025-08-07",
+                                          versions=versions)
     print("Uploading batches ...")
     batch_file_path = resources_dir / "batches" / "entities" / "inputs"
     for f in tqdm.tqdm(batch_file_path.iterdir()):
@@ -523,7 +549,8 @@ def main():
         generate_relation_annotations_batch(in_file=f, out_file=out_f,
                                             mention_answers_file=mentions_answer_f,
                                             entities_answers_file=entities_answer_f,
-                                            client=client, model="gpt-5-mini-2025-08-07")
+                                            client=client, model="gpt-5-mini-2025-08-07",
+                                            versions=versions)
 
     print("Uploading batches ...")
     batch_file_path = resources_dir / "batches" / "relations" / "inputs"
@@ -537,15 +564,17 @@ def main():
 
     print("Dumping generated documents ...")
     for f in tqdm.tqdm((resources_dir / "models" / "described").iterdir()):
-        models_from_answers(
-            client=client,
-            model="gpt-5-nano-2025-08-07",
-            model_path=f,
-            mention_answers_path=resources_dir / "batches" / "mentions" / "outputs" / f"{f.stem}.jsonl",
-            entities_answers_path=resources_dir / "batches" / "entities" / "outputs" / f"{f.stem}.jsonl",
-            relations_answers_path=resources_dir / "batches" / "relations" / "outputs" / f"{f.stem}.jsonl",
-            out_directory=resources_dir / "docs"
-        )
+        for version in versions:
+            models_from_answers(
+                client=client,
+                model="gpt-5-nano-2025-08-07",
+                model_path=f,
+                mention_answers_path=resources_dir / "batches" / "mentions" / "outputs" / f"{f.stem}.jsonl",
+                entities_answers_path=resources_dir / "batches" / "entities" / "outputs" / f"{f.stem}.jsonl",
+                relations_answers_path=resources_dir / "batches" / "relations" / "outputs" / f"{f.stem}.jsonl",
+                out_directory=resources_dir / "docs",
+                version=version
+            )
 
 
 if __name__ == "__main__":

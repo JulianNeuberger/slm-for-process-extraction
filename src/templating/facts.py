@@ -2,8 +2,7 @@ import typing
 
 import networkx as nx
 
-import patterns
-from templating import base, util
+from templating import base
 
 
 class TaskFactTemplate(base.BaseFactTemplate):

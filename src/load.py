@@ -52,20 +52,37 @@ class LLMCompletion:
             f"{name} Completion Tokens": self.completion_tokens,
         }
 
+    @classmethod
+    def header(cls, name: str):
+        return [
+            f"{name}",
+            f"{name} Prompt Tokens",
+            f"{name} Completion Tokens",
+        ]
+
 
 @dataclasses.dataclass
 class ProcessDescriptions:
-    from_sbvr: LLMCompletion
-    from_picture: LLMCompletion
-    from_both: LLMCompletion
+    from_sbvr: typing.Optional[LLMCompletion]
+    from_picture: typing.Optional[LLMCompletion]
+    from_both: typing.Optional[LLMCompletion]
 
     @property
     def row(self):
-        return {
-            **self.from_sbvr.as_row("Description (SBVR)"),
-            **self.from_picture.as_row("Description (Picture)"),
-            **self.from_both.as_row("Description (Combined)")
-        }
+        ret = {}
+        if self.from_sbvr is not None:
+            ret.update(self.from_sbvr.as_row("Description (SBVR)"))
+        else:
+            ret.update({h: None for h in LLMCompletion.header("Description (SBVR)")})
+        if self.from_picture is not None:
+            ret.update(self.from_picture.as_row("Description (Picture)"))
+        else:
+            ret.update({h: None for h in LLMCompletion.header("Description (Picture)")})
+        if self.from_both is not None:
+            ret.update(self.from_both.as_row("Description (Combined)"))
+        else:
+            ret.update({h: None for h in LLMCompletion.header("Description (Combined)")})
+        return ret
 
 
 @dataclasses.dataclass
@@ -196,8 +213,6 @@ def load_described_models(models_path: pathlib.Path) -> typing.Generator[Describ
         from_both_prompt_tokens_index = header.index("Description (Combined) Prompt Tokens")
         from_both_completion_tokens_index = header.index("Description (Combined) Completion Tokens")
 
-
-
         for row in csv_reader:
             model = ModelInfo(
                 id=row[model_id_index],
@@ -211,22 +226,37 @@ def load_described_models(models_path: pathlib.Path) -> typing.Generator[Describ
                 vocab=row[sbvr_vocab_index].split("\n")
             )
 
-            descriptions = ProcessDescriptions(
-                from_sbvr=LLMCompletion(
-                    text=row[from_sbvr_text_index],
+            sbvr_description = row[from_sbvr_text_index]
+            sbvr_completion = None
+            if sbvr_description is not None and sbvr_description != "":
+                sbvr_completion = LLMCompletion(
+                    text=sbvr_description,
                     prompt_tokens=int(row[from_sbvr_prompt_tokens_index]),
                     completion_tokens=int(row[from_sbvr_completion_tokens_index]),
-                ),
-                from_picture=LLMCompletion(
+                )
+
+            image_description = row[from_picture_text_index]
+            image_completion = None
+            if image_description is not None and image_description != "":
+                image_completion = LLMCompletion(
                     text=row[from_picture_text_index],
                     prompt_tokens=int(row[from_picture_prompt_tokens_index]),
                     completion_tokens=int(row[from_picture_completion_tokens_index]),
-                ),
-                from_both=LLMCompletion(
+                )
+
+            combined_description = row[from_both_text_index]
+            combined_completion = None
+            if combined_description is not None and combined_description != "":
+                combined_completion = LLMCompletion(
                     text=row[from_both_text_index],
                     prompt_tokens=int(row[from_both_prompt_tokens_index]),
                     completion_tokens=int(row[from_both_completion_tokens_index]),
-                ),
+                )
+
+            descriptions = ProcessDescriptions(
+                from_sbvr=sbvr_completion,
+                from_picture=image_completion,
+                from_both=combined_completion,
             )
 
             yield DescribedModel(

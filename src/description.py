@@ -36,41 +36,42 @@ class BaseLLMDescriber(abc.ABC):
     ):
         prompt = self._prompt_template.apply()
 
-        content: typing.List[ChatCompletionContentPartParam | str] = [
+        dev_message_content: typing.List[ChatCompletionContentPartParam | str] = [
             ChatCompletionContentPartTextParam(
                 text=prompt,
                 type="text"
             )
         ]
         if example is not None:
-            content.append(ChatCompletionContentPartTextParam(
+            dev_message_content.append(ChatCompletionContentPartTextParam(
                 text=example,
                 type="text"
             ))
 
+        user_message_content: typing.List[ChatCompletionContentPartParam | str] = []
         if image_path is not None:
             if sbvr is not None:
-                content.append(ChatCompletionContentPartTextParam(
-                    text="You are also given this image of the process to help you, "
+                user_message_content.append(ChatCompletionContentPartTextParam(
+                    text="Here is also an image of the process to help you, "
                          "please do not describe the process twice, but integrate the "
                          "information in the image and SBVR rules into one description.",
                     type="text"
                 ))
             else:
-                content.append(ChatCompletionContentPartTextParam(
+                user_message_content.append(ChatCompletionContentPartTextParam(
                     text="The image of the process is as follows:",
                     type="text")
                 )
             with open(image_path, "rb") as image_file:
                 b64_image = base64.b64encode(image_file.read()).decode("utf-8")
-            content.append(
+            user_message_content.append(
                 ChatCompletionContentPartImageParam(
                     image_url=ImageURL(url=f"data:image/png;base64,{b64_image}"),
                     type="image_url"
                 )
             )
         if sbvr is not None:
-            content.append(ChatCompletionContentPartTextParam(
+            user_message_content.append(ChatCompletionContentPartTextParam(
                 text=f"These are the SBVR rules in question:\n\n{sbvr}",
                 type="text"
             ))
@@ -78,12 +79,12 @@ class BaseLLMDescriber(abc.ABC):
         return {
             "messages": [
                 ChatCompletionDeveloperMessageParam(
-                    role="instruction",
-                    content=[]
+                    role="developer",
+                    content=dev_message_content
                 ),
                 ChatCompletionUserMessageParam(
                     role="user",
-                    content=content
+                    content=user_message_content
                 )
             ],
             "model": self.model,

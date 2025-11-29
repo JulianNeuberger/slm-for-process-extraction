@@ -20,7 +20,7 @@ class RelationParser(base.BaseParser):
                 continue
             split_line = line.split("\t")
             if len(split_line) == 3 or len(split_line) > 4:
-                relation_type, head_index, tail_index = split_line
+                relation_type, head_index, tail_index = split_line[:3]
             elif len(split_line) == 4:
                 relation_type, head_index, tail_index, explanation = split_line
             else:

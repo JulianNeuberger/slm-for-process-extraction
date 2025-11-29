@@ -6,4 +6,3 @@ from templating.inclusive import InclusiveSplitRuleTemplate, StructuredSynchroni
 from templating.loop import StructuredLoopTemplate
 from templating.optional import OptionalRuleTemplate
 from templating.parallel import SynchronizationTemplate, ParallelSplitTemplate
-from templating.task import TaskRuleTemplate

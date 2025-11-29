@@ -59,6 +59,7 @@ def resolve_reference(ref: base.ForwardReference,
         node_label = graph.nodes[ref.node]["label"]
         if with_tags:
             return [f"<actor> {actor_label} </actor> <activity> {node_label} </activity>"]
+        return [f"{actor_label} {node_label}"]
     if node_type in ["Exclusive", "Inclusive", "Parallel"]:
         return [f"R{rule_id_by_node[ref.node]}"]
 

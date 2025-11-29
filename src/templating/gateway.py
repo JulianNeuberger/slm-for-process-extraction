@@ -74,7 +74,7 @@ class BaseGatewayRuleTemplate(base.BaseRuleTemplate, abc.ABC):
                 flow_label = labels[flow]
                 condition = f"{gateway_label} {flow_label}".strip()
                 if len(condition) > 0:
-                    content.append("in case")
+                    content.append("if")
                     if self._include_tags:
                         content.append("<cond>")
                     content.append(condition)
@@ -171,7 +171,7 @@ class BaseGatewayMergeRuleTemplate(base.BaseRuleTemplate, abc.ABC):
                 assert graph.nodes[predecessor_ref]["type"] != "Flow"
                 content.append(ForwardReference(predecessor_ref, resolve_direction="backward"))
 
-            depth = min(depths[n] for n in match.values())
+            depth = depths[match["Gateway"]]
             nodes = [
                 match["Gateway"],
                 match["FlowFromGateway"],

@@ -31,6 +31,8 @@ def doc_to_conll(doc: PetDocument) -> str:
 def sentence_to_conll(sentence: typing.List[PetToken], tags: typing.Dict[PetToken, str]) -> str:
     lines = []
     for t in sentence:
+        if t.pos_tag == "SPACE":
+            continue
         line = f"{t.text}\t{t.pos_tag}\t{tags[t]}"
         lines.append(line)
     return "\n".join(lines)

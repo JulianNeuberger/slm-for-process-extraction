@@ -53,19 +53,21 @@ class OptionalRuleTemplate(base.BaseRuleTemplate):
             base.ForwardReference(skipped_ref, resolve_direction="forward")
         ]
         if len(execute_condition) > 0:
-            content.append("in case")
+            content.append("if")
             if self._include_tags:
                 content.append("<cond>")
             content.append(execute_condition)
             if self._include_tags:
                 content.append("</cond>")
         if len(skip_condition) > 0:
-            content.append("or not in case")
+            content.append("or not if")
             if self._include_tags:
                 content.append("<cond>")
             content.append(skip_condition)
             if self._include_tags:
                 content.append("</cond>")
+        elif len(execute_condition) > 0:
+            content.append("or not otherwise")
 
         incoming_ref = patterns.get_predecessors_not_of_type(
             graph,
@@ -75,7 +77,7 @@ class OptionalRuleTemplate(base.BaseRuleTemplate):
         assert graph.nodes[incoming_ref]["type"] != "Flow"
         content += ["after", base.ForwardReference(incoming_ref, resolve_direction="backward")]
 
-        depth = min([depths[n] for n in nodes])
+        depth = depths[match["Split"]]
         util.visit_nodes(graph, nodes)
         return base.UnresolvedRule(content=content, depth=depth, nodes=nodes)
 
@@ -109,7 +111,7 @@ class OptionalRuleTemplate(base.BaseRuleTemplate):
             "or",
             base.ForwardReference(skipped_ref, resolve_direction="backward"),
         ]
-        depth = min(depths[n] for n in nodes)
+        depth = depths[match["Merge"]]
         util.visit_nodes(graph, nodes)
         return base.UnresolvedRule(content=content, depth=depth, nodes=nodes)
 
