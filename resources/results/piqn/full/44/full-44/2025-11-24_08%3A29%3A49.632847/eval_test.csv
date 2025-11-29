@@ -1,0 +1,2 @@
+ner_prec_micro;ner_rec_micro;ner_f1_micro;ner_prec_macro;ner_rec_macro;ner_f1_macro;loc_prec_micro;loc_rec_micro;loc_f1_micro;loc_prec_macro;loc_rec_macro;loc_f1_macro;cls_prec_micro;cls_rec_micro;cls_f1_micro;cls_prec_macro;cls_rec_macro;cls_f1_macro;epoch;iteration;global_iteration
+71.57360406091371;73.4375;72.4935732647815;61.772772365455864;57.47798716324475;58.27739174457081;72.33502538071066;74.21875;73.26478149100257;72.33502538071066;74.21875;73.26478149100257;98.94736842105263;73.4375;84.30493273542601;99.53416149068323;57.47798716324475;70.9973425267543;0;0;0

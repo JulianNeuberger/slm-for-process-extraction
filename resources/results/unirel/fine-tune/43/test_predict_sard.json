@@ -1,0 +1,3385 @@
+[
+  {
+    "text": "The Police Report related to the car accident is searched within the Police Report database and put in a file together with the Claim Documentation . This file serves as input to a claims handler who calculates an initial claim estimate . Then , the claims handler creates an Action Plan based on an Action Plan Checklist available in the Document Management system . Based on the Action Plan , a claims manager tries to negotiate a settlement on the claim estimate . The claimant is informed of the outcome , which ends the process .",
+    "gold_spo_list": [
+      [
+        "searched",
+        "further specification",
+        "within the Police Report database"
+      ],
+      [
+        "searched",
+        "flow",
+        "put"
+      ],
+      [
+        "put",
+        "uses",
+        "The Police Report"
+      ],
+      [
+        "negotiate",
+        "flow",
+        "informed"
+      ],
+      [
+        "negotiate",
+        "uses",
+        "a settlement"
+      ],
+      [
+        "put",
+        "further specification",
+        "in a file together with the Claim Documentation"
+      ],
+      [
+        "creates",
+        "flow",
+        "negotiate"
+      ],
+      [
+        "informed",
+        "uses",
+        "the outcome"
+      ],
+      [
+        "put",
+        "flow",
+        "calculates"
+      ],
+      [
+        "negotiate",
+        "actor performer",
+        "a claims manager"
+      ],
+      [
+        "searched",
+        "uses",
+        "The Police Report"
+      ],
+      [
+        "calculates",
+        "flow",
+        "creates"
+      ],
+      [
+        "creates",
+        "uses",
+        "an Action Plan"
+      ],
+      [
+        "creates",
+        "actor performer",
+        "the claims handler"
+      ],
+      [
+        "calculates",
+        "uses",
+        "an initial claim estimate"
+      ],
+      [
+        "calculates",
+        "actor performer",
+        "who"
+      ],
+      [
+        "informed",
+        "actor recipient",
+        "The claimant"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "tries",
+        "actor performer",
+        "a claims manager"
+      ],
+      [
+        "calculates",
+        "actor recipient",
+        "a claims handler"
+      ],
+      [
+        "tries",
+        "uses",
+        "a settlement on the claim estimate"
+      ],
+      [
+        "creates",
+        "further specification",
+        "based on an Action Plan Checklist available in the Document Management system"
+      ],
+      [
+        "creates",
+        "actor recipient",
+        "the claims handler"
+      ],
+      [
+        "informed",
+        "uses",
+        "the outcome"
+      ],
+      [
+        "creates",
+        "uses",
+        "an Action Plan"
+      ],
+      [
+        "creates",
+        "flow",
+        "creates"
+      ],
+      [
+        "informed",
+        "flow",
+        "informed"
+      ],
+      [
+        "creates",
+        "actor performer",
+        "the claims handler"
+      ],
+      [
+        "calculates",
+        "actor performer",
+        "a claims handler"
+      ]
+    ]
+  },
+  {
+    "text": "The fault detector reports a failure to the MPO or MPO has a suspicion of their own fault . The MPO shall examine the failure . The MPO rejects the failure of the fault detector or the MPO confirms the failure of the fault detector . If the MPO confirms the failure of the fault detector , he informes the GO and the MSP . The MPO fixes the fault at the measuring device . The MPO shares the results of the repairs carried out with the fault detector . The MPO will inform the GO about the resolution of the interference . The MPO will inform the MSP about the resolution of the interference .",
+    "gold_spo_list": [
+      [
+        "informes",
+        "actor recipient",
+        "the GO"
+      ],
+      [
+        "shares",
+        "uses",
+        "the results of the repairs"
+      ],
+      [
+        "confirms",
+        "flow",
+        "informes"
+      ],
+      [
+        "informes",
+        "actor performer",
+        "he"
+      ],
+      [
+        "confirms",
+        "uses",
+        "the failure of the fault detector"
+      ],
+      [
+        "shares",
+        "actor performer",
+        "The MPO"
+      ],
+      [
+        "shares",
+        "flow",
+        "inform"
+      ],
+      [
+        "inform",
+        "actor recipient",
+        "the GO"
+      ],
+      [
+        "or",
+        "flow",
+        "rejects"
+      ],
+      [
+        "rejects",
+        "uses",
+        "the failure of the fault detector"
+      ],
+      [
+        "inform",
+        "uses",
+        "about the resolution of the interference"
+      ],
+      [
+        "suspicion",
+        "flow",
+        "examine"
+      ],
+      [
+        "shares",
+        "further specification",
+        "carried out with the fault detector"
+      ],
+      [
+        "informes",
+        "actor recipient",
+        "the MSP"
+      ],
+      [
+        "fixes",
+        "uses",
+        "the fault at the measuring device"
+      ],
+      [
+        "informes",
+        "flow",
+        "fixes"
+      ],
+      [
+        "suspicion",
+        "uses",
+        "of their own fault"
+      ],
+      [
+        "reports",
+        "actor performer",
+        "The fault detector"
+      ],
+      [
+        "confirms",
+        "actor performer",
+        "the MPO"
+      ],
+      [
+        "inform",
+        "actor performer",
+        "The MPO"
+      ],
+      [
+        "or",
+        "flow",
+        "reports"
+      ],
+      [
+        "inform",
+        "flow",
+        "inform"
+      ],
+      [
+        "examine",
+        "uses",
+        "the failure"
+      ],
+      [
+        "reports",
+        "actor recipient",
+        "the MPO"
+      ],
+      [
+        "or",
+        "flow",
+        "confirms"
+      ],
+      [
+        "inform",
+        "actor recipient",
+        "the MSP"
+      ],
+      [
+        "examine",
+        "flow",
+        "or"
+      ],
+      [
+        "rejects",
+        "actor performer",
+        "The MPO"
+      ],
+      [
+        "reports",
+        "flow",
+        "examine"
+      ],
+      [
+        "suspicion",
+        "actor performer",
+        "MPO"
+      ],
+      [
+        "fixes",
+        "flow",
+        "shares"
+      ],
+      [
+        "fixes",
+        "actor performer",
+        "The MPO"
+      ],
+      [
+        "reports",
+        "uses",
+        "a failure"
+      ],
+      [
+        "examine",
+        "actor performer",
+        "The MPO"
+      ],
+      [
+        "or",
+        "flow",
+        "suspicion"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "examine",
+        "actor performer",
+        "The MPO fixes the fault at the measuring device. The MPO"
+      ],
+      [
+        "informes",
+        "actor recipient",
+        "the GO"
+      ],
+      [
+        "fixes",
+        "actor performer",
+        "The MPO fixes the fault at the measuring device. The MPO"
+      ],
+      [
+        "informes",
+        "actor performer",
+        "the MSP"
+      ],
+      [
+        "informes",
+        "actor recipient",
+        "the GO and the MSP"
+      ],
+      [
+        "If",
+        "flow",
+        "confirms"
+      ],
+      [
+        "inform",
+        "actor performer",
+        "the MSP"
+      ],
+      [
+        "confirms",
+        "uses",
+        "the failure"
+      ],
+      [
+        "confirms",
+        "uses",
+        "the failure of the fault detector"
+      ],
+      [
+        "shares",
+        "actor performer",
+        "The MPO"
+      ],
+      [
+        "or",
+        "flow",
+        "examine"
+      ],
+      [
+        "inform",
+        "actor recipient",
+        "the GO"
+      ],
+      [
+        "inform",
+        "flow",
+        "informes"
+      ],
+      [
+        "confirms",
+        "flow",
+        "If"
+      ],
+      [
+        "inform",
+        "actor recipient",
+        "the GO and the MSP"
+      ],
+      [
+        "or",
+        "flow",
+        "rejects"
+      ],
+      [
+        "inform",
+        "uses",
+        "the interference"
+      ],
+      [
+        "rejects",
+        "uses",
+        "the failure of the fault detector"
+      ],
+      [
+        "informes",
+        "flow",
+        "inform"
+      ],
+      [
+        "rejects",
+        "uses",
+        "the failure"
+      ],
+      [
+        "shares",
+        "actor performer",
+        "The MPO fixes the fault at the measuring device. The MPO"
+      ],
+      [
+        "fixes",
+        "uses",
+        "the fault"
+      ],
+      [
+        "confirms",
+        "flow",
+        "or"
+      ],
+      [
+        "informes",
+        "actor recipient",
+        "the MSP"
+      ],
+      [
+        "inform",
+        "uses",
+        "the resolution of the interference"
+      ],
+      [
+        "reports",
+        "actor performer",
+        "The fault detector"
+      ],
+      [
+        "confirms",
+        "actor performer",
+        "the MPO"
+      ],
+      [
+        "inform",
+        "actor performer",
+        "The MPO"
+      ],
+      [
+        "inform",
+        "flow",
+        "inform"
+      ],
+      [
+        "confirms",
+        "uses",
+        "the fault detector"
+      ],
+      [
+        "If",
+        "flow",
+        "If"
+      ],
+      [
+        "examine",
+        "uses",
+        "the failure"
+      ],
+      [
+        "rejects",
+        "flow",
+        "If"
+      ],
+      [
+        "informes",
+        "actor performer",
+        "the MPO"
+      ],
+      [
+        "fixes",
+        "further specification",
+        "at the measuring device"
+      ],
+      [
+        "or",
+        "flow",
+        "confirms"
+      ],
+      [
+        "inform",
+        "actor recipient",
+        "the MSP"
+      ],
+      [
+        "shares",
+        "uses",
+        "the results of the repairs carried out"
+      ],
+      [
+        "examine",
+        "flow",
+        "or"
+      ],
+      [
+        "rejects",
+        "actor performer",
+        "The MPO"
+      ],
+      [
+        "rejects",
+        "uses",
+        "the fault detector"
+      ],
+      [
+        "fixes",
+        "flow",
+        "shares"
+      ],
+      [
+        "If",
+        "flow",
+        "rejects"
+      ],
+      [
+        "rejects",
+        "flow",
+        "or"
+      ],
+      [
+        "informes",
+        "uses",
+        "the GO"
+      ],
+      [
+        "fixes",
+        "flow",
+        "inform"
+      ],
+      [
+        "examine",
+        "actor performer",
+        "The MPO"
+      ],
+      [
+        "fixes",
+        "actor performer",
+        "The MPO"
+      ],
+      [
+        "reports",
+        "uses",
+        "a failure"
+      ],
+      [
+        "inform",
+        "uses",
+        "the GO"
+      ]
+    ]
+  },
+  {
+    "text": "I am the HR clerk . When a vacancy is reported to me , I create a job description from the information . Sometimes there is still confusion in the message , then I must ask the Department again . I am submitting the job description for consideration and waiting for the approval . But , it can also happen that the department does not approve it , but rejects it , and requests a correction . Then I correct the description and submit it again for consideration . If the description is finally approved , I post the job .",
+    "gold_spo_list": [
+      [
+        "Sometimes",
+        "flow",
+        "submitting"
+      ],
+      [
+        "submitting",
+        "flow",
+        "waiting"
+      ],
+      [
+        "there is still confusion in the message",
+        "flow",
+        "ask"
+      ],
+      [
+        "reported",
+        "actor recipient",
+        "me"
+      ],
+      [
+        "submitting",
+        "uses",
+        "the job description"
+      ],
+      [
+        "the description is finally approved",
+        "flow",
+        "post"
+      ],
+      [
+        "ask",
+        "actor performer",
+        "I"
+      ],
+      [
+        "the department does not approve it",
+        "flow",
+        "requests"
+      ],
+      [
+        "submitting",
+        "actor performer",
+        "I"
+      ],
+      [
+        "waiting",
+        "uses",
+        "the approval"
+      ],
+      [
+        "waiting",
+        "flow",
+        "it can also happen that"
+      ],
+      [
+        "post",
+        "actor performer",
+        "I"
+      ],
+      [
+        "submit",
+        "actor performer",
+        "I"
+      ],
+      [
+        "If",
+        "flow",
+        "the description is finally approved"
+      ],
+      [
+        "create",
+        "flow",
+        "Sometimes"
+      ],
+      [
+        "ask",
+        "actor recipient",
+        "the Department"
+      ],
+      [
+        "it can also happen that",
+        "flow",
+        "the department does not approve it"
+      ],
+      [
+        "reported",
+        "flow",
+        "create"
+      ],
+      [
+        "post",
+        "uses",
+        "the job"
+      ],
+      [
+        "requests",
+        "uses",
+        "a correction"
+      ],
+      [
+        "it can also happen that",
+        "flow",
+        "If"
+      ],
+      [
+        "reported",
+        "uses",
+        "a vacancy"
+      ],
+      [
+        "correct",
+        "uses",
+        "the description"
+      ],
+      [
+        "create",
+        "uses",
+        "a job description from the information"
+      ],
+      [
+        "ask",
+        "flow",
+        "submitting"
+      ],
+      [
+        "submit",
+        "uses",
+        "it"
+      ],
+      [
+        "Sometimes",
+        "flow",
+        "there is still confusion in the message"
+      ],
+      [
+        "correct",
+        "flow",
+        "submit"
+      ],
+      [
+        "create",
+        "actor performer",
+        "I"
+      ],
+      [
+        "submit",
+        "flow",
+        "If"
+      ],
+      [
+        "correct",
+        "actor performer",
+        "I"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "submitting",
+        "further specification",
+        "for consideration"
+      ],
+      [
+        "submit",
+        "further specification",
+        "for consideration"
+      ],
+      [
+        "ask",
+        "actor performer",
+        "I must ask the Department again. I"
+      ],
+      [
+        "submitting",
+        "actor performer",
+        "I must ask the Department again. I"
+      ],
+      [
+        "post",
+        "actor performer",
+        "I must ask the Department again. I"
+      ],
+      [
+        "create",
+        "further specification",
+        "from the information"
+      ],
+      [
+        "submit",
+        "actor performer",
+        "I must ask the Department again. I"
+      ],
+      [
+        "submitting",
+        "actor performer",
+        "me"
+      ],
+      [
+        "submitting",
+        "uses",
+        "the job description"
+      ],
+      [
+        "requests",
+        "actor performer",
+        "the department"
+      ],
+      [
+        "ask",
+        "actor performer",
+        "I"
+      ],
+      [
+        "the description is finally approved",
+        "flow",
+        "post"
+      ],
+      [
+        "submitting",
+        "actor performer",
+        "I"
+      ],
+      [
+        "post",
+        "actor performer",
+        "I"
+      ],
+      [
+        "the description is finally approved",
+        "flow",
+        "If"
+      ],
+      [
+        "waiting",
+        "uses",
+        "the approval"
+      ],
+      [
+        "submit",
+        "actor performer",
+        "I"
+      ],
+      [
+        "rejects",
+        "uses",
+        "it"
+      ],
+      [
+        "rejects",
+        "actor performer",
+        "the department"
+      ],
+      [
+        "If",
+        "flow",
+        "the description is finally approved"
+      ],
+      [
+        "ask",
+        "further specification",
+        "again"
+      ],
+      [
+        "rejects",
+        "actor performer",
+        "the Department"
+      ],
+      [
+        "submitting",
+        "further specification",
+        "again"
+      ],
+      [
+        "submit",
+        "further specification",
+        "again"
+      ],
+      [
+        "create",
+        "uses",
+        "a job description"
+      ],
+      [
+        "requests",
+        "uses",
+        "a correction"
+      ],
+      [
+        "post",
+        "uses",
+        "the job"
+      ],
+      [
+        "reported",
+        "uses",
+        "a vacancy"
+      ],
+      [
+        "create",
+        "actor performer",
+        "me"
+      ],
+      [
+        "rejects",
+        "actor recipient",
+        "the Department"
+      ],
+      [
+        "submitting",
+        "uses",
+        "the job"
+      ],
+      [
+        "requests",
+        "actor recipient",
+        "the department"
+      ],
+      [
+        "waiting",
+        "actor performer",
+        "I must ask the Department again. I"
+      ],
+      [
+        "correct",
+        "uses",
+        "the description"
+      ],
+      [
+        "ask",
+        "further specification",
+        "again for consideration"
+      ],
+      [
+        "rejects",
+        "actor recipient",
+        "the department"
+      ],
+      [
+        "create",
+        "actor performer",
+        "I must ask the Department again. I"
+      ],
+      [
+        "submitting",
+        "further specification",
+        "again for consideration"
+      ],
+      [
+        "correct",
+        "actor performer",
+        "I must ask the Department again. I"
+      ],
+      [
+        "submit",
+        "uses",
+        "it"
+      ],
+      [
+        "post",
+        "flow",
+        "the description is finally approved"
+      ],
+      [
+        "submit",
+        "further specification",
+        "again for consideration"
+      ],
+      [
+        "waiting",
+        "actor performer",
+        "I"
+      ],
+      [
+        "ask",
+        "further specification",
+        "for consideration"
+      ],
+      [
+        "submit",
+        "actor performer",
+        "me"
+      ],
+      [
+        "create",
+        "actor performer",
+        "I"
+      ],
+      [
+        "correct",
+        "actor performer",
+        "I"
+      ]
+    ]
+  },
+  {
+    "text": "The MSPO deregisters at the GO . The GO verifies the deregistration . The GO rejects the deregistration of the MSPO or the GO preliminarily confirms the deregistration of the MSPO . The GO assigns himself as MSP . The GO informs the MSPO about the end of the assignment and the beginning of the assignment of the GO . The GO informs the MPO about the assignment of the GO . The GO informs the SP about the assignment of the GO .",
+    "gold_spo_list": [
+      [
+        "informs",
+        "uses",
+        "about the end of the assignment and the beginning of the assignment of the GO"
+      ],
+      [
+        "confirms",
+        "further specification",
+        "preliminarily"
+      ],
+      [
+        "rejects",
+        "uses",
+        "the deregistration of the MSPO"
+      ],
+      [
+        "informs",
+        "actor recipient",
+        "the MSPO"
+      ],
+      [
+        "or",
+        "flow",
+        "rejects"
+      ],
+      [
+        "verifies",
+        "uses",
+        "the deregistration"
+      ],
+      [
+        "verifies",
+        "flow",
+        "or"
+      ],
+      [
+        "deregisters",
+        "actor performer",
+        "The MSPO"
+      ],
+      [
+        "rejects",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "confirms",
+        "actor performer",
+        "the GO"
+      ],
+      [
+        "informs",
+        "uses",
+        "about the assignment of the GO"
+      ],
+      [
+        "informs",
+        "actor recipient",
+        "the SP"
+      ],
+      [
+        "assigns",
+        "further specification",
+        "as MSP"
+      ],
+      [
+        "informs",
+        "actor recipient",
+        "the MPO"
+      ],
+      [
+        "confirms",
+        "flow",
+        "assigns"
+      ],
+      [
+        "informs",
+        "flow",
+        "informs"
+      ],
+      [
+        "or",
+        "flow",
+        "confirms"
+      ],
+      [
+        "informs",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "assigns",
+        "uses",
+        "himself"
+      ],
+      [
+        "assigns",
+        "flow",
+        "informs"
+      ],
+      [
+        "assigns",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "deregisters",
+        "actor recipient",
+        "the GO"
+      ],
+      [
+        "deregisters",
+        "flow",
+        "verifies"
+      ],
+      [
+        "confirms",
+        "uses",
+        "the deregistration of the MSPO"
+      ],
+      [
+        "rejects",
+        "flow",
+        "assigns"
+      ],
+      [
+        "verifies",
+        "actor performer",
+        "The GO"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "informs",
+        "actor performer",
+        "The GO assigns himself as MSP. The GO"
+      ],
+      [
+        "confirms",
+        "actor performer",
+        "the GO. The GO informs the MPO about the assignment of the GO"
+      ],
+      [
+        "informs",
+        "actor performer",
+        "the GO"
+      ],
+      [
+        "informs",
+        "actor recipient",
+        "the GO. The GO informs the MPO about the assignment of the GO"
+      ],
+      [
+        "assigns",
+        "actor performer",
+        "The GO assigns himself as MSP. The GO"
+      ],
+      [
+        "informs",
+        "flow",
+        "assigns"
+      ],
+      [
+        "informs the MSPO about the end of the assignment and the beginning of the assignment of the GO. The GO informs",
+        "actor recipient",
+        "the GO"
+      ],
+      [
+        "informs the MPO about the assignment of the GO. The GO informs",
+        "flow",
+        "informs the MSPO about the end of the assignment and the beginning of the assignment of the GO. The GO informs"
+      ],
+      [
+        "informs the MSPO about the end of the assignment and the beginning of the assignment of the GO. The GO informs",
+        "flow",
+        "informs the MSPO about the end of the assignment and the beginning of the assignment of the GO. The GO informs"
+      ],
+      [
+        "informs",
+        "actor recipient",
+        "the MSPO"
+      ],
+      [
+        "verifies",
+        "actor performer",
+        "The GO assigns himself as MSP. The GO"
+      ],
+      [
+        "or",
+        "flow",
+        "rejects"
+      ],
+      [
+        "verifies",
+        "uses",
+        "the deregistration"
+      ],
+      [
+        "informs the MPO about the assignment of the GO. The GO informs",
+        "flow",
+        "informs the MPO about the assignment of the GO. The GO informs"
+      ],
+      [
+        "verifies",
+        "flow",
+        "or"
+      ],
+      [
+        "informs the MSPO about the end of the assignment and the beginning of the assignment of the GO. The GO informs",
+        "actor recipient",
+        "the SP"
+      ],
+      [
+        "verifies",
+        "actor performer",
+        "The MSPO"
+      ],
+      [
+        "deregisters",
+        "actor performer",
+        "the GO"
+      ],
+      [
+        "informs the MPO about the assignment of the GO. The GO informs",
+        "flow",
+        "informs"
+      ],
+      [
+        "informs the MSPO about the end of the assignment and the beginning of the assignment of the GO. The GO informs",
+        "flow",
+        "informs"
+      ],
+      [
+        "informs the MSPO about the end of the assignment and the beginning of the assignment of the GO. The GO informs",
+        "actor performer",
+        "the GO. The GO informs the MPO about the assignment of the GO"
+      ],
+      [
+        "informs the MSPO about the end of the assignment and the beginning of the assignment of the GO. The GO informs",
+        "flow",
+        "informs the MPO about the assignment of the GO. The GO informs"
+      ],
+      [
+        "informs the MPO about the assignment of the GO. The GO informs",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "rejects",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "informs the MSPO about the end of the assignment and the beginning of the assignment of the GO. The GO informs",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "informs",
+        "flow",
+        "informs the MSPO about the end of the assignment and the beginning of the assignment of the GO. The GO informs"
+      ],
+      [
+        "informs the MPO about the assignment of the GO. The GO informs",
+        "actor recipient",
+        "the SP"
+      ],
+      [
+        "informs",
+        "actor recipient",
+        "the GO"
+      ],
+      [
+        "confirms",
+        "actor performer",
+        "the GO"
+      ],
+      [
+        "confirms",
+        "flow",
+        "or"
+      ],
+      [
+        "informs",
+        "actor recipient",
+        "the SP"
+      ],
+      [
+        "confirms",
+        "uses",
+        "the deregistration"
+      ],
+      [
+        "informs",
+        "flow",
+        "informs the MPO about the assignment of the GO. The GO informs"
+      ],
+      [
+        "informs",
+        "actor performer",
+        "the GO. The GO informs the MPO about the assignment of the GO"
+      ],
+      [
+        "informs",
+        "flow",
+        "informs"
+      ],
+      [
+        "or",
+        "flow",
+        "confirms"
+      ],
+      [
+        "informs",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "informs the MPO about the assignment of the GO. The GO informs",
+        "actor performer",
+        "The GO assigns himself as MSP. The GO"
+      ],
+      [
+        "informs the MSPO about the end of the assignment and the beginning of the assignment of the GO. The GO informs",
+        "actor performer",
+        "The GO assigns himself as MSP. The GO"
+      ],
+      [
+        "assigns",
+        "uses",
+        "MSP"
+      ],
+      [
+        "assigns",
+        "flow",
+        "informs"
+      ],
+      [
+        "informs the MSPO about the end of the assignment and the beginning of the assignment of the GO. The GO informs",
+        "actor recipient",
+        "the GO. The GO informs the MPO about the assignment of the GO"
+      ],
+      [
+        "rejects",
+        "actor performer",
+        "The GO assigns himself as MSP. The GO"
+      ],
+      [
+        "assigns",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "rejects",
+        "uses",
+        "the deregistration"
+      ],
+      [
+        "rejects",
+        "flow",
+        "or"
+      ],
+      [
+        "informs the MSPO about the end of the assignment and the beginning of the assignment of the GO. The GO informs",
+        "actor performer",
+        "the GO"
+      ],
+      [
+        "deregisters",
+        "actor performer",
+        "the GO. The GO informs the MPO about the assignment of the GO"
+      ],
+      [
+        "verifies",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "or",
+        "flow",
+        "verifies"
+      ]
+    ]
+  },
+  {
+    "text": "The party sends a warrant possession request asking a warrant to be released . The Client Service Back Office as part of the Small Claims Registry Operations receives the request and retrieves the SCT file . Then , the SCT Warrant Possession is forwarded to Queensland Police . The SCT physical file is stored by the Back Office awaiting a report to be sent by the Police . When the report is received , the respective SCT file is retrieved . Then , Back Office attaches the new SCT document , and stores the expanded SCT physical file . After that , some other MC internal staff receives the physical SCT file ( out of scope ) .",
+    "gold_spo_list": [
+      [
+        "stored",
+        "flow",
+        "received"
+      ],
+      [
+        "forwarded",
+        "uses",
+        "the SCT Warrant Possession"
+      ],
+      [
+        "forwarded",
+        "actor recipient",
+        "Queensland Police"
+      ],
+      [
+        "forwarded",
+        "flow",
+        "stored"
+      ],
+      [
+        "stores",
+        "actor performer",
+        "Back Office"
+      ],
+      [
+        "retrieves",
+        "actor performer",
+        "The Client Service Back Office"
+      ],
+      [
+        "stored",
+        "uses",
+        "The SCT physical file"
+      ],
+      [
+        "awaiting",
+        "further specification",
+        "to be sent by the Police"
+      ],
+      [
+        "received",
+        "uses",
+        "the report"
+      ],
+      [
+        "awaiting",
+        "uses",
+        "a report"
+      ],
+      [
+        "received",
+        "flow",
+        "retrieved"
+      ],
+      [
+        "attaches",
+        "uses",
+        "the new SCT document"
+      ],
+      [
+        "sends",
+        "flow",
+        "receives"
+      ],
+      [
+        "receives",
+        "uses",
+        "the request"
+      ],
+      [
+        "attaches",
+        "actor performer",
+        "Back Office"
+      ],
+      [
+        "receives",
+        "uses",
+        "the physical SCT file"
+      ],
+      [
+        "retrieves",
+        "uses",
+        "the SCT file"
+      ],
+      [
+        "receives",
+        "actor recipient",
+        "some other MC internal staff"
+      ],
+      [
+        "awaiting",
+        "actor performer",
+        "the Back Office"
+      ],
+      [
+        "receives",
+        "actor recipient",
+        "The Client Service Back Office"
+      ],
+      [
+        "stores",
+        "flow",
+        "receives"
+      ],
+      [
+        "sends",
+        "uses",
+        "a warrant possession request"
+      ],
+      [
+        "stored",
+        "actor performer",
+        "the Back Office"
+      ],
+      [
+        "receives",
+        "flow",
+        "retrieves"
+      ],
+      [
+        "retrieves",
+        "flow",
+        "forwarded"
+      ],
+      [
+        "sends",
+        "actor performer",
+        "The party"
+      ],
+      [
+        "stores",
+        "uses",
+        "the expanded SCT physical file"
+      ],
+      [
+        "attaches",
+        "flow",
+        "stores"
+      ],
+      [
+        "awaiting",
+        "flow",
+        "received"
+      ],
+      [
+        "retrieved",
+        "uses",
+        "the respective SCT file"
+      ],
+      [
+        "retrieved",
+        "flow",
+        "attaches"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "retrieved",
+        "flow",
+        "receives"
+      ],
+      [
+        "forwarded",
+        "uses",
+        "the SCT Warrant Possession"
+      ],
+      [
+        "stored",
+        "flow",
+        "stored"
+      ],
+      [
+        "forwarded",
+        "actor recipient",
+        "Queensland Police"
+      ],
+      [
+        "retrieves",
+        "actor performer",
+        "The Client Service Back Office as part of the Small Claims Registry Operations"
+      ],
+      [
+        "attaches",
+        "flow",
+        "receives"
+      ],
+      [
+        "stores",
+        "actor performer",
+        "Back Office"
+      ],
+      [
+        "retrieves",
+        "actor performer",
+        "The Client Service Back Office"
+      ],
+      [
+        "receives",
+        "flow",
+        "retrieved"
+      ],
+      [
+        "stored",
+        "uses",
+        "The SCT physical file"
+      ],
+      [
+        "receives",
+        "actor performer",
+        "The Client Service Back Office"
+      ],
+      [
+        "attaches",
+        "uses",
+        "the new SCT document"
+      ],
+      [
+        "sends",
+        "flow",
+        "receives"
+      ],
+      [
+        "attaches",
+        "actor performer",
+        "the Back Office"
+      ],
+      [
+        "attaches",
+        "flow",
+        "retrieved"
+      ],
+      [
+        "receives",
+        "uses",
+        "the request"
+      ],
+      [
+        "forwarded",
+        "flow",
+        "receives"
+      ],
+      [
+        "receives",
+        "flow",
+        "sends"
+      ],
+      [
+        "receives",
+        "uses",
+        "the SCT file"
+      ],
+      [
+        "attaches",
+        "actor performer",
+        "Back Office"
+      ],
+      [
+        "receives",
+        "uses",
+        "the physical SCT file"
+      ],
+      [
+        "retrieves",
+        "uses",
+        "the SCT file"
+      ],
+      [
+        "receives",
+        "actor recipient",
+        "some other MC internal staff"
+      ],
+      [
+        "stores",
+        "flow",
+        "attaches"
+      ],
+      [
+        "receives",
+        "flow",
+        "forwarded"
+      ],
+      [
+        "stores",
+        "flow",
+        "receives"
+      ],
+      [
+        "receives",
+        "flow",
+        "stores"
+      ],
+      [
+        "sends",
+        "uses",
+        "a warrant possession request"
+      ],
+      [
+        "receives",
+        "flow",
+        "retrieves"
+      ],
+      [
+        "stored",
+        "actor performer",
+        "the Back Office"
+      ],
+      [
+        "receives",
+        "flow",
+        "attaches"
+      ],
+      [
+        "sends",
+        "actor performer",
+        "The party"
+      ],
+      [
+        "receives",
+        "flow",
+        "receives"
+      ],
+      [
+        "retrieved",
+        "flow",
+        "stores"
+      ],
+      [
+        "stored",
+        "actor performer",
+        "Back Office"
+      ],
+      [
+        "stores",
+        "actor performer",
+        "the Back Office"
+      ],
+      [
+        "stores",
+        "flow",
+        "retrieved"
+      ],
+      [
+        "retrieves",
+        "flow",
+        "receives"
+      ],
+      [
+        "attaches",
+        "flow",
+        "stores"
+      ],
+      [
+        "retrieved",
+        "flow",
+        "attaches"
+      ]
+    ]
+  },
+  {
+    "text": "The EC tells the INQ about the change of his master data . The INQ notifies the IP of the change . The IP checks whether the master data can be changed at the desired time . The IP confirmes the changes of the INQ or the IP rejectes the changes of the INQ .",
+    "gold_spo_list": [
+      [
+        "tells",
+        "uses",
+        "about the change of his master data"
+      ],
+      [
+        "notifies",
+        "flow",
+        "checks"
+      ],
+      [
+        "notifies",
+        "uses",
+        "the change"
+      ],
+      [
+        "tells",
+        "flow",
+        "notifies"
+      ],
+      [
+        "confirmes",
+        "uses",
+        "the changes of the INQ"
+      ],
+      [
+        "rejectes",
+        "actor performer",
+        "the IP"
+      ],
+      [
+        "tells",
+        "actor recipient",
+        "the INQ"
+      ],
+      [
+        "notifies",
+        "actor performer",
+        "The INQ"
+      ],
+      [
+        "notifies",
+        "actor recipient",
+        "the IP"
+      ],
+      [
+        "checks",
+        "actor performer",
+        "The IP"
+      ],
+      [
+        "checks",
+        "further specification",
+        "whether the master data can be changed at the desired time"
+      ],
+      [
+        "or",
+        "flow",
+        "rejectes"
+      ],
+      [
+        "checks",
+        "flow",
+        "or"
+      ],
+      [
+        "tells",
+        "actor performer",
+        "The EC"
+      ],
+      [
+        "rejectes",
+        "uses",
+        "the changes of the INQ"
+      ],
+      [
+        "or",
+        "flow",
+        "confirmes"
+      ],
+      [
+        "confirmes",
+        "actor performer",
+        "The IP"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "checks",
+        "actor performer",
+        "The IP"
+      ],
+      [
+        "tells",
+        "actor performer",
+        "The EC"
+      ],
+      [
+        "tells",
+        "actor performer",
+        "the INQ"
+      ],
+      [
+        "tells",
+        "uses",
+        "the INQ"
+      ],
+      [
+        "tells",
+        "uses",
+        "the change of his master data"
+      ],
+      [
+        "notifies",
+        "actor performer",
+        "The IP"
+      ],
+      [
+        "notifies",
+        "actor performer",
+        "the INQ"
+      ],
+      [
+        "notifies",
+        "actor performer",
+        "The EC"
+      ],
+      [
+        "notifies",
+        "flow",
+        "tells"
+      ],
+      [
+        "tells",
+        "actor performer",
+        "The INQ"
+      ],
+      [
+        "notifies",
+        "uses",
+        "the INQ"
+      ],
+      [
+        "checks",
+        "uses",
+        "the master data"
+      ],
+      [
+        "tells",
+        "actor recipient",
+        "the INQ"
+      ],
+      [
+        "notifies",
+        "actor performer",
+        "The INQ"
+      ],
+      [
+        "tells",
+        "uses",
+        "the change"
+      ],
+      [
+        "notifies",
+        "flow",
+        "notifies"
+      ],
+      [
+        "tells",
+        "flow",
+        "notifies"
+      ],
+      [
+        "notifies",
+        "actor recipient",
+        "the INQ"
+      ],
+      [
+        "checks",
+        "flow",
+        "notifies"
+      ]
+    ]
+  },
+  {
+    "text": "The MPON reports the meter operation to the GO . The GO examines the application of the MPON . The GO rejects the application of the MPON or the GO confirmes the application of the MPON . The GO informs the MPOO about the registration confirmation of the MPON . The GO informs the MSPO about the registration confirmation of the MPON . The MPON and the MPOO perform the equipment acquisition and / or equipment changes . The MPON informs the GO about the failure of the entire process or the MPON informs the GO about the successful completion of the entire process . The GO informs the MPON about the failure of the overall transaction by deadline if after a maximum time limit no message of the MPON is present at the GO . If the MPON informs the GO about the failure of the entire process , the GO confirms the failure of the assignment to the MPON . If the MPON informs the GO about the successful completion of the overall process , the GO assigns the MPON . The GO confirms the assignment to the MPON . The GO informs the MPOO about the failure of the assignment of the MPON or the GO informs the MPOO about the assignment of the MPON . The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs the MSPO about the assignment of the MPON . The GO informs the SP about the assignment of the MPON .",
+    "gold_spo_list": [
+      [
+        "informs",
+        "actor performer",
+        "the GO"
+      ],
+      [
+        "if",
+        "same gateway",
+        "If"
+      ],
+      [
+        "confirms",
+        "flow",
+        "informs"
+      ],
+      [
+        "perform",
+        "uses",
+        "the equipment acquisition and / or equipment changes"
+      ],
+      [
+        "informs",
+        "uses",
+        "about the registration confirmation of the MPON"
+      ],
+      [
+        "confirms",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "examines",
+        "uses",
+        "the application"
+      ],
+      [
+        "examines",
+        "actor recipient",
+        "the MPON"
+      ],
+      [
+        "assigns",
+        "actor performer",
+        "the GO"
+      ],
+      [
+        "reports",
+        "flow",
+        "examines"
+      ],
+      [
+        "assigns",
+        "actor recipient",
+        "the MPON"
+      ],
+      [
+        "examines",
+        "flow",
+        "or"
+      ],
+      [
+        "perform",
+        "actor performer",
+        "The MPON"
+      ],
+      [
+        "confirms",
+        "uses",
+        "the failure of the assignment"
+      ],
+      [
+        "informs",
+        "actor recipient",
+        "the MSPO"
+      ],
+      [
+        "or",
+        "flow",
+        "rejects"
+      ],
+      [
+        "informs",
+        "uses",
+        "about the failure of the overall transaction by deadline"
+      ],
+      [
+        "confirmes",
+        "flow",
+        "informs"
+      ],
+      [
+        "the MPON informs the GO about the failure of the entire process",
+        "flow",
+        "confirms"
+      ],
+      [
+        "informs",
+        "actor recipient",
+        "the MPOO"
+      ],
+      [
+        "confirmes",
+        "uses",
+        "the application of the MPON"
+      ],
+      [
+        "confirms",
+        "actor recipient",
+        "the MPON"
+      ],
+      [
+        "informs",
+        "flow",
+        "perform"
+      ],
+      [
+        "informs",
+        "uses",
+        "about the failure of the assignment of the MPON"
+      ],
+      [
+        "If",
+        "flow",
+        "the MPON informs the GO about the successful completion of the overall process"
+      ],
+      [
+        "informs",
+        "actor performer",
+        "The MPON"
+      ],
+      [
+        "confirms",
+        "actor performer",
+        "the GO"
+      ],
+      [
+        "confirms",
+        "uses",
+        "the assignment"
+      ],
+      [
+        "assigns",
+        "flow",
+        "confirms"
+      ],
+      [
+        "informs",
+        "actor recipient",
+        "the GO"
+      ],
+      [
+        "rejects",
+        "uses",
+        "the application of the MPON"
+      ],
+      [
+        "rejects",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "if",
+        "flow",
+        "after a maximum time limit no message of the MPON is present at the GO"
+      ],
+      [
+        "after a maximum time limit no message of the MPON is present at the GO",
+        "flow",
+        "informs"
+      ],
+      [
+        "informs",
+        "actor performer",
+        "the MPON"
+      ],
+      [
+        "reports",
+        "actor performer",
+        "The MPON"
+      ],
+      [
+        "informs",
+        "actor recipient",
+        "the SP"
+      ],
+      [
+        "reports",
+        "actor recipient",
+        "the GO"
+      ],
+      [
+        "confirmes",
+        "actor performer",
+        "the GO"
+      ],
+      [
+        "If",
+        "flow",
+        "the MPON informs the GO about the failure of the entire process"
+      ],
+      [
+        "informs",
+        "flow",
+        "informs"
+      ],
+      [
+        "reports",
+        "uses",
+        "the meter operation"
+      ],
+      [
+        "informs",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "or",
+        "flow",
+        "confirmes"
+      ],
+      [
+        "the MPON informs the GO about the successful completion of the overall process",
+        "flow",
+        "assigns"
+      ],
+      [
+        "perform",
+        "actor performer",
+        "the MPOO"
+      ],
+      [
+        "informs",
+        "uses",
+        "about the failure of the entire process"
+      ],
+      [
+        "If",
+        "same gateway",
+        "If"
+      ],
+      [
+        "informs",
+        "uses",
+        "about the assignment of the MPON"
+      ],
+      [
+        "informs",
+        "flow",
+        "if"
+      ],
+      [
+        "perform",
+        "flow",
+        "or"
+      ],
+      [
+        "examines",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "informs",
+        "uses",
+        "about the successful completion of the entire process"
+      ],
+      [
+        "informs",
+        "actor recipient",
+        "the MPON"
+      ],
+      [
+        "or",
+        "flow",
+        "informs"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "reports",
+        "actor performer",
+        "the MPOO"
+      ],
+      [
+        "reports",
+        "actor recipient",
+        "the MPON"
+      ],
+      [
+        "informs",
+        "uses",
+        "the MSPO"
+      ],
+      [
+        "rejects",
+        "flow",
+        "or the GO informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or"
+      ],
+      [
+        "informs",
+        "uses",
+        "the assignment of the MPON"
+      ],
+      [
+        "examines the application of the MPON. The GO rejects",
+        "actor performer",
+        "The GO confirms the assignment to the MPON. The GO"
+      ],
+      [
+        "informs",
+        "actor recipient",
+        "the GO informs the MSPO"
+      ],
+      [
+        "informs",
+        "actor performer",
+        "The GO confirms the assignment to the MPON. The GO"
+      ],
+      [
+        "informs",
+        "actor performer",
+        "the SP"
+      ],
+      [
+        "assigns",
+        "actor recipient",
+        "the GO informs the MPOO"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "uses",
+        "about the successful completion of the overall process"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "uses",
+        "the MPON"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "informs",
+        "uses",
+        "the registration confirmation of the MPON"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "actor performer",
+        "the GO informs the MSPO"
+      ],
+      [
+        "confirms",
+        "actor performer",
+        "the MSPO"
+      ],
+      [
+        "or",
+        "flow",
+        "rejects"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "actor recipient",
+        "the MPON informs the GO"
+      ],
+      [
+        "or the GO informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or",
+        "flow",
+        "rejects"
+      ],
+      [
+        "examines the application of the MPON. The GO rejects",
+        "actor performer",
+        "The MPON"
+      ],
+      [
+        "perform",
+        "flow",
+        "informs"
+      ],
+      [
+        "informs",
+        "actor performer",
+        "The MPON"
+      ],
+      [
+        "confirms",
+        "actor performer",
+        "the GO"
+      ],
+      [
+        "confirms",
+        "flow",
+        "or"
+      ],
+      [
+        "assigns",
+        "actor recipient",
+        "the GO informs the MSPO"
+      ],
+      [
+        "rejects",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "uses",
+        "the MSPO"
+      ],
+      [
+        "reports",
+        "actor recipient",
+        "the GO"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "uses",
+        "the assignment of the MPON"
+      ],
+      [
+        "examines",
+        "flow",
+        "or the GO informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or"
+      ],
+      [
+        "confirms the assignment to the MPON. The GO informs",
+        "actor performer",
+        "the MPOO"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "actor performer",
+        "The GO confirms the assignment to the MPON. The GO"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "actor performer",
+        "the SP"
+      ],
+      [
+        "reports",
+        "uses",
+        "the meter operation"
+      ],
+      [
+        "confirms",
+        "actor performer",
+        "the MPOO about the registration confirmation of the MPON. The GO informs the MSPO"
+      ],
+      [
+        "reports",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "informs",
+        "actor performer",
+        "the MSPO"
+      ],
+      [
+        "informs",
+        "actor recipient",
+        "the GO informs the MPOO"
+      ],
+      [
+        "confirms the assignment to the MPON. The GO informs",
+        "flow",
+        "or the GO informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "actor performer",
+        "the GO informs the MPOO"
+      ],
+      [
+        "informs",
+        "actor performer",
+        "the GO"
+      ],
+      [
+        "informs",
+        "flow",
+        "or"
+      ],
+      [
+        "confirms the assignment to the MPON. The GO informs",
+        "actor performer",
+        "the MPON informs the GO"
+      ],
+      [
+        "assigns",
+        "actor recipient",
+        "the MPON"
+      ],
+      [
+        "perform",
+        "actor performer",
+        "The MPON"
+      ],
+      [
+        "confirmes",
+        "uses",
+        "the MPON"
+      ],
+      [
+        "informs",
+        "actor performer",
+        "the MPOO about the registration confirmation of the MPON. The GO informs the MSPO"
+      ],
+      [
+        "confirms",
+        "actor performer",
+        "the MPOO"
+      ],
+      [
+        "confirms the assignment to the MPON. The GO informs",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "examines",
+        "actor performer",
+        "The GO confirms the assignment to the MPON. The GO"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "actor recipient",
+        "the GO informs the MPOO"
+      ],
+      [
+        "confirms the assignment to the MPON. The GO informs",
+        "actor performer",
+        "the GO informs the MSPO"
+      ],
+      [
+        "reports",
+        "actor recipient",
+        "the MPOO"
+      ],
+      [
+        "assigns",
+        "actor recipient",
+        "the MSPO"
+      ],
+      [
+        "reports",
+        "actor performer",
+        "the GO informs the MPOO"
+      ],
+      [
+        "If",
+        "flow",
+        "If"
+      ],
+      [
+        "or",
+        "flow",
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs"
+      ],
+      [
+        "examines",
+        "actor performer",
+        "The MPON"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "actor recipient",
+        "the GO informs the MSPO"
+      ],
+      [
+        "confirmes",
+        "flow",
+        "or"
+      ],
+      [
+        "or the GO informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or",
+        "flow",
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs"
+      ],
+      [
+        "confirms the assignment to the MPON. The GO informs",
+        "uses",
+        "the assignment of the MPON"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "uses",
+        "the registration confirmation of the MPON"
+      ],
+      [
+        "assigns",
+        "flow",
+        "confirms the assignment to the MPON. The GO informs"
+      ],
+      [
+        "assigns",
+        "flow",
+        "informs"
+      ],
+      [
+        "confirms the assignment to the MPON. The GO informs",
+        "actor performer",
+        "The GO confirms the assignment to the MPON. The GO"
+      ],
+      [
+        "confirms the assignment to the MPON. The GO informs",
+        "actor performer",
+        "the SP"
+      ],
+      [
+        "confirms",
+        "actor performer",
+        "the MPON informs the GO"
+      ],
+      [
+        "informs",
+        "actor performer",
+        "the MPOO"
+      ],
+      [
+        "or",
+        "flow",
+        "confirms the assignment to the MPON. The GO informs"
+      ],
+      [
+        "rejects",
+        "actor performer",
+        "The GO confirms the assignment to the MPON. The GO"
+      ],
+      [
+        "informs",
+        "actor recipient",
+        "the MPON"
+      ],
+      [
+        "or",
+        "flow",
+        "informs"
+      ],
+      [
+        "reports",
+        "flow",
+        "or"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "actor performer",
+        "The MPON"
+      ],
+      [
+        "assigns",
+        "actor recipient",
+        "the MPOO about the registration confirmation of the MPON. The GO informs the MSPO"
+      ],
+      [
+        "or the GO informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or",
+        "flow",
+        "confirms the assignment to the MPON. The GO informs"
+      ],
+      [
+        "or the GO informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or",
+        "flow",
+        "informs"
+      ],
+      [
+        "examines the application of the MPON. The GO rejects",
+        "flow",
+        "or"
+      ],
+      [
+        "confirms",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "confirms the assignment to the MPON. The GO informs",
+        "actor performer",
+        "the GO informs the MPOO"
+      ],
+      [
+        "reports",
+        "flow",
+        "reports"
+      ],
+      [
+        "rejects",
+        "actor performer",
+        "The MPON"
+      ],
+      [
+        "examines",
+        "flow",
+        "or"
+      ],
+      [
+        "reports",
+        "actor performer",
+        "The GO confirms the assignment to the MPON. The GO"
+      ],
+      [
+        "confirms",
+        "flow",
+        "If"
+      ],
+      [
+        "reports",
+        "actor performer",
+        "the SP"
+      ],
+      [
+        "informs",
+        "actor recipient",
+        "the MSPO"
+      ],
+      [
+        "informs",
+        "flow",
+        "or the GO informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "actor performer",
+        "the MSPO"
+      ],
+      [
+        "confirms the assignment to the MPON. The GO informs",
+        "uses",
+        "the MPON"
+      ],
+      [
+        "informs",
+        "actor performer",
+        "the MPON informs the GO"
+      ],
+      [
+        "informs",
+        "actor recipient",
+        "the GO"
+      ],
+      [
+        "confirms the assignment to the MPON. The GO informs",
+        "actor performer",
+        "the MPOO about the registration confirmation of the MPON. The GO informs the MSPO"
+      ],
+      [
+        "reports",
+        "actor performer",
+        "The MPON"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "actor performer",
+        "the GO"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "flow",
+        "or"
+      ],
+      [
+        "confirmes",
+        "actor performer",
+        "the GO"
+      ],
+      [
+        "assigns",
+        "actor recipient",
+        "the MPOO"
+      ],
+      [
+        "informs",
+        "uses",
+        "about the successful completion of the overall process"
+      ],
+      [
+        "or",
+        "flow",
+        "confirms"
+      ],
+      [
+        "informs",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "reports",
+        "uses",
+        "the MPON"
+      ],
+      [
+        "assigns",
+        "uses",
+        "the MPON"
+      ],
+      [
+        "informs",
+        "actor recipient",
+        "the MPOO about the registration confirmation of the MPON. The GO informs the MSPO"
+      ],
+      [
+        "confirms the assignment to the MPON. The GO informs",
+        "uses",
+        "the MSPO"
+      ],
+      [
+        "or the GO informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or",
+        "flow",
+        "confirms"
+      ],
+      [
+        "confirms",
+        "flow",
+        "or the GO informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or"
+      ],
+      [
+        "assigns",
+        "actor recipient",
+        "the GO"
+      ],
+      [
+        "rejects",
+        "flow",
+        "or"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "actor performer",
+        "the MPOO about the registration confirmation of the MPON. The GO informs the MSPO"
+      ],
+      [
+        "informs",
+        "flow",
+        "If"
+      ],
+      [
+        "confirms",
+        "actor performer",
+        "the GO informs the MPOO"
+      ],
+      [
+        "reports",
+        "actor recipient",
+        "the GO informs the MPOO"
+      ],
+      [
+        "assigns",
+        "uses",
+        "the MSPO"
+      ],
+      [
+        "perform",
+        "uses",
+        "the equipment acquisition and / or equipment changes"
+      ],
+      [
+        "reports",
+        "actor performer",
+        "the GO"
+      ],
+      [
+        "confirms the assignment to the MPON. The GO informs",
+        "actor performer",
+        "The MPON"
+      ],
+      [
+        "assigns",
+        "actor recipient",
+        "the MPON informs the GO"
+      ],
+      [
+        "confirms",
+        "uses",
+        "the MPON"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "actor recipient",
+        "the MPOO about the registration confirmation of the MPON. The GO informs the MSPO"
+      ],
+      [
+        "confirms",
+        "actor performer",
+        "the GO informs the MSPO"
+      ],
+      [
+        "examines the application of the MPON. The GO rejects",
+        "flow",
+        "or the GO informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or"
+      ],
+      [
+        "informs",
+        "actor recipient",
+        "the MPOO"
+      ],
+      [
+        "confirmes",
+        "uses",
+        "the application of the MPON"
+      ],
+      [
+        "informs",
+        "flow",
+        "perform"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "actor performer",
+        "the MPOO"
+      ],
+      [
+        "informs",
+        "actor performer",
+        "the GO informs the MPOO"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "actor recipient",
+        "the MPON"
+      ],
+      [
+        "confirms",
+        "uses",
+        "the MSPO"
+      ],
+      [
+        "confirms",
+        "uses",
+        "the assignment of the MPON"
+      ],
+      [
+        "confirms the assignment to the MPON. The GO informs",
+        "actor performer",
+        "the MSPO"
+      ],
+      [
+        "confirms",
+        "actor performer",
+        "The GO confirms the assignment to the MPON. The GO"
+      ],
+      [
+        "confirms",
+        "actor performer",
+        "the SP"
+      ],
+      [
+        "confirms the assignment to the MPON. The GO informs",
+        "actor performer",
+        "the GO"
+      ],
+      [
+        "examines the application of the MPON. The GO rejects",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "confirms the assignment to the MPON. The GO informs",
+        "flow",
+        "or"
+      ],
+      [
+        "informs",
+        "uses",
+        "the MPON"
+      ],
+      [
+        "or",
+        "flow",
+        "confirmes"
+      ],
+      [
+        "confirms",
+        "flow",
+        "confirms"
+      ],
+      [
+        "informs",
+        "actor performer",
+        "the GO informs the MSPO"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "actor recipient",
+        "the MSPO"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "flow",
+        "or the GO informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "actor recipient",
+        "the MPOO"
+      ],
+      [
+        "informs",
+        "actor recipient",
+        "the MPON informs the GO"
+      ],
+      [
+        "confirms",
+        "actor performer",
+        "The MPON"
+      ],
+      [
+        "examines",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "actor performer",
+        "the MPON informs the GO"
+      ],
+      [
+        "confirmes",
+        "actor performer",
+        "the MPON informs the GO"
+      ],
+      [
+        "informs the MPOO about the assignment of the MPON. The GO informs the MSPO about the failure of the assignment of the MPON or the GO informs",
+        "actor recipient",
+        "the GO"
+      ]
+    ]
+  },
+  {
+    "text": "The MSPN sents a dismissal to the MSPO . The MSPO reviews the dismissal . The MSPO rejects the dismissal of the MSPN or The MSPO confirms the dismissal of the MSPN .",
+    "gold_spo_list": [
+      [
+        "sents",
+        "flow",
+        "reviews"
+      ],
+      [
+        "or",
+        "flow",
+        "rejects"
+      ],
+      [
+        "sents",
+        "uses",
+        "a dismissal"
+      ],
+      [
+        "reviews",
+        "flow",
+        "or"
+      ],
+      [
+        "rejects",
+        "actor performer",
+        "The MSPO"
+      ],
+      [
+        "reviews",
+        "actor performer",
+        "The MSPO"
+      ],
+      [
+        "sents",
+        "actor performer",
+        "The MSPN"
+      ],
+      [
+        "sents",
+        "actor recipient",
+        "the MSPO"
+      ],
+      [
+        "rejects",
+        "uses",
+        "the dismissal of the MSPN"
+      ],
+      [
+        "or",
+        "flow",
+        "confirms"
+      ],
+      [
+        "confirms",
+        "uses",
+        "the dismissal of the MSPN"
+      ],
+      [
+        "reviews",
+        "uses",
+        "the dismissal"
+      ],
+      [
+        "confirms",
+        "actor performer",
+        "The MSPO"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "confirms",
+        "actor performer",
+        "The MSPO"
+      ],
+      [
+        "sents",
+        "uses",
+        "a dismissal"
+      ],
+      [
+        "rejects",
+        "actor performer",
+        "The MSPN"
+      ],
+      [
+        "rejects",
+        "actor performer",
+        "The MSPO"
+      ],
+      [
+        "reviews",
+        "actor performer",
+        "The MSPO"
+      ],
+      [
+        "sents",
+        "actor recipient",
+        "the MSPO"
+      ],
+      [
+        "sents",
+        "actor performer",
+        "The MSPN"
+      ],
+      [
+        "rejects",
+        "actor performer",
+        "the MSPN"
+      ],
+      [
+        "sents",
+        "actor performer",
+        "the MSPN"
+      ],
+      [
+        "sents",
+        "actor recipient",
+        "the MSPN"
+      ],
+      [
+        "sents",
+        "actor performer",
+        "the MSPO"
+      ],
+      [
+        "rejects",
+        "uses",
+        "the dismissal"
+      ],
+      [
+        "reviews",
+        "uses",
+        "the dismissal"
+      ],
+      [
+        "confirms",
+        "uses",
+        "the dismissal"
+      ]
+    ]
+  },
+  {
+    "text": "Every time we get a new order from the sales department , first , one of my masters determines the necessary parts and quantities as well as the delivery date . Once that information is present , it has to be entered into our production planning system ( PPS ) . It optimizes our production processes and creates possibly uniform work packages so that the setup times are minimized . Besides , it creates a list of parts to be procured . Unfortunately it is not coupled correctly to our Enterprise Resource Planning system ( ERP ) , so the data must be transferred manually . By the way , that is the second step . Once all the data is present , we need to decide whether any parts are missing and must be procured or if this is not necessary . Once production is scheduled to start , we receive a notice from the system and an employee takes care of the implementation . Finally , the order will be checked again for its quality .",
+    "gold_spo_list": [
+      [
+        "transferred",
+        "uses",
+        "the data"
+      ],
+      [
+        "takes care",
+        "flow",
+        "checked"
+      ],
+      [
+        "determines",
+        "uses",
+        "the necessary parts and quantities as well as the delivery date"
+      ],
+      [
+        "transferred",
+        "further specification",
+        "manually"
+      ],
+      [
+        "procured",
+        "flow",
+        "receive"
+      ],
+      [
+        "checked",
+        "uses",
+        "the order"
+      ],
+      [
+        "or",
+        "flow",
+        "receive"
+      ],
+      [
+        "get",
+        "uses",
+        "a new order"
+      ],
+      [
+        "entered",
+        "flow",
+        "creates"
+      ],
+      [
+        "entered",
+        "uses",
+        "it"
+      ],
+      [
+        "receive",
+        "flow",
+        "takes care"
+      ],
+      [
+        "creates",
+        "actor performer",
+        "it"
+      ],
+      [
+        "any parts are missing",
+        "flow",
+        "procured"
+      ],
+      [
+        "creates",
+        "uses",
+        "a list of parts"
+      ],
+      [
+        "creates",
+        "flow",
+        "transferred"
+      ],
+      [
+        "checked",
+        "further specification",
+        "for its quality"
+      ],
+      [
+        "or",
+        "flow",
+        "any parts are missing"
+      ],
+      [
+        "takes care",
+        "actor performer",
+        "an employee"
+      ],
+      [
+        "get",
+        "actor performer",
+        "the sales department"
+      ],
+      [
+        "determines",
+        "actor performer",
+        "one of my masters"
+      ],
+      [
+        "receive",
+        "actor recipient",
+        "we"
+      ],
+      [
+        "takes care",
+        "uses",
+        "the implementation"
+      ],
+      [
+        "get",
+        "flow",
+        "determines"
+      ],
+      [
+        "receive",
+        "uses",
+        "a notice"
+      ],
+      [
+        "determines",
+        "flow",
+        "entered"
+      ],
+      [
+        "transferred",
+        "flow",
+        "or"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "transferred",
+        "uses",
+        "the data"
+      ],
+      [
+        "takes care of",
+        "uses",
+        "the implementation"
+      ],
+      [
+        "receive",
+        "actor performer",
+        "we"
+      ],
+      [
+        "checked",
+        "uses",
+        "the order"
+      ],
+      [
+        "decide",
+        "flow",
+        "whether"
+      ],
+      [
+        "entered",
+        "uses",
+        "our production planning system ( PPS )"
+      ],
+      [
+        "entered",
+        "flow",
+        "creates"
+      ],
+      [
+        "decide",
+        "actor performer",
+        "we"
+      ],
+      [
+        "entered",
+        "flow",
+        "entered"
+      ],
+      [
+        "entered",
+        "uses",
+        "it"
+      ],
+      [
+        "creates",
+        "actor performer",
+        "it"
+      ],
+      [
+        "receive",
+        "flow",
+        "checked"
+      ],
+      [
+        "creates",
+        "flow",
+        "creates"
+      ],
+      [
+        "creates",
+        "uses",
+        "it"
+      ],
+      [
+        "transferred",
+        "flow",
+        "transferred"
+      ],
+      [
+        "creates",
+        "flow",
+        "entered"
+      ],
+      [
+        "determines",
+        "uses",
+        "the necessary parts and quantities"
+      ],
+      [
+        "takes care",
+        "flow",
+        "receive"
+      ],
+      [
+        "determines",
+        "actor performer",
+        "one of my masters"
+      ],
+      [
+        "checked",
+        "flow",
+        "receive"
+      ],
+      [
+        "creates",
+        "flow",
+        "optimizes"
+      ],
+      [
+        "receive",
+        "actor recipient",
+        "we"
+      ],
+      [
+        "takes care",
+        "uses",
+        "the implementation"
+      ],
+      [
+        "receive",
+        "uses",
+        "a notice"
+      ],
+      [
+        "whether",
+        "flow",
+        "decide"
+      ],
+      [
+        "creates",
+        "actor performer",
+        "It"
+      ],
+      [
+        "optimizes",
+        "flow",
+        "creates"
+      ],
+      [
+        "whether",
+        "flow",
+        "whether"
+      ],
+      [
+        "takes care of",
+        "actor performer",
+        "an employee"
+      ],
+      [
+        "procured",
+        "flow",
+        "creates"
+      ],
+      [
+        "receive",
+        "flow",
+        "receive"
+      ],
+      [
+        "takes care of",
+        "flow",
+        "receive"
+      ]
+    ]
+  }
+]

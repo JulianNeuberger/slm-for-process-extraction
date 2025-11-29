@@ -1,0 +1,61 @@
+2025-11-27 17:25:44,434 Reading data from data/datasets/pet/43
+2025-11-27 17:25:44,434 Train: data/datasets/pet/43/train.txt
+2025-11-27 17:25:44,434 Dev: data/datasets/pet/43/dev.txt
+2025-11-27 17:25:44,434 Test: data/datasets/pet/43/test.txt
+2025-11-27 17:25:44,538 {b'<unk>': 0, b'O': 1, b'B-activity_data': 2, b'I-activity_data': 3, b'E-activity_data': 4, b'S-activity': 5, b'B-activity': 6, b'I-activity': 7, b'E-activity': 8, b'B-actor': 9, b'I-actor': 10, b'E-actor': 11, b'S-xor_gateway': 12, b'B-condition_specification': 13, b'I-condition_specification': 14, b'E-condition_specification': 15, b'S-activity_data': 16, b'S-condition_specification': 17, b'B-further_specification': 18, b'I-further_specification': 19, b'E-further_specification': 20, b'B-and_gateway': 21, b'I-and_gateway': 22, b'E-and_gateway': 23, b'S-and_gateway': 24, b'S-actor': 25, b'B-xor_gateway': 26, b'I-xor_gateway': 27, b'E-xor_gateway': 28, b'S-further_specification': 29, b'<START>': 30, b'<STOP>': 31}
+2025-11-27 17:25:44,538 Corpus: 311 train + 78 dev + 73 test sentences
+2025-11-27 17:26:20,686 Model Size: 785425185
+Corpus: 311 train + 78 dev + 73 test sentences
+2025-11-27 17:26:20,687 ----------------------------------------------------------------------------------------------------
+2025-11-27 17:26:22,048 loading file data/resources/taggers/fine-tune/43/best-model.pt
+2025-11-27 17:26:33,218 Testing using best model ...
+2025-11-27 17:26:33,220 Setting embedding mask to the best action: tensor([1., 1., 1., 1., 1., 1., 1., 1.], device='cuda:0')
+['/home/ai4-admin/.flair/embeddings/news-backward-0.4.1.pt', '/home/ai4-admin/.flair/embeddings/news-forward-0.4.1.pt', 'Char', 'Word: en', 'Word: glove', 'bert-base-cased', 'elmo-original', 'xlm-roberta-large-finetuned-conll03-english']
+2025-11-27 17:26:33,542 /home/ai4-admin/.flair/embeddings/news-backward-0.4.1.pt 18257500
+2025-11-27 17:26:33,747 /home/ai4-admin/.flair/embeddings/news-forward-0.4.1.pt 18257500
+2025-11-27 17:26:33,924 bert-base-cased 108310272
+2025-11-27 17:26:33,924 mean
+2025-11-27 17:26:34,535 elmo-original 0
+2025-11-27 17:26:35,077 xlm-roberta-large-finetuned-conll03-english 559890432
+2025-11-27 17:26:35,077 mean
+2025-11-27 17:26:37,628 Finished Embeddings Assignments
+prediction_mode: True, embedding_selector: True, use_rl: True, use_gumbel: False
+prediction_mode: True, embedding_selector: True, use_rl: True, use_gumbel: False
+prediction_mode: True, embedding_selector: True, use_rl: True, use_gumbel: False
+2025-11-27 17:26:37,841 3/3
+2025-11-27 17:26:37,843 0.8529	0.8345	0.8436
+2025-11-27 17:26:37,843 
+MICRO_AVG: acc 0.7296 - f1-score 0.8436
+MACRO_AVG: acc 0.5234 - f1-score 0.6227666666666667
+activity   tp: 78 - fp: 7 - fn: 2 - tn: 78 - precision: 0.9176 - recall: 0.9750 - accuracy: 0.8966 - f1-score: 0.9454
+activity_data tp: 56 - fp: 14 - fn: 17 - tn: 56 - precision: 0.8000 - recall: 0.7671 - accuracy: 0.6437 - f1-score: 0.7832
+actor      tp: 86 - fp: 12 - fn: 9 - tn: 86 - precision: 0.8776 - recall: 0.9053 - accuracy: 0.8037 - f1-score: 0.8912
+condition_specification tp: 1 - fp: 1 - fn: 6 - tn: 1 - precision: 0.5000 - recall: 0.1429 - accuracy: 0.1250 - f1-score: 0.2223
+further_specification tp: 1 - fp: 3 - fn: 8 - tn: 1 - precision: 0.2500 - recall: 0.1111 - accuracy: 0.0833 - f1-score: 0.1538
+xor_gateway tp: 10 - fp: 3 - fn: 4 - tn: 10 - precision: 0.7692 - recall: 0.7143 - accuracy: 0.5882 - f1-score: 0.7407
+2025-11-27 17:26:37,843 ----------------------------------------------------------------------------------------------------
+2025-11-27 17:26:37,843 ----------------------------------------------------------------------------------------------------
+2025-11-27 17:26:37,843 current corpus: ColumnCorpus-Pet_1
+2025-11-27 17:26:37,849 /home/ai4-admin/.flair/embeddings/news-backward-0.4.1.pt 18257500
+2025-11-27 17:26:37,927 /home/ai4-admin/.flair/embeddings/news-forward-0.4.1.pt 18257500
+2025-11-27 17:26:38,042 bert-base-cased 108310272
+2025-11-27 17:26:38,042 mean
+2025-11-27 17:26:38,213 elmo-original 0
+2025-11-27 17:26:38,547 xlm-roberta-large-finetuned-conll03-english 559890432
+2025-11-27 17:26:38,547 mean
+2025-11-27 17:26:40,620 Finished Embeddings Assignments
+prediction_mode: True, embedding_selector: True, use_rl: True, use_gumbel: False
+prediction_mode: True, embedding_selector: True, use_rl: True, use_gumbel: False
+prediction_mode: True, embedding_selector: True, use_rl: True, use_gumbel: False
+2025-11-27 17:26:40,834 3/3
+2025-11-27 17:26:40,836 0.854	0.8417	0.8478
+2025-11-27 17:26:40,836 
+MICRO_AVG: acc 0.7358 - f1-score 0.8478
+MACRO_AVG: acc 0.5272 - f1-score 0.6252333333333333
+activity   tp: 79 - fp: 7 - fn: 1 - tn: 79 - precision: 0.9186 - recall: 0.9875 - accuracy: 0.9080 - f1-score: 0.9518
+activity_data tp: 57 - fp: 14 - fn: 16 - tn: 57 - precision: 0.8028 - recall: 0.7808 - accuracy: 0.6552 - f1-score: 0.7916
+actor      tp: 86 - fp: 12 - fn: 9 - tn: 86 - precision: 0.8776 - recall: 0.9053 - accuracy: 0.8037 - f1-score: 0.8912
+condition_specification tp: 1 - fp: 1 - fn: 6 - tn: 1 - precision: 0.5000 - recall: 0.1429 - accuracy: 0.1250 - f1-score: 0.2223
+further_specification tp: 1 - fp: 3 - fn: 8 - tn: 1 - precision: 0.2500 - recall: 0.1111 - accuracy: 0.0833 - f1-score: 0.1538
+xor_gateway tp: 10 - fp: 3 - fn: 4 - tn: 10 - precision: 0.7692 - recall: 0.7143 - accuracy: 0.5882 - f1-score: 0.7407
+

@@ -1,0 +1,10 @@
+Reference the following SBVR Structured English rules for your task.
+
+All rules contain XML-like tags around SBVR-activities, SBVR-actors, and SBVR-conditions for conditional flows.
+
+Note, that activities in PET are just the action (verb) and data objects are the object that is used in the activity, connected via a Uses relation.
+In SBVR the task label is used in rules, which is usually both the action and the data object, or the (receiving) actor.
+
+Business rules are:
+
+{{rules}}

@@ -1,0 +1,2403 @@
+[
+  {
+    "text": "After a claim is registered , it is examined by a claims officer . The claims officer then writes a settlement recommendation . This recommendation is then checked by a senior claims officer who may mark the claim as OK or Not OK . If the claim is marked as Not OK , it is sent back to the claims officer and the recommendation is repeated . If the claim is OK , the claim handling process proceeds .",
+    "gold_spo_list": [
+      [
+        "registered",
+        "uses",
+        "a claim"
+      ],
+      [
+        "registered",
+        "flow",
+        "examined"
+      ],
+      [
+        "checked",
+        "actor performer",
+        "a senior claims officer"
+      ],
+      [
+        "writes",
+        "actor performer",
+        "The claims officer"
+      ],
+      [
+        "writes",
+        "uses",
+        "a settlement recommendation"
+      ],
+      [
+        "examined",
+        "flow",
+        "writes"
+      ],
+      [
+        "checked",
+        "uses",
+        "This recommendation"
+      ],
+      [
+        "sent back",
+        "actor recipient",
+        "the claims officer"
+      ],
+      [
+        "examined",
+        "uses",
+        "it"
+      ],
+      [
+        "mark",
+        "uses",
+        "the claim"
+      ],
+      [
+        "writes",
+        "flow",
+        "checked"
+      ],
+      [
+        "mark",
+        "further specification",
+        "as OK or Not OK"
+      ],
+      [
+        "If",
+        "flow",
+        "the claim is marked as Not OK"
+      ],
+      [
+        "sent back",
+        "flow",
+        "writes"
+      ],
+      [
+        "proceeds",
+        "uses",
+        "the claim handling process"
+      ],
+      [
+        "mark",
+        "flow",
+        "If"
+      ],
+      [
+        "If",
+        "flow",
+        "the claim is OK"
+      ],
+      [
+        "checked",
+        "flow",
+        "mark"
+      ],
+      [
+        "sent back",
+        "uses",
+        "it"
+      ],
+      [
+        "the claim is marked as Not OK",
+        "flow",
+        "sent back"
+      ],
+      [
+        "examined",
+        "actor performer",
+        "a claims officer"
+      ],
+      [
+        "the claim is OK",
+        "flow",
+        "proceeds"
+      ],
+      [
+        "If",
+        "same gateway",
+        "If"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "registered",
+        "uses",
+        "a claim"
+      ],
+      [
+        "examined",
+        "uses",
+        "a claim"
+      ],
+      [
+        "checked",
+        "flow",
+        "If"
+      ],
+      [
+        "the claim is OK",
+        "flow",
+        "If"
+      ],
+      [
+        "marked",
+        "uses",
+        "the claim"
+      ],
+      [
+        "sent",
+        "uses",
+        "it"
+      ],
+      [
+        "examined",
+        "flow",
+        "examined"
+      ],
+      [
+        "checked",
+        "actor performer",
+        "a senior claims officer"
+      ],
+      [
+        "writes",
+        "actor performer",
+        "The claims officer"
+      ],
+      [
+        "repeated",
+        "uses",
+        "the recommendation"
+      ],
+      [
+        "writes",
+        "flow",
+        "examined"
+      ],
+      [
+        "If",
+        "flow",
+        "If"
+      ],
+      [
+        "examined",
+        "flow",
+        "registered"
+      ],
+      [
+        "registered",
+        "flow",
+        "writes"
+      ],
+      [
+        "writes",
+        "uses",
+        "a settlement recommendation"
+      ],
+      [
+        "examined",
+        "flow",
+        "writes"
+      ],
+      [
+        "checked",
+        "uses",
+        "This recommendation"
+      ],
+      [
+        "writes",
+        "flow",
+        "registered"
+      ],
+      [
+        "registered",
+        "uses",
+        "the claim"
+      ],
+      [
+        "examined",
+        "uses",
+        "it"
+      ],
+      [
+        "mark",
+        "uses",
+        "the claim"
+      ],
+      [
+        "If",
+        "flow",
+        "the claim is marked as Not OK"
+      ],
+      [
+        "If",
+        "flow",
+        "checked"
+      ],
+      [
+        "If",
+        "flow",
+        "the claim is OK"
+      ],
+      [
+        "examined",
+        "actor performer",
+        "a claims officer"
+      ]
+    ]
+  },
+  {
+    "text": "The Police Report related to the car accident is searched within the Police Report database and put in a file together with the Claim Documentation . This file serves as input to a claims handler who calculates an initial claim estimate . Then , the claims handler creates an Action Plan based on an Action Plan Checklist available in the Document Management system . Based on the Action Plan , a claims manager tries to negotiate a settlement on the claim estimate . The claimant is informed of the outcome , which ends the process .",
+    "gold_spo_list": [
+      [
+        "informed",
+        "uses",
+        "the outcome"
+      ],
+      [
+        "calculates",
+        "flow",
+        "creates"
+      ],
+      [
+        "searched",
+        "uses",
+        "The Police Report"
+      ],
+      [
+        "calculates",
+        "uses",
+        "an initial claim estimate"
+      ],
+      [
+        "negotiate",
+        "uses",
+        "a settlement"
+      ],
+      [
+        "negotiate",
+        "actor performer",
+        "a claims manager"
+      ],
+      [
+        "put",
+        "flow",
+        "calculates"
+      ],
+      [
+        "creates",
+        "actor performer",
+        "the claims handler"
+      ],
+      [
+        "put",
+        "uses",
+        "The Police Report"
+      ],
+      [
+        "searched",
+        "further specification",
+        "within the Police Report database"
+      ],
+      [
+        "creates",
+        "flow",
+        "negotiate"
+      ],
+      [
+        "calculates",
+        "actor performer",
+        "who"
+      ],
+      [
+        "informed",
+        "actor recipient",
+        "The claimant"
+      ],
+      [
+        "put",
+        "further specification",
+        "in a file together with the Claim Documentation"
+      ],
+      [
+        "negotiate",
+        "flow",
+        "informed"
+      ],
+      [
+        "searched",
+        "flow",
+        "put"
+      ],
+      [
+        "creates",
+        "uses",
+        "an Action Plan"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "is informed",
+        "uses",
+        "the outcome"
+      ],
+      [
+        "calculates",
+        "uses",
+        "an initial claim estimate"
+      ],
+      [
+        "searched",
+        "uses",
+        "the Police Report database"
+      ],
+      [
+        "calculates",
+        "flow",
+        "calculates"
+      ],
+      [
+        "calculates",
+        "flow",
+        "creates"
+      ],
+      [
+        "tries to negotiate",
+        "uses",
+        "the claim estimate"
+      ],
+      [
+        "creates",
+        "actor performer",
+        "the claims handler"
+      ],
+      [
+        "tries to negotiate",
+        "flow",
+        "creates"
+      ],
+      [
+        "is informed",
+        "flow",
+        "is informed"
+      ],
+      [
+        "creates",
+        "actor performer",
+        "a claims handler"
+      ],
+      [
+        "creates",
+        "further specification",
+        "based on an Action Plan Checklist available in the Document Management system"
+      ],
+      [
+        "searched",
+        "uses",
+        "The Police Report related to the car accident"
+      ],
+      [
+        "searched",
+        "flow",
+        "searched"
+      ],
+      [
+        "creates",
+        "flow",
+        "tries to negotiate"
+      ],
+      [
+        "creates",
+        "uses",
+        "an Action Plan"
+      ],
+      [
+        "creates",
+        "flow",
+        "calculates"
+      ],
+      [
+        "calculates",
+        "actor performer",
+        "a claims handler"
+      ],
+      [
+        "creates",
+        "flow",
+        "creates"
+      ],
+      [
+        "tries to negotiate",
+        "actor performer",
+        "a claims manager"
+      ]
+    ]
+  },
+  {
+    "text": "The Customer Service Representative sends a Mortgage offer to the customer and waits for a reply . If the customer calls or writes back declining the mortgage , the case details are updated and the work is then archived prior to cancellation . If the customer sends back the completed offer documents and attaches all prerequisite documents then the case is moved to administration for completion . If all pre-requisite documents are not provided a message is generated to the customer requesting outstanding documents . If no answer is received after 2 weeks , the case details are updated prior to archive and cancellation .",
+    "gold_spo_list": [
+      [
+        "updated",
+        "flow",
+        "archived"
+      ],
+      [
+        "If",
+        "flow",
+        "the customer sends back the completed offer documents and attaches all prerequisite documents"
+      ],
+      [
+        "If",
+        "flow",
+        "no answer is received after 2 weeks"
+      ],
+      [
+        "moved",
+        "actor recipient",
+        "administration"
+      ],
+      [
+        "archived",
+        "flow",
+        "cancellation"
+      ],
+      [
+        "generated",
+        "actor recipient",
+        "the customer"
+      ],
+      [
+        "updated",
+        "flow",
+        "archive"
+      ],
+      [
+        "generated",
+        "further specification",
+        "requesting outstanding documents"
+      ],
+      [
+        "If",
+        "flow",
+        "the customer calls or writes back declining the mortgage"
+      ],
+      [
+        "If",
+        "flow",
+        "all pre-requisite documents are not provided"
+      ],
+      [
+        "waits for",
+        "uses",
+        "a reply"
+      ],
+      [
+        "generated",
+        "uses",
+        "a message"
+      ],
+      [
+        "archived",
+        "uses",
+        "the work"
+      ],
+      [
+        "moved",
+        "uses",
+        "the case"
+      ],
+      [
+        "waits for",
+        "actor performer",
+        "The Customer Service Representative"
+      ],
+      [
+        "sends",
+        "flow",
+        "waits for"
+      ],
+      [
+        "all pre-requisite documents are not provided",
+        "flow",
+        "generated"
+      ],
+      [
+        "sends",
+        "actor performer",
+        "The Customer Service Representative"
+      ],
+      [
+        "updated",
+        "uses",
+        "the case details"
+      ],
+      [
+        "waits for",
+        "flow",
+        "If"
+      ],
+      [
+        "moved",
+        "flow",
+        "If"
+      ],
+      [
+        "the customer sends back the completed offer documents and attaches all prerequisite documents",
+        "flow",
+        "moved"
+      ],
+      [
+        "the customer calls or writes back declining the mortgage",
+        "flow",
+        "updated"
+      ],
+      [
+        "archive",
+        "flow",
+        "cancellation"
+      ],
+      [
+        "no answer is received after 2 weeks",
+        "flow",
+        "updated"
+      ],
+      [
+        "sends",
+        "uses",
+        "a Mortgage offer"
+      ],
+      [
+        "sends",
+        "actor recipient",
+        "the customer"
+      ],
+      [
+        "If",
+        "same gateway",
+        "If"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "If",
+        "flow",
+        "no answer is received after 2 weeks"
+      ],
+      [
+        "waits",
+        "flow",
+        "waits"
+      ],
+      [
+        "If",
+        "flow",
+        "the customer calls or writes back declining the mortgage"
+      ],
+      [
+        "sends",
+        "actor performer",
+        "the customer"
+      ],
+      [
+        "waits",
+        "actor performer",
+        "The Customer Service Representative"
+      ],
+      [
+        "updated",
+        "further specification",
+        "prior to cancellation"
+      ],
+      [
+        "sends",
+        "flow",
+        "waits"
+      ],
+      [
+        "generated",
+        "uses",
+        "a message"
+      ],
+      [
+        "If",
+        "flow",
+        "updated"
+      ],
+      [
+        "updated",
+        "further specification",
+        "prior to archive and cancellation"
+      ],
+      [
+        "archived",
+        "uses",
+        "the work"
+      ],
+      [
+        "moved",
+        "uses",
+        "the case"
+      ],
+      [
+        "archived",
+        "further specification",
+        "prior to cancellation"
+      ],
+      [
+        "sends",
+        "actor performer",
+        "The Customer Service Representative"
+      ],
+      [
+        "updated",
+        "uses",
+        "the case details"
+      ],
+      [
+        "moved",
+        "flow",
+        "If"
+      ],
+      [
+        "sends",
+        "flow",
+        "the customer calls or writes back declining the mortgage"
+      ],
+      [
+        "waits",
+        "flow",
+        "sends"
+      ],
+      [
+        "all pre - requisite documents are not provided",
+        "flow",
+        "generated"
+      ],
+      [
+        "all pre - requisite documents are not provided",
+        "flow",
+        "If"
+      ],
+      [
+        "attaches",
+        "uses",
+        "all prerequisite documents"
+      ],
+      [
+        "no answer is received after 2 weeks",
+        "flow",
+        "If"
+      ],
+      [
+        "no answer is received after 2 weeks",
+        "flow",
+        "updated"
+      ],
+      [
+        "sends",
+        "uses",
+        "a Mortgage offer"
+      ],
+      [
+        "sends",
+        "actor recipient",
+        "the customer"
+      ]
+    ]
+  },
+  {
+    "text": "Once the dates are finalized ( by the Coordination Unit ) , the Support Officer updates all group calendars and creates meeting folders for each meeting and ensures all appropriate documents are uploaded to system . Committee Members are advised a week before each meeting to read all related documents . The Committee Members hold their meeting , and the Support Office then produces minutes including any Action Points for each Committee Member . Within 5 working days , the Coordination Unit must conduct a QA check on the minutes , which are then sent to all Committee Members . The Support Officer then updates all departmental records .",
+    "gold_spo_list": [
+      [
+        "finalized",
+        "uses",
+        "the dates"
+      ],
+      [
+        "produces",
+        "flow",
+        "conduct"
+      ],
+      [
+        "updates",
+        "uses",
+        "all departmental records"
+      ],
+      [
+        "updates",
+        "actor performer",
+        "the Support Officer"
+      ],
+      [
+        "conduct",
+        "uses",
+        "a QA check on the minutes"
+      ],
+      [
+        "ensures",
+        "flow",
+        "advised"
+      ],
+      [
+        "creates",
+        "actor performer",
+        "the Support Officer"
+      ],
+      [
+        "ensures",
+        "uses",
+        "all appropriate documents are uploaded to system"
+      ],
+      [
+        "creates",
+        "uses",
+        "meeting folders for each meeting"
+      ],
+      [
+        "conduct",
+        "actor performer",
+        "the Coordination Unit"
+      ],
+      [
+        "sent",
+        "flow",
+        "updates"
+      ],
+      [
+        "produces",
+        "uses",
+        "minutes"
+      ],
+      [
+        "finalized",
+        "actor performer",
+        "the Coordination Unit"
+      ],
+      [
+        "hold",
+        "actor performer",
+        "The Committee Members"
+      ],
+      [
+        "hold",
+        "flow",
+        "produces"
+      ],
+      [
+        "sent",
+        "uses",
+        "which"
+      ],
+      [
+        "updates",
+        "actor performer",
+        "The Support Officer"
+      ],
+      [
+        "produces",
+        "actor performer",
+        "the Support Office"
+      ],
+      [
+        "updates",
+        "uses",
+        "all group calendars"
+      ],
+      [
+        "updates",
+        "flow",
+        "creates"
+      ],
+      [
+        "finalized",
+        "flow",
+        "updates"
+      ],
+      [
+        "advised",
+        "actor recipient",
+        "Committee Members"
+      ],
+      [
+        "hold",
+        "uses",
+        "their meeting"
+      ],
+      [
+        "sent",
+        "actor recipient",
+        "all Committee Members"
+      ],
+      [
+        "advised",
+        "flow",
+        "hold"
+      ],
+      [
+        "creates",
+        "flow",
+        "ensures"
+      ],
+      [
+        "conduct",
+        "flow",
+        "sent"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "sent",
+        "actor performer",
+        "the Support Officer"
+      ],
+      [
+        "updates",
+        "uses",
+        "all departmental records"
+      ],
+      [
+        "updates",
+        "actor performer",
+        "the Support Officer"
+      ],
+      [
+        "sent",
+        "actor performer",
+        "all Committee Members"
+      ],
+      [
+        "sent",
+        "actor performer",
+        "Committee Members"
+      ],
+      [
+        "ensures",
+        "actor performer",
+        "the Support Officer"
+      ],
+      [
+        "creates",
+        "actor performer",
+        "the Support Officer"
+      ],
+      [
+        "sent",
+        "actor recipient",
+        "The Support Officer"
+      ],
+      [
+        "hold",
+        "flow",
+        "updates"
+      ],
+      [
+        "updates",
+        "actor performer",
+        "the Support Office"
+      ],
+      [
+        "ensures",
+        "actor performer",
+        "the Support Office"
+      ],
+      [
+        "conduct",
+        "actor performer",
+        "the Coordination Unit"
+      ],
+      [
+        "creates",
+        "actor performer",
+        "the Support Office"
+      ],
+      [
+        "creates",
+        "flow",
+        "updates"
+      ],
+      [
+        "hold",
+        "actor performer",
+        "The Committee Members"
+      ],
+      [
+        "produces",
+        "actor performer",
+        "the Support Officer"
+      ],
+      [
+        "conduct",
+        "actor performer",
+        "the Support Officer"
+      ],
+      [
+        "sent",
+        "actor performer",
+        "The Support Officer"
+      ],
+      [
+        "updates",
+        "actor performer",
+        "The Support Officer"
+      ],
+      [
+        "produces",
+        "actor performer",
+        "the Support Office"
+      ],
+      [
+        "updates",
+        "uses",
+        "all group calendars"
+      ],
+      [
+        "conduct",
+        "actor performer",
+        "the Support Office"
+      ],
+      [
+        "updates",
+        "flow",
+        "creates"
+      ],
+      [
+        "sent",
+        "flow",
+        "sent"
+      ],
+      [
+        "Within 5 working days",
+        "flow",
+        "conduct"
+      ],
+      [
+        "hold",
+        "uses",
+        "their meeting"
+      ],
+      [
+        "sent",
+        "actor recipient",
+        "all Committee Members"
+      ],
+      [
+        "sent",
+        "actor recipient",
+        "Committee Members"
+      ],
+      [
+        "produces",
+        "actor performer",
+        "The Support Officer"
+      ],
+      [
+        "advised",
+        "flow",
+        "advised"
+      ],
+      [
+        "advised",
+        "actor performer",
+        "Committee Members"
+      ],
+      [
+        "updates",
+        "flow",
+        "hold"
+      ],
+      [
+        "updates",
+        "actor performer",
+        "the Coordination Unit"
+      ],
+      [
+        "creates",
+        "flow",
+        "creates"
+      ],
+      [
+        "ensures",
+        "actor performer",
+        "the Coordination Unit"
+      ],
+      [
+        "creates",
+        "actor performer",
+        "the Coordination Unit"
+      ]
+    ]
+  },
+  {
+    "text": "Whenever a company makes the decision to go public , its first task is to select the underwriters . Underwriters act as financial midwives to a new issue . Usually they play a triple role : First they provide the company with procedural and financial advice , then they buy the issue , and finally they resell it to the public . Established underwriters are careful of their reputation and will not handle a new issue unless they believe the facts have been presented fairly . Thus , in addition to handling the sale of a company ’ s issue , the underwriters in effect give their seal of approval to it . They prepare a registration statement for the approval of the Securities and Exchange Commission ( SEC ) . In addition to registering the issue with the SEC , they need to check that the issue complies with the so-called blue-sky laws of each state that regulate sales of securities within the state . While the registration statement is awaiting approval , underwriters begin to firm up the issue price . They arrange a road show to talk to potential investors . Immediately after they receive clearance from the SEC , underwriters fix the issue price . After that they enter into a firm commitment to buy the stock and then offer it to the public , when they haven ’ t still found any reason not to do it .",
+    "gold_spo_list": [
+      [
+        "firm up",
+        "uses",
+        "the issue price"
+      ],
+      [
+        "receive",
+        "uses",
+        "clearance"
+      ],
+      [
+        "prepare",
+        "actor performer",
+        "They"
+      ],
+      [
+        "makes",
+        "actor performer",
+        "a company"
+      ],
+      [
+        "arrange",
+        "further specification",
+        "to talk to potential investors"
+      ],
+      [
+        "fix",
+        "actor performer",
+        "underwriters"
+      ],
+      [
+        "enter",
+        "actor performer",
+        "they"
+      ],
+      [
+        "offer",
+        "actor performer",
+        "they"
+      ],
+      [
+        "select",
+        "uses",
+        "the underwriters"
+      ],
+      [
+        "firm up",
+        "actor performer",
+        "underwriters"
+      ],
+      [
+        "prepare",
+        "flow",
+        "check"
+      ],
+      [
+        "arrange",
+        "actor performer",
+        "They"
+      ],
+      [
+        "enter",
+        "uses",
+        "into a firm commitment to buy the stock"
+      ],
+      [
+        "While",
+        "flow",
+        "firm up"
+      ],
+      [
+        "While",
+        "flow",
+        "awaiting"
+      ],
+      [
+        "fix",
+        "flow",
+        "enter"
+      ],
+      [
+        "select",
+        "flow",
+        "prepare"
+      ],
+      [
+        "arrange",
+        "uses",
+        "a road show"
+      ],
+      [
+        "makes",
+        "uses",
+        "the decision to go public"
+      ],
+      [
+        "check",
+        "actor performer",
+        "they"
+      ],
+      [
+        "enter",
+        "flow",
+        "offer"
+      ],
+      [
+        "offer",
+        "actor recipient",
+        "the public"
+      ],
+      [
+        "makes",
+        "flow",
+        "select"
+      ],
+      [
+        "check",
+        "further specification",
+        "that the issue complies with the so-called blue-sky laws of each state that regulate sales of securities within the state"
+      ],
+      [
+        "prepare",
+        "uses",
+        "a registration statement for the approval of the Securities and Exchange Commission ( SEC )"
+      ],
+      [
+        "awaiting",
+        "uses",
+        "approval"
+      ],
+      [
+        "check",
+        "flow",
+        "While"
+      ],
+      [
+        "firm up",
+        "flow",
+        "arrange"
+      ],
+      [
+        "awaiting",
+        "flow",
+        "receive"
+      ],
+      [
+        "fix",
+        "uses",
+        "the issue price"
+      ],
+      [
+        "arrange",
+        "flow",
+        "receive"
+      ],
+      [
+        "receive",
+        "flow",
+        "fix"
+      ],
+      [
+        "offer",
+        "uses",
+        "it"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "fix",
+        "actor performer",
+        "Underwriters"
+      ],
+      [
+        "firm up",
+        "uses",
+        "the issue price"
+      ],
+      [
+        "prepare",
+        "actor performer",
+        "They"
+      ],
+      [
+        "select",
+        "actor performer",
+        "the underwriters"
+      ],
+      [
+        "buy",
+        "flow",
+        "enter"
+      ],
+      [
+        "arrange",
+        "further specification",
+        "to talk to potential investors"
+      ],
+      [
+        "fix",
+        "actor performer",
+        "underwriters"
+      ],
+      [
+        "resell",
+        "uses",
+        "it"
+      ],
+      [
+        "firm up",
+        "actor performer",
+        "Underwriters"
+      ],
+      [
+        "offer",
+        "actor performer",
+        "they"
+      ],
+      [
+        "prepare",
+        "further specification",
+        "for the approval of the Securities and Exchange Commission ( SEC )"
+      ],
+      [
+        "firm up",
+        "actor performer",
+        "underwriters"
+      ],
+      [
+        "offer",
+        "further specification",
+        "to the public"
+      ],
+      [
+        "arrange",
+        "actor performer",
+        "They"
+      ],
+      [
+        "registering",
+        "flow",
+        "check"
+      ],
+      [
+        "While",
+        "flow",
+        "check"
+      ],
+      [
+        "give",
+        "uses",
+        "it"
+      ],
+      [
+        "buy",
+        "uses",
+        "the issue"
+      ],
+      [
+        "fix",
+        "flow",
+        "enter"
+      ],
+      [
+        "arrange",
+        "uses",
+        "a road show"
+      ],
+      [
+        "resell",
+        "actor performer",
+        "they"
+      ],
+      [
+        "registering",
+        "uses",
+        "the issue"
+      ],
+      [
+        "check",
+        "actor performer",
+        "they"
+      ],
+      [
+        "check",
+        "uses",
+        "the issue"
+      ],
+      [
+        "provide",
+        "uses",
+        "the company"
+      ],
+      [
+        "registering",
+        "flow",
+        "prepare"
+      ],
+      [
+        "prepare",
+        "actor performer",
+        "they"
+      ],
+      [
+        "prepare",
+        "uses",
+        "a registration statement"
+      ],
+      [
+        "While",
+        "flow",
+        "prepare"
+      ],
+      [
+        "fix",
+        "actor performer",
+        "the underwriters"
+      ],
+      [
+        "prepare",
+        "flow",
+        "registering"
+      ],
+      [
+        "select",
+        "actor performer",
+        "Underwriters"
+      ],
+      [
+        "prepare",
+        "flow",
+        "While"
+      ],
+      [
+        "select",
+        "actor performer",
+        "underwriters"
+      ],
+      [
+        "check",
+        "flow",
+        "registering"
+      ],
+      [
+        "firm up",
+        "actor performer",
+        "the underwriters"
+      ],
+      [
+        "give",
+        "uses",
+        "their seal of approval"
+      ],
+      [
+        "handling",
+        "actor performer",
+        "the underwriters"
+      ],
+      [
+        "check",
+        "flow",
+        "While"
+      ],
+      [
+        "handling",
+        "uses",
+        "the sale of a company ’ s issue"
+      ],
+      [
+        "give",
+        "actor performer",
+        "the underwriters"
+      ],
+      [
+        "fix",
+        "flow",
+        "receive"
+      ],
+      [
+        "select",
+        "flow",
+        "select"
+      ],
+      [
+        "fix",
+        "uses",
+        "the issue price"
+      ],
+      [
+        "offer",
+        "uses",
+        "it"
+      ]
+    ]
+  },
+  {
+    "text": "A small company manufactures customized bicycles . Whenever the sales department receives an order , a new process instance is created . A member of the sales department can then reject or accept the order for a customized bike . In the former case , the process instance is finished . In the latter case , the storehouse and the engineering department are informed . The storehouse immediately processes the part list of the order and checks the required quantity of each part . If the part is available in-house , it is reserved . If it is not available , it is back-ordered . This procedure is repeated for each item on the part list . In the meantime , the engineering department prepares everything for the assembling of the ordered bicycle . If the storehouse has successfully reserved or back-ordered every item of the part list and the preparation activity has finished , the engineering department assembles the bicycle . Afterwards , the sales department ships the bicycle to the customer and finishes the process instance .",
+    "gold_spo_list": [
+      [
+        "back-ordered",
+        "flow",
+        "If"
+      ],
+      [
+        "If",
+        "flow",
+        "the part is available in-house"
+      ],
+      [
+        "prepares",
+        "uses",
+        "everything"
+      ],
+      [
+        "the part is available in-house",
+        "flow",
+        "reserved"
+      ],
+      [
+        "reserved",
+        "uses",
+        "it"
+      ],
+      [
+        "If",
+        "flow",
+        "the storehouse has successfully reserved or back-ordered every item of the part list"
+      ],
+      [
+        "receives",
+        "actor recipient",
+        "the sales department"
+      ],
+      [
+        "informed",
+        "flow",
+        "In the meantime"
+      ],
+      [
+        "processes",
+        "uses",
+        "the part list of the order"
+      ],
+      [
+        "receives",
+        "uses",
+        "an order"
+      ],
+      [
+        "accept",
+        "flow",
+        "informed"
+      ],
+      [
+        "processes",
+        "flow",
+        "checks"
+      ],
+      [
+        "ships",
+        "actor recipient",
+        "the customer"
+      ],
+      [
+        "processes",
+        "actor performer",
+        "The storehouse"
+      ],
+      [
+        "prepares",
+        "actor performer",
+        "the engineering department"
+      ],
+      [
+        "assembles",
+        "flow",
+        "ships"
+      ],
+      [
+        "informed",
+        "actor recipient",
+        "the storehouse"
+      ],
+      [
+        "receives",
+        "flow",
+        "or"
+      ],
+      [
+        "accept",
+        "uses",
+        "the order"
+      ],
+      [
+        "assembles",
+        "uses",
+        "the bicycle"
+      ],
+      [
+        "it is not available",
+        "flow",
+        "back-ordered"
+      ],
+      [
+        "reserved",
+        "flow",
+        "If"
+      ],
+      [
+        "prepares",
+        "flow",
+        "If"
+      ],
+      [
+        "back-ordered",
+        "uses",
+        "it"
+      ],
+      [
+        "or",
+        "flow",
+        "reject"
+      ],
+      [
+        "checks",
+        "actor performer",
+        "The storehouse"
+      ],
+      [
+        "or",
+        "flow",
+        "accept"
+      ],
+      [
+        "In the meantime",
+        "flow",
+        "processes"
+      ],
+      [
+        "If",
+        "flow",
+        "it is not available"
+      ],
+      [
+        "assembles",
+        "actor performer",
+        "the engineering department"
+      ],
+      [
+        "checks",
+        "flow",
+        "If"
+      ],
+      [
+        "the storehouse has successfully reserved or back-ordered every item of the part list",
+        "flow",
+        "assembles"
+      ],
+      [
+        "reject",
+        "uses",
+        "the order"
+      ],
+      [
+        "informed",
+        "actor recipient",
+        "the engineering department"
+      ],
+      [
+        "ships",
+        "uses",
+        "the bicycle"
+      ],
+      [
+        "checks",
+        "uses",
+        "the required quantity of each part"
+      ],
+      [
+        "In the meantime",
+        "flow",
+        "prepares"
+      ],
+      [
+        "ships",
+        "actor performer",
+        "the sales department"
+      ],
+      [
+        "If",
+        "same gateway",
+        "If"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "manufactures",
+        "actor performer",
+        "A small company"
+      ],
+      [
+        "If",
+        "flow",
+        "informed"
+      ],
+      [
+        "repeated",
+        "uses",
+        "This procedure"
+      ],
+      [
+        "reject",
+        "uses",
+        "the order for a customized bike"
+      ],
+      [
+        "reject or accept",
+        "uses",
+        "the order"
+      ],
+      [
+        "accept",
+        "uses",
+        "a customized bike"
+      ],
+      [
+        "back - ordered",
+        "actor performer",
+        "the engineering department"
+      ],
+      [
+        "informed",
+        "flow",
+        "If"
+      ],
+      [
+        "reserved",
+        "uses",
+        "it"
+      ],
+      [
+        "If",
+        "flow",
+        "checks"
+      ],
+      [
+        "If",
+        "flow",
+        "the part is available in - house"
+      ],
+      [
+        "If",
+        "flow",
+        "back - ordered"
+      ],
+      [
+        "processes",
+        "uses",
+        "the part list of the order"
+      ],
+      [
+        "Whenever",
+        "flow",
+        "receives"
+      ],
+      [
+        "manufactures",
+        "uses",
+        "customized bicycles"
+      ],
+      [
+        "reserved",
+        "actor performer",
+        "the engineering department"
+      ],
+      [
+        "receives",
+        "uses",
+        "an order"
+      ],
+      [
+        "If",
+        "flow",
+        "the part is available"
+      ],
+      [
+        "processes",
+        "flow",
+        "checks"
+      ],
+      [
+        "receives",
+        "actor performer",
+        "the sales department"
+      ],
+      [
+        "reject or accept",
+        "uses",
+        "the order for a customized bike"
+      ],
+      [
+        "back - ordered",
+        "flow",
+        "If"
+      ],
+      [
+        "If",
+        "flow",
+        "If"
+      ],
+      [
+        "processes",
+        "uses",
+        "the order"
+      ],
+      [
+        "prepares",
+        "actor performer",
+        "the engineering department"
+      ],
+      [
+        "the part is available",
+        "flow",
+        "If"
+      ],
+      [
+        "it is not available",
+        "flow",
+        "back - ordered"
+      ],
+      [
+        "reject",
+        "uses",
+        "a customized bike"
+      ],
+      [
+        "accept",
+        "uses",
+        "the order"
+      ],
+      [
+        "assembles",
+        "uses",
+        "the bicycle"
+      ],
+      [
+        "reserved",
+        "flow",
+        "If"
+      ],
+      [
+        "it is not available",
+        "flow",
+        "If"
+      ],
+      [
+        "ships",
+        "actor performer",
+        "the sales department"
+      ],
+      [
+        "prepares",
+        "flow",
+        "prepares"
+      ],
+      [
+        "checks",
+        "actor performer",
+        "The storehouse"
+      ],
+      [
+        "checks",
+        "flow",
+        "processes"
+      ],
+      [
+        "accept",
+        "uses",
+        "the order for a customized bike"
+      ],
+      [
+        "If",
+        "flow",
+        "it is not available"
+      ],
+      [
+        "reject or accept",
+        "uses",
+        "a customized bike"
+      ],
+      [
+        "prepares",
+        "further specification",
+        "for the assembling of the ordered bicycle"
+      ],
+      [
+        "finishes",
+        "actor performer",
+        "the sales department"
+      ],
+      [
+        "the part is available in - house",
+        "flow",
+        "If"
+      ],
+      [
+        "ships",
+        "flow",
+        "ships"
+      ],
+      [
+        "assembles",
+        "actor performer",
+        "the engineering department"
+      ],
+      [
+        "back - ordered",
+        "flow",
+        "it is not available"
+      ],
+      [
+        "reserved",
+        "actor performer",
+        "the storehouse"
+      ],
+      [
+        "back - ordered",
+        "uses",
+        "the bicycle"
+      ],
+      [
+        "checks",
+        "flow",
+        "If"
+      ],
+      [
+        "created",
+        "uses",
+        "a new process instance"
+      ],
+      [
+        "finishes",
+        "uses",
+        "the process instance"
+      ],
+      [
+        "reject",
+        "uses",
+        "the order"
+      ],
+      [
+        "ships",
+        "uses",
+        "the bicycle"
+      ],
+      [
+        "checks",
+        "uses",
+        "the required quantity of each part"
+      ],
+      [
+        "Whenever",
+        "flow",
+        "created"
+      ],
+      [
+        "If",
+        "same gateway",
+        "If"
+      ],
+      [
+        "back - ordered",
+        "uses",
+        "it"
+      ],
+      [
+        "prepares",
+        "actor performer",
+        "the storehouse"
+      ],
+      [
+        "If",
+        "flow",
+        "reserved"
+      ],
+      [
+        "prepares",
+        "uses",
+        "everything"
+      ]
+    ]
+  },
+  {
+    "text": "The fault detector reports a failure to the MPO or MPO has a suspicion of their own fault . The MPO shall examine the failure . The MPO rejects the failure of the fault detector or the MPO confirms the failure of the fault detector . If the MPO confirms the failure of the fault detector , he informes the GO and the MSP . The MPO fixes the fault at the measuring device . The MPO shares the results of the repairs carried out with the fault detector . The MPO will inform the GO about the resolution of the interference . The MPO will inform the MSP about the resolution of the interference .",
+    "gold_spo_list": [
+      [
+        "informes",
+        "actor recipient",
+        "the MSP"
+      ],
+      [
+        "reports",
+        "uses",
+        "a failure"
+      ],
+      [
+        "informes",
+        "flow",
+        "fixes"
+      ],
+      [
+        "shares",
+        "uses",
+        "the results of the repairs"
+      ],
+      [
+        "suspicion",
+        "flow",
+        "examine"
+      ],
+      [
+        "confirms",
+        "actor performer",
+        "the MPO"
+      ],
+      [
+        "informes",
+        "actor performer",
+        "he"
+      ],
+      [
+        "reports",
+        "actor recipient",
+        "the MPO"
+      ],
+      [
+        "confirms",
+        "uses",
+        "the failure of the fault detector"
+      ],
+      [
+        "inform",
+        "flow",
+        "inform"
+      ],
+      [
+        "suspicion",
+        "actor performer",
+        "MPO"
+      ],
+      [
+        "inform",
+        "uses",
+        "about the resolution of the interference"
+      ],
+      [
+        "fixes",
+        "flow",
+        "shares"
+      ],
+      [
+        "fixes",
+        "uses",
+        "the fault at the measuring device"
+      ],
+      [
+        "fixes",
+        "actor performer",
+        "The MPO"
+      ],
+      [
+        "or",
+        "flow",
+        "confirms"
+      ],
+      [
+        "examine",
+        "uses",
+        "the failure"
+      ],
+      [
+        "rejects",
+        "uses",
+        "the failure of the fault detector"
+      ],
+      [
+        "shares",
+        "actor performer",
+        "The MPO"
+      ],
+      [
+        "or",
+        "flow",
+        "rejects"
+      ],
+      [
+        "or",
+        "flow",
+        "reports"
+      ],
+      [
+        "examine",
+        "flow",
+        "or"
+      ],
+      [
+        "rejects",
+        "actor performer",
+        "The MPO"
+      ],
+      [
+        "inform",
+        "actor recipient",
+        "the GO"
+      ],
+      [
+        "confirms",
+        "flow",
+        "informes"
+      ],
+      [
+        "inform",
+        "actor performer",
+        "The MPO"
+      ],
+      [
+        "or",
+        "flow",
+        "suspicion"
+      ],
+      [
+        "suspicion",
+        "uses",
+        "of their own fault"
+      ],
+      [
+        "shares",
+        "flow",
+        "inform"
+      ],
+      [
+        "informes",
+        "actor recipient",
+        "the GO"
+      ],
+      [
+        "reports",
+        "actor performer",
+        "The fault detector"
+      ],
+      [
+        "inform",
+        "actor recipient",
+        "the MSP"
+      ],
+      [
+        "reports",
+        "flow",
+        "examine"
+      ],
+      [
+        "examine",
+        "actor performer",
+        "The MPO"
+      ],
+      [
+        "shares",
+        "further specification",
+        "carried out with the fault detector"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "reports",
+        "uses",
+        "a failure"
+      ],
+      [
+        "confirms",
+        "flow",
+        "If"
+      ],
+      [
+        "inform",
+        "flow",
+        "fixes"
+      ],
+      [
+        "examine",
+        "uses",
+        "the fault"
+      ],
+      [
+        "rejects",
+        "flow",
+        "or"
+      ],
+      [
+        "confirms",
+        "actor performer",
+        "the MPO"
+      ],
+      [
+        "inform",
+        "actor performer",
+        "The MPO fixes the fault at the measuring device. The MPO"
+      ],
+      [
+        "confirms",
+        "uses",
+        "the failure of the fault detector"
+      ],
+      [
+        "inform",
+        "flow",
+        "inform"
+      ],
+      [
+        "informes",
+        "flow",
+        "inform"
+      ],
+      [
+        "examine",
+        "uses",
+        "the fault detector"
+      ],
+      [
+        "rejects",
+        "flow",
+        "If"
+      ],
+      [
+        "fixes",
+        "flow",
+        "shares"
+      ],
+      [
+        "inform",
+        "flow",
+        "informes"
+      ],
+      [
+        "or",
+        "flow",
+        "confirms"
+      ],
+      [
+        "examine",
+        "uses",
+        "the failure"
+      ],
+      [
+        "rejects",
+        "uses",
+        "the failure of the fault detector"
+      ],
+      [
+        "examine",
+        "uses",
+        "the failure of the fault"
+      ],
+      [
+        "shares",
+        "actor performer",
+        "The MPO"
+      ],
+      [
+        "fixes",
+        "uses",
+        "the fault"
+      ],
+      [
+        "or",
+        "flow",
+        "rejects"
+      ],
+      [
+        "or",
+        "flow",
+        "reports"
+      ],
+      [
+        "If",
+        "flow",
+        "confirms"
+      ],
+      [
+        "fixes",
+        "flow",
+        "inform"
+      ],
+      [
+        "If",
+        "flow",
+        "rejects"
+      ],
+      [
+        "inform",
+        "actor recipient",
+        "The MPO"
+      ],
+      [
+        "fixes",
+        "uses",
+        "the fault detector"
+      ],
+      [
+        "confirms",
+        "uses",
+        "the failure"
+      ],
+      [
+        "inform",
+        "actor performer",
+        "The MPO"
+      ],
+      [
+        "confirms",
+        "flow",
+        "or"
+      ],
+      [
+        "shares",
+        "actor performer",
+        "The MPO fixes the fault at the measuring device. The MPO"
+      ],
+      [
+        "examine",
+        "flow",
+        "If"
+      ],
+      [
+        "inform",
+        "actor recipient",
+        "the MSP"
+      ],
+      [
+        "fixes",
+        "uses",
+        "the failure"
+      ],
+      [
+        "If",
+        "flow",
+        "examine"
+      ],
+      [
+        "informes",
+        "uses",
+        "the GO"
+      ],
+      [
+        "inform",
+        "actor recipient",
+        "The MPO fixes the fault at the measuring device. The MPO"
+      ],
+      [
+        "examine",
+        "uses",
+        "the failure of the fault detector"
+      ]
+    ]
+  },
+  {
+    "text": "The INQ transmits the transaction data request to the IP . The IP checks the request of the INQ . The IP answers the question of the INQ depending on the outcome of the examination , i.e . Transmission of data or rejection .",
+    "gold_spo_list": [
+      [
+        "transmits",
+        "flow",
+        "checks"
+      ],
+      [
+        "answers",
+        "uses",
+        "the question of the INQ"
+      ],
+      [
+        "checks",
+        "uses",
+        "the request of the INQ"
+      ],
+      [
+        "transmits",
+        "actor performer",
+        "The INQ"
+      ],
+      [
+        "answers",
+        "actor performer",
+        "The IP"
+      ],
+      [
+        "transmits",
+        "actor recipient",
+        "the IP"
+      ],
+      [
+        "transmits",
+        "uses",
+        "the transaction data request"
+      ],
+      [
+        "answers",
+        "further specification",
+        "depending on the outcome of the examination"
+      ],
+      [
+        "checks",
+        "actor performer",
+        "The IP"
+      ],
+      [
+        "checks",
+        "flow",
+        "answers"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "answers",
+        "uses",
+        "the request of the INQ"
+      ],
+      [
+        "transmits",
+        "flow",
+        "transmits"
+      ],
+      [
+        "answers",
+        "flow",
+        "answers"
+      ],
+      [
+        "checks",
+        "uses",
+        "the request of the INQ"
+      ],
+      [
+        "transmits",
+        "actor performer",
+        "The INQ"
+      ],
+      [
+        "answers",
+        "actor performer",
+        "The IP"
+      ],
+      [
+        "checks",
+        "flow",
+        "transmits"
+      ],
+      [
+        "answers",
+        "uses",
+        "the question of the INQ"
+      ],
+      [
+        "checks",
+        "actor performer",
+        "The IP"
+      ],
+      [
+        "transmits",
+        "uses",
+        "the transaction data request"
+      ]
+    ]
+  }
+]

@@ -1,0 +1,123 @@
+2025-11-29 09:02:45,866 [MainThread  ] [INFO ]  {
+    "boundary_threshold": 0.0,
+    "cache_path": null,
+    "char_lstm_drop": 0.2,
+    "char_lstm_layers": 1,
+    "char_size": 50,
+    "cls_threshold": 0.0,
+    "config": "configs/temp_eval.conf",
+    "cpu": false,
+    "dataset_path": "data/datasets/no_hints/44/test.json",
+    "debug": false,
+    "device_id": 0,
+    "entity_aware_attention": false,
+    "entity_aware_intermediate": false,
+    "entity_aware_output": false,
+    "entity_aware_selfout": false,
+    "entity_emb_size": null,
+    "entity_queries_num": 60,
+    "eval_batch_size": 8,
+    "example_count": null,
+    "freeze_transformer": false,
+    "inlcude_subword_aux_loss": false,
+    "label": "no_hints-44",
+    "last_layer_for_loss": 3,
+    "local_rank": -1,
+    "log_path": "data/eval/no_hints/44",
+    "lowercase": false,
+    "lstm_layers": 2,
+    "mask_ent2ent": true,
+    "mask_ent2tok": true,
+    "mask_entself": true,
+    "mask_tok2ent": false,
+    "model_path": "data/checkpoints/no_hints/44/no_hints-44/2025-11-26_21:25:34.132096/best_model",
+    "model_type": "piqn",
+    "no_duplicate": true,
+    "no_overlapping": true,
+    "no_partial_overlapping": true,
+    "num_token_entity_encoderlayer": 5,
+    "pool_type": "max",
+    "pos_size": 25,
+    "prop_drop": 0.5,
+    "repeat_gt_entities": -1,
+    "sampling_processes": 4,
+    "seed": 44,
+    "share_query_pos": true,
+    "split_epoch": 0,
+    "store_examples": true,
+    "store_predictions": true,
+    "tokenizer_path": "data/checkpoints/no_hints/44/no_hints-44/2025-11-26_21:25:34.132096/best_model",
+    "types_path": "data/datasets/no_hints/44/types.json",
+    "use_aux_loss": false,
+    "use_char_lstm": false,
+    "use_entity_attention": true,
+    "use_entity_common_embedding": true,
+    "use_entity_pos": true,
+    "use_glove": false,
+    "use_lstm": true,
+    "use_masked_lm": false,
+    "use_pos": false,
+    "use_token_level_encoder": true,
+    "word_mask_ent2ent": true,
+    "word_mask_ent2tok": true,
+    "word_mask_entself": true,
+    "word_mask_tok2ent": false,
+    "wordvec_path": "../glove/glove.6B.100d.txt",
+    "world_size": -1
+}
+2025-11-29 09:02:45,866 [MainThread  ] [INFO ]  Dataset: data/datasets/no_hints/44/test.json
+2025-11-29 09:02:45,866 [MainThread  ] [INFO ]  Model: piqn
+2025-11-29 09:02:46,267 [MainThread  ] [INFO ]  Entity type count: 8
+2025-11-29 09:02:46,267 [MainThread  ] [INFO ]  Entities:
+2025-11-29 09:02:46,267 [MainThread  ] [INFO ]  No Entity=0
+2025-11-29 09:02:46,267 [MainThread  ] [INFO ]  actor=1
+2025-11-29 09:02:46,267 [MainThread  ] [INFO ]  activity=2
+2025-11-29 09:02:46,267 [MainThread  ] [INFO ]  activity data=3
+2025-11-29 09:02:46,267 [MainThread  ] [INFO ]  xor gateway=4
+2025-11-29 09:02:46,267 [MainThread  ] [INFO ]  condition specification=5
+2025-11-29 09:02:46,267 [MainThread  ] [INFO ]  further specification=6
+2025-11-29 09:02:46,267 [MainThread  ] [INFO ]  and gateway=7
+2025-11-29 09:02:46,268 [MainThread  ] [INFO ]  Dataset: test
+2025-11-29 09:02:46,268 [MainThread  ] [INFO ]  Document count: 102
+2025-11-29 09:02:46,268 [MainThread  ] [INFO ]  Entity count: 384
+2025-11-29 09:02:46,268 [MainThread  ] [INFO ]  Context size: 114
+2025-11-29 09:02:50,812 [MainThread  ] [INFO ]  Model Parameters Number: 167500042
+2025-11-29 09:02:54,082 [MainThread  ] [INFO ]  Evaluate: test
+2025-11-29 09:03:08,710 [MainThread  ] [INFO ]  Evaluation
+2025-11-29 09:03:08,711 [MainThread  ] [INFO ]  
+2025-11-29 09:03:08,711 [MainThread  ] [INFO ]  --- NER ---
+2025-11-29 09:03:08,711 [MainThread  ] [INFO ]  
+2025-11-29 09:03:08,716 [MainThread  ] [INFO ]                  type    precision       recall     f1-score      support
+2025-11-29 09:03:08,716 [MainThread  ] [INFO ]  further specification       100.00         9.09        16.67           11
+2025-11-29 09:03:08,716 [MainThread  ] [INFO ]              activity        83.64        73.60        78.30          125
+2025-11-29 09:03:08,716 [MainThread  ] [INFO ]         activity data        54.48        70.54        61.48          112
+2025-11-29 09:03:08,716 [MainThread  ] [INFO ]           and gateway       100.00        33.33        50.00            3
+2025-11-29 09:03:08,716 [MainThread  ] [INFO ]                 actor        83.33        65.22        73.17           92
+2025-11-29 09:03:08,716 [MainThread  ] [INFO ]  condition specification        63.64        41.18        50.00           17
+2025-11-29 09:03:08,716 [MainThread  ] [INFO ]           xor gateway        46.67        29.17        35.90           24
+2025-11-29 09:03:08,716 [MainThread  ] [INFO ]  
+2025-11-29 09:03:08,716 [MainThread  ] [INFO ]                 micro        69.58        64.32        66.85          384
+2025-11-29 09:03:08,716 [MainThread  ] [INFO ]                 macro        75.97        46.02        52.22          384
+2025-11-29 09:03:08,716 [MainThread  ] [INFO ]  
+2025-11-29 09:03:08,716 [MainThread  ] [INFO ]  --- NER on Localization ---
+2025-11-29 09:03:08,717 [MainThread  ] [INFO ]  
+2025-11-29 09:03:08,720 [MainThread  ] [INFO ]                  type    precision       recall     f1-score      support
+2025-11-29 09:03:08,720 [MainThread  ] [INFO ]                Entity        70.99        65.62        68.20          384
+2025-11-29 09:03:08,720 [MainThread  ] [INFO ]  
+2025-11-29 09:03:08,720 [MainThread  ] [INFO ]                 micro        70.99        65.62        68.20          384
+2025-11-29 09:03:08,720 [MainThread  ] [INFO ]                 macro        70.99        65.62        68.20          384
+2025-11-29 09:03:08,720 [MainThread  ] [INFO ]  
+2025-11-29 09:03:08,720 [MainThread  ] [INFO ]  --- NER on Classification ---
+2025-11-29 09:03:08,720 [MainThread  ] [INFO ]  
+2025-11-29 09:03:08,723 [MainThread  ] [INFO ]                  type    precision       recall     f1-score      support
+2025-11-29 09:03:08,724 [MainThread  ] [INFO ]  further specification       100.00         9.09        16.67           11
+2025-11-29 09:03:08,724 [MainThread  ] [INFO ]              activity       100.00        73.60        84.79          125
+2025-11-29 09:03:08,724 [MainThread  ] [INFO ]         activity data        97.53        70.54        81.87          112
+2025-11-29 09:03:08,724 [MainThread  ] [INFO ]           and gateway       100.00        33.33        50.00            3
+2025-11-29 09:03:08,724 [MainThread  ] [INFO ]                 actor        95.24        65.22        77.42           92
+2025-11-29 09:03:08,724 [MainThread  ] [INFO ]  condition specification       100.00        41.18        58.33           17
+2025-11-29 09:03:08,724 [MainThread  ] [INFO ]           xor gateway       100.00        29.17        45.16           24
+2025-11-29 09:03:08,724 [MainThread  ] [INFO ]  
+2025-11-29 09:03:08,724 [MainThread  ] [INFO ]                 micro        98.02        64.32        77.67          384
+2025-11-29 09:03:08,724 [MainThread  ] [INFO ]                 macro        98.97        46.02        59.18          384
+2025-11-29 09:03:09,371 [MainThread  ] [INFO ]  Logged in: data/eval/no_hints/44/no_hints-44/2025-11-29_09:02:45.827712

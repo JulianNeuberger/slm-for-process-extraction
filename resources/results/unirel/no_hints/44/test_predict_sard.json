@@ -1,0 +1,1109 @@
+[
+  {
+    "text": "The Police Report related to the car accident is searched within the Police Report database and put in a file together with the Claim Documentation . This file serves as input to a claims handler who calculates an initial claim estimate . Then , the claims handler creates an Action Plan based on an Action Plan Checklist available in the Document Management system . Based on the Action Plan , a claims manager tries to negotiate a settlement on the claim estimate . The claimant is informed of the outcome , which ends the process .",
+    "gold_spo_list": [
+      [
+        "searched",
+        "flow",
+        "put"
+      ],
+      [
+        "put",
+        "uses",
+        "The Police Report"
+      ],
+      [
+        "put",
+        "flow",
+        "calculates"
+      ],
+      [
+        "creates",
+        "uses",
+        "an Action Plan"
+      ],
+      [
+        "creates",
+        "actor performer",
+        "the claims handler"
+      ],
+      [
+        "calculates",
+        "uses",
+        "an initial claim estimate"
+      ],
+      [
+        "informed",
+        "uses",
+        "the outcome"
+      ],
+      [
+        "informed",
+        "actor recipient",
+        "The claimant"
+      ],
+      [
+        "creates",
+        "flow",
+        "negotiate"
+      ],
+      [
+        "calculates",
+        "actor performer",
+        "who"
+      ],
+      [
+        "put",
+        "further specification",
+        "in a file together with the Claim Documentation"
+      ],
+      [
+        "searched",
+        "further specification",
+        "within the Police Report database"
+      ],
+      [
+        "negotiate",
+        "actor performer",
+        "a claims manager"
+      ],
+      [
+        "negotiate",
+        "uses",
+        "a settlement"
+      ],
+      [
+        "negotiate",
+        "flow",
+        "informed"
+      ],
+      [
+        "calculates",
+        "flow",
+        "creates"
+      ],
+      [
+        "searched",
+        "uses",
+        "The Police Report"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "creates",
+        "flow",
+        "calculates"
+      ],
+      [
+        "creates",
+        "uses",
+        "an Action Plan"
+      ],
+      [
+        "creates",
+        "actor performer",
+        "the claims handler"
+      ],
+      [
+        "informed",
+        "uses",
+        "the outcome"
+      ],
+      [
+        "creates",
+        "actor performer",
+        "a claims handler"
+      ],
+      [
+        "calculates",
+        "actor performer",
+        "a claims handler who calculates an initial claim estimate. Then, the claims handler"
+      ],
+      [
+        "creates",
+        "flow",
+        "creates"
+      ],
+      [
+        "calculates",
+        "actor performer",
+        "the claims handler"
+      ],
+      [
+        "creates",
+        "actor performer",
+        "a claims manager"
+      ],
+      [
+        "calculates",
+        "actor performer",
+        "a claims handler"
+      ],
+      [
+        "informed",
+        "flow",
+        "informed"
+      ],
+      [
+        "creates",
+        "actor performer",
+        "a claims handler who calculates an initial claim estimate. Then, the claims handler"
+      ]
+    ]
+  },
+  {
+    "text": "The MSPN sents a dismissal to the MSPO . The MSPO reviews the dismissal . The MSPO rejects the dismissal of the MSPN or The MSPO confirms the dismissal of the MSPN .",
+    "gold_spo_list": [
+      [
+        "rejects",
+        "actor performer",
+        "The MSPO"
+      ],
+      [
+        "or",
+        "flow",
+        "confirms"
+      ],
+      [
+        "sents",
+        "actor performer",
+        "The MSPN"
+      ],
+      [
+        "sents",
+        "flow",
+        "reviews"
+      ],
+      [
+        "sents",
+        "actor recipient",
+        "the MSPO"
+      ],
+      [
+        "rejects",
+        "uses",
+        "the dismissal of the MSPN"
+      ],
+      [
+        "reviews",
+        "actor performer",
+        "The MSPO"
+      ],
+      [
+        "reviews",
+        "uses",
+        "the dismissal"
+      ],
+      [
+        "sents",
+        "uses",
+        "a dismissal"
+      ],
+      [
+        "confirms",
+        "actor performer",
+        "The MSPO"
+      ],
+      [
+        "reviews",
+        "flow",
+        "or"
+      ],
+      [
+        "or",
+        "flow",
+        "rejects"
+      ],
+      [
+        "confirms",
+        "uses",
+        "the dismissal of the MSPN"
+      ]
+    ],
+    "pred_spo_list": []
+  },
+  {
+    "text": "The MPON sents the dismissal to the MPOO . The MPOO reviews the dismissal . The MPOO opposes the dismissal of MPON or the MPOO confirmes the dismissal of the MPON .",
+    "gold_spo_list": [
+      [
+        "or",
+        "flow",
+        "confirmes"
+      ],
+      [
+        "or",
+        "flow",
+        "opposes"
+      ],
+      [
+        "sents",
+        "flow",
+        "reviews"
+      ],
+      [
+        "reviews",
+        "actor performer",
+        "The MPOO"
+      ],
+      [
+        "sents",
+        "uses",
+        "the dismissal"
+      ],
+      [
+        "opposes",
+        "actor performer",
+        "The MPOO"
+      ],
+      [
+        "reviews",
+        "uses",
+        "the dismissal"
+      ],
+      [
+        "confirmes",
+        "uses",
+        "the dismissal"
+      ],
+      [
+        "confirmes",
+        "actor performer",
+        "the MPOO"
+      ],
+      [
+        "reviews",
+        "flow",
+        "or"
+      ],
+      [
+        "opposes",
+        "uses",
+        "the dismissal"
+      ],
+      [
+        "sents",
+        "actor recipient",
+        "the MPOO"
+      ],
+      [
+        "sents",
+        "actor performer",
+        "The MPON"
+      ]
+    ],
+    "pred_spo_list": []
+  },
+  {
+    "text": "The process is triggered by the demand of a functional department to fill a post . The post is advertised , applicants apply , the applications are checked and the post is filled . The process finishes when the post was filled , precisely through the conclusion of a contract of employment .",
+    "gold_spo_list": [
+      [
+        "advertised",
+        "flow",
+        "apply"
+      ],
+      [
+        "demand",
+        "flow",
+        "advertised"
+      ],
+      [
+        "checked",
+        "uses",
+        "the applications"
+      ],
+      [
+        "apply",
+        "actor performer",
+        "applicants"
+      ],
+      [
+        "demand",
+        "actor performer",
+        "a functional department"
+      ],
+      [
+        "demand",
+        "uses",
+        "to fill a post"
+      ],
+      [
+        "filled",
+        "uses",
+        "the post"
+      ],
+      [
+        "checked",
+        "flow",
+        "filled"
+      ],
+      [
+        "apply",
+        "flow",
+        "checked"
+      ],
+      [
+        "advertised",
+        "uses",
+        "The post"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "fill",
+        "uses",
+        "a post"
+      ],
+      [
+        "filled",
+        "uses",
+        "a post"
+      ]
+    ]
+  },
+  {
+    "text": "Mail from the party is collected on a daily basis by the Mail Processing Unit . Within this unit , the Mail Clerk sorts the unopened mail into the various business areas . The mail is then distributed . When the mail is received by the Registry , it is opened and sorted into groups for distribution , and thus registered in a manual incoming Mail Register . Afterwards , the Assistant Registry Manager within the Registry performs a quality check . If the mail is not compliant , a list of requisition explaining the reason for rejection is compiled and sent back to the party . Otherwise , the matter details ( types of action ) are captured and provided to the Cashier , who takes the applicable fees attached to the mail . At this point , the Assistant Registry Manager puts the receipt and copied documents into an envelope and posts it to the party . Meantime , the Cashier captures the Party Details and prints the Physical Court File .",
+    "gold_spo_list": [
+      [
+        "registered",
+        "further specification",
+        "in a manual incoming Mail Register"
+      ],
+      [
+        "performs a quality check",
+        "actor performer",
+        "the Assistant Registry Manager"
+      ],
+      [
+        "opened",
+        "flow",
+        "sorted"
+      ],
+      [
+        "sorts",
+        "further specification",
+        "into the various business areas"
+      ],
+      [
+        "captured",
+        "flow",
+        "provided"
+      ],
+      [
+        "takes",
+        "flow",
+        "Meantime"
+      ],
+      [
+        "performs a quality check",
+        "flow",
+        "If"
+      ],
+      [
+        "takes",
+        "actor performer",
+        "who"
+      ],
+      [
+        "sorts",
+        "actor performer",
+        "the Mail Clerk"
+      ],
+      [
+        "captures",
+        "uses",
+        "the Party Details"
+      ],
+      [
+        "puts",
+        "actor performer",
+        "the Assistant Registry Manager"
+      ],
+      [
+        "opened",
+        "uses",
+        "it"
+      ],
+      [
+        "sorted",
+        "uses",
+        "it"
+      ],
+      [
+        "Meantime",
+        "flow",
+        "puts"
+      ],
+      [
+        "captures",
+        "flow",
+        "prints"
+      ],
+      [
+        "collected",
+        "actor performer",
+        "the Mail Processing Unit"
+      ],
+      [
+        "posts",
+        "actor recipient",
+        "the party"
+      ],
+      [
+        "puts",
+        "further specification",
+        "into an envelope"
+      ],
+      [
+        "prints",
+        "actor performer",
+        "the Cashier"
+      ],
+      [
+        "If",
+        "flow",
+        "the mail is not compliant"
+      ],
+      [
+        "received",
+        "actor recipient",
+        "the Registry"
+      ],
+      [
+        "provided",
+        "flow",
+        "takes"
+      ],
+      [
+        "distributed",
+        "flow",
+        "received"
+      ],
+      [
+        "sorts",
+        "uses",
+        "the unopened mail"
+      ],
+      [
+        "received",
+        "uses",
+        "the mail"
+      ],
+      [
+        "posts",
+        "uses",
+        "it"
+      ],
+      [
+        "captures",
+        "actor performer",
+        "the Cashier"
+      ],
+      [
+        "registered",
+        "uses",
+        "it"
+      ],
+      [
+        "registered",
+        "flow",
+        "performs a quality check"
+      ],
+      [
+        "collected",
+        "uses",
+        "Mail from the party"
+      ],
+      [
+        "puts",
+        "uses",
+        "the receipt and copied documents"
+      ],
+      [
+        "sorted",
+        "flow",
+        "registered"
+      ],
+      [
+        "sent back",
+        "actor recipient",
+        "the party"
+      ],
+      [
+        "sent back",
+        "uses",
+        "a list of requisition"
+      ],
+      [
+        "distributed",
+        "uses",
+        "The mail"
+      ],
+      [
+        "sorts",
+        "flow",
+        "distributed"
+      ],
+      [
+        "If",
+        "same gateway",
+        "Otherwise"
+      ],
+      [
+        "provided",
+        "actor recipient",
+        "the Cashier"
+      ],
+      [
+        "captured",
+        "uses",
+        "the matter details"
+      ],
+      [
+        "compiled",
+        "uses",
+        "a list of requisition"
+      ],
+      [
+        "puts",
+        "flow",
+        "posts"
+      ],
+      [
+        "compiled",
+        "flow",
+        "sent back"
+      ],
+      [
+        "received",
+        "flow",
+        "opened"
+      ],
+      [
+        "the mail is not compliant",
+        "flow",
+        "compiled"
+      ],
+      [
+        "Otherwise",
+        "flow",
+        "captured"
+      ],
+      [
+        "Meantime",
+        "flow",
+        "captures"
+      ],
+      [
+        "collected",
+        "flow",
+        "sorts"
+      ],
+      [
+        "posts",
+        "actor performer",
+        "the Assistant Registry Manager"
+      ],
+      [
+        "provided",
+        "uses",
+        "the matter details"
+      ],
+      [
+        "prints",
+        "uses",
+        "the Physical Court File"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "opened",
+        "uses",
+        "the mail"
+      ],
+      [
+        "captures",
+        "actor performer",
+        "the Assistant Registry Manager"
+      ],
+      [
+        "sorts",
+        "actor performer",
+        "the Mail Clerk"
+      ],
+      [
+        "sorts",
+        "actor performer",
+        "the Mail Processing Unit"
+      ],
+      [
+        "puts",
+        "actor performer",
+        "the Assistant Registry Manager"
+      ],
+      [
+        "puts",
+        "uses",
+        "the receipt"
+      ],
+      [
+        "the mail is not compliant",
+        "flow",
+        "If"
+      ],
+      [
+        "If",
+        "flow",
+        "the mail is not compliant"
+      ],
+      [
+        "takes",
+        "actor performer",
+        "the Cashier"
+      ],
+      [
+        "captured",
+        "flow",
+        "captured"
+      ],
+      [
+        "captures",
+        "actor performer",
+        "the Cashier"
+      ],
+      [
+        "compiled",
+        "flow",
+        "compiled"
+      ],
+      [
+        "distributed",
+        "flow",
+        "distributed"
+      ],
+      [
+        "sorts",
+        "flow",
+        "distributed"
+      ],
+      [
+        "puts",
+        "actor performer",
+        "the Cashier"
+      ],
+      [
+        "distributed",
+        "flow",
+        "sorts"
+      ],
+      [
+        "captured",
+        "uses",
+        "the matter details"
+      ],
+      [
+        "compiled",
+        "uses",
+        "a list of requisition"
+      ],
+      [
+        "sent",
+        "uses",
+        "the mail"
+      ],
+      [
+        "sent",
+        "uses",
+        "a list of requisition"
+      ],
+      [
+        "captured",
+        "actor performer",
+        "the Cashier"
+      ],
+      [
+        "performs",
+        "actor performer",
+        "the Assistant Registry Manager"
+      ],
+      [
+        "takes",
+        "actor performer",
+        "the Assistant Registry Manager"
+      ]
+    ]
+  },
+  {
+    "text": "In November of each year , the Coordination Unit at the Town Planning Authority drafts a schedule of meetings for the next calendar year and adds draft dates to all calendars . The Support Officer then checks the dates and suggests modifications . The Coordination Unit then rechecks all dates and looks for potential conflicts . The final schedule of meeting dates is sent to all the independent Committee Members by email , who then check their diaries and advise the Coordination Unit of any conflicts .",
+    "gold_spo_list": [
+      [
+        "check",
+        "actor performer",
+        "who"
+      ],
+      [
+        "rechecks",
+        "flow",
+        "looks for"
+      ],
+      [
+        "check",
+        "uses",
+        "their diaries"
+      ],
+      [
+        "sent",
+        "flow",
+        "check"
+      ],
+      [
+        "suggests",
+        "uses",
+        "modifications"
+      ],
+      [
+        "looks for",
+        "uses",
+        "potential conflicts"
+      ],
+      [
+        "adds",
+        "flow",
+        "checks"
+      ],
+      [
+        "checks",
+        "flow",
+        "suggests"
+      ],
+      [
+        "sent",
+        "uses",
+        "The final schedule of meeting dates"
+      ],
+      [
+        "adds",
+        "uses",
+        "draft dates"
+      ],
+      [
+        "rechecks",
+        "actor performer",
+        "The Coordination Unit"
+      ],
+      [
+        "rechecks",
+        "uses",
+        "all dates"
+      ],
+      [
+        "checks",
+        "actor performer",
+        "The Support Officer"
+      ],
+      [
+        "check",
+        "flow",
+        "advise"
+      ],
+      [
+        "advise",
+        "actor performer",
+        "who"
+      ],
+      [
+        "advise",
+        "actor recipient",
+        "the Coordination Unit"
+      ],
+      [
+        "suggests",
+        "flow",
+        "rechecks"
+      ],
+      [
+        "looks for",
+        "actor performer",
+        "The Coordination Unit"
+      ],
+      [
+        "suggests",
+        "actor performer",
+        "The Support Officer"
+      ],
+      [
+        "sent",
+        "actor recipient",
+        "all the independent Committee Members"
+      ],
+      [
+        "drafts",
+        "flow",
+        "adds"
+      ],
+      [
+        "drafts",
+        "actor performer",
+        "the Coordination Unit at the Town Planning Authority"
+      ],
+      [
+        "adds",
+        "actor performer",
+        "the Coordination Unit at the Town Planning Authority"
+      ],
+      [
+        "checks",
+        "uses",
+        "the dates"
+      ],
+      [
+        "sent",
+        "further specification",
+        "by email"
+      ],
+      [
+        "looks for",
+        "flow",
+        "sent"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "suggests",
+        "actor performer",
+        "The Support Officer"
+      ],
+      [
+        "sent",
+        "uses",
+        "The final schedule of meeting dates"
+      ],
+      [
+        "checks",
+        "flow",
+        "checks"
+      ],
+      [
+        "suggests",
+        "flow",
+        "suggests"
+      ],
+      [
+        "checks",
+        "actor performer",
+        "The Support Officer"
+      ],
+      [
+        "check",
+        "flow",
+        "check"
+      ],
+      [
+        "rechecks",
+        "uses",
+        "all dates"
+      ],
+      [
+        "drafts",
+        "actor performer",
+        "the Coordination Unit"
+      ],
+      [
+        "checks",
+        "uses",
+        "the dates"
+      ],
+      [
+        "check",
+        "uses",
+        "their diaries"
+      ],
+      [
+        "drafts",
+        "uses",
+        "a schedule of meetings"
+      ]
+    ]
+  },
+  {
+    "text": "First , the Manager checks the open leads . Afterwards , he selects the top five ones . He then tells his Sales Assistant to call the contact person of the leads . The Sales Assistant calls each customer . If someone is interested , he sends a note to the Manager . The Manager then processes the lead . Otherwise , he calls the next customer .",
+    "gold_spo_list": [
+      [
+        "tells",
+        "actor recipient",
+        "Sales Assistant"
+      ],
+      [
+        "calls",
+        "uses",
+        "each customer"
+      ],
+      [
+        "tells",
+        "actor performer",
+        "He"
+      ],
+      [
+        "calls",
+        "actor performer",
+        "he"
+      ],
+      [
+        "selects",
+        "flow",
+        "tells"
+      ],
+      [
+        "sends",
+        "flow",
+        "processes"
+      ],
+      [
+        "checks",
+        "actor performer",
+        "the Manager"
+      ],
+      [
+        "calls",
+        "flow",
+        "If"
+      ],
+      [
+        "selects",
+        "actor performer",
+        "he"
+      ],
+      [
+        "Otherwise",
+        "flow",
+        "calls"
+      ],
+      [
+        "tells",
+        "uses",
+        "to call the contact person of the leads"
+      ],
+      [
+        "selects",
+        "uses",
+        "the top five ones"
+      ],
+      [
+        "calls",
+        "actor performer",
+        "The Sales Assistant"
+      ],
+      [
+        "tells",
+        "flow",
+        "calls"
+      ],
+      [
+        "calls",
+        "uses",
+        "the next customer"
+      ],
+      [
+        "someone is interested",
+        "flow",
+        "sends"
+      ],
+      [
+        "sends",
+        "actor recipient",
+        "the Manager"
+      ],
+      [
+        "processes",
+        "uses",
+        "the lead"
+      ],
+      [
+        "processes",
+        "actor performer",
+        "The Manager"
+      ],
+      [
+        "checks",
+        "uses",
+        "the open leads"
+      ],
+      [
+        "checks",
+        "flow",
+        "selects"
+      ],
+      [
+        "If",
+        "same gateway",
+        "Otherwise"
+      ],
+      [
+        "sends",
+        "uses",
+        "a note"
+      ],
+      [
+        "sends",
+        "actor performer",
+        "he"
+      ],
+      [
+        "If",
+        "flow",
+        "someone is interested"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "selects",
+        "flow",
+        "checks"
+      ],
+      [
+        "checks",
+        "flow",
+        "selects"
+      ],
+      [
+        "calls",
+        "uses",
+        "the next customer"
+      ],
+      [
+        "checks",
+        "flow",
+        "checks"
+      ],
+      [
+        "processes",
+        "flow",
+        "processes"
+      ],
+      [
+        "sends",
+        "uses",
+        "a note"
+      ],
+      [
+        "processes",
+        "uses",
+        "the lead"
+      ],
+      [
+        "checks",
+        "actor performer",
+        "the Manager"
+      ],
+      [
+        "sends",
+        "actor performer",
+        "the Manager"
+      ],
+      [
+        "calls",
+        "flow",
+        "calls"
+      ]
+    ]
+  }
+]

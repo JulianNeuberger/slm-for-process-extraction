@@ -1,0 +1,9 @@
+Describe the following business process modelled in the given image in a coherent, continuous text.
+Make sure it sounds natural, e.g., something found in a hand book for employees, or the notes of an employee.
+I expect one or more paragraphs of text, instead of many single lines / rules in isolation.
+
+Please follow the following guidelines:
+- sequence flows between two activities should be rephrased so that the first executed activity is mentioned first
+- descriptions of XOR gateways should describe the activity in which the decision occurs and then the two branches starting with 'if' or 'otherwise'
+- describe the branches of decisions completely one after the other
+- make sure to explicitly state if activities are executed simultaneously in an AND gateway, by using a phrase like 'and at the same time' or 'while'

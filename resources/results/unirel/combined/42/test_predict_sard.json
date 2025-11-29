@@ -1,0 +1,1678 @@
+[
+  {
+    "text": "The MSPO deregisters at the GO . The GO verifies the deregistration . The GO rejects the deregistration of the MSPO or the GO preliminarily confirms the deregistration of the MSPO . The GO assigns himself as MSP . The GO informs the MSPO about the end of the assignment and the beginning of the assignment of the GO . The GO informs the MPO about the assignment of the GO . The GO informs the SP about the assignment of the GO .",
+    "gold_spo_list": [
+      [
+        "deregisters",
+        "actor performer",
+        "The MSPO"
+      ],
+      [
+        "informs",
+        "uses",
+        "about the end of the assignment and the beginning of the assignment of the GO"
+      ],
+      [
+        "rejects",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "verifies",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "deregisters",
+        "actor recipient",
+        "the GO"
+      ],
+      [
+        "informs",
+        "actor recipient",
+        "the MPO"
+      ],
+      [
+        "informs",
+        "actor recipient",
+        "the MSPO"
+      ],
+      [
+        "or",
+        "flow",
+        "confirms"
+      ],
+      [
+        "rejects",
+        "uses",
+        "the deregistration of the MSPO"
+      ],
+      [
+        "assigns",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "confirms",
+        "further specification",
+        "preliminarily"
+      ],
+      [
+        "assigns",
+        "flow",
+        "informs"
+      ],
+      [
+        "verifies",
+        "uses",
+        "the deregistration"
+      ],
+      [
+        "assigns",
+        "uses",
+        "himself"
+      ],
+      [
+        "informs",
+        "actor recipient",
+        "the SP"
+      ],
+      [
+        "deregisters",
+        "flow",
+        "verifies"
+      ],
+      [
+        "confirms",
+        "uses",
+        "the deregistration of the MSPO"
+      ],
+      [
+        "or",
+        "flow",
+        "rejects"
+      ],
+      [
+        "informs",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "rejects",
+        "flow",
+        "assigns"
+      ],
+      [
+        "informs",
+        "flow",
+        "informs"
+      ],
+      [
+        "assigns",
+        "further specification",
+        "as MSP"
+      ],
+      [
+        "verifies",
+        "flow",
+        "or"
+      ],
+      [
+        "confirms",
+        "flow",
+        "assigns"
+      ],
+      [
+        "informs",
+        "uses",
+        "about the assignment of the GO"
+      ],
+      [
+        "confirms",
+        "actor performer",
+        "the GO"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "verifies",
+        "actor performer",
+        "The MSPO"
+      ],
+      [
+        "verifies",
+        "actor performer",
+        "The GO"
+      ],
+      [
+        "informs",
+        "actor performer",
+        "The GO assigns himself as MSP. The GO"
+      ],
+      [
+        "confirms",
+        "actor performer",
+        "the GO"
+      ],
+      [
+        "deregisters",
+        "actor performer",
+        "The MSPO"
+      ],
+      [
+        "confirms",
+        "uses",
+        "the GO"
+      ],
+      [
+        "verifies",
+        "actor performer",
+        "the GO"
+      ],
+      [
+        "verifies",
+        "uses",
+        "the GO"
+      ],
+      [
+        "verifies",
+        "uses",
+        "the deregistration"
+      ],
+      [
+        "confirms",
+        "uses",
+        "the deregistration"
+      ],
+      [
+        "informs",
+        "actor performer",
+        "The GO"
+      ]
+    ]
+  },
+  {
+    "text": "After the Expense Report is received , a new account must be created if the employee does not already have one . The report is then reviewed for automatic approval . Amounts under $200 are automatically approved , whereas amounts equal to or over $200 require approval of the supervisor . In case of rejection , the employee must receive a rejection notice by email . Otherwise , the reimbursement goes to the employees direct deposit bank account . If the request is not completed in 7 days , then the employee must receive an approval in progress email . If the request is not finished within 30 days , then the process is stopped and the employee receives an email cancellation notice and must re-submit the expense report .",
+    "gold_spo_list": [
+      [
+        "Otherwise",
+        "same gateway",
+        "If"
+      ],
+      [
+        "amounts equal to or over $200",
+        "flow",
+        "require"
+      ],
+      [
+        "the request is not completed in 7 days",
+        "flow",
+        "receive"
+      ],
+      [
+        "require",
+        "uses",
+        "approval"
+      ],
+      [
+        "received",
+        "flow",
+        "if"
+      ],
+      [
+        "if",
+        "flow",
+        "reviewed"
+      ],
+      [
+        "require",
+        "flow",
+        "In case of"
+      ],
+      [
+        "receive",
+        "flow",
+        "If"
+      ],
+      [
+        "receives",
+        "actor recipient",
+        "the employee"
+      ],
+      [
+        "receive",
+        "further specification",
+        "by email"
+      ],
+      [
+        "receive",
+        "uses",
+        "a rejection notice"
+      ],
+      [
+        "reviewed",
+        "flow",
+        "whereas"
+      ],
+      [
+        "received",
+        "uses",
+        "the Expense Report"
+      ],
+      [
+        "created",
+        "flow",
+        "reviewed"
+      ],
+      [
+        "re-submit",
+        "uses",
+        "the expense report"
+      ],
+      [
+        "receives",
+        "uses",
+        "an email cancellation notice"
+      ],
+      [
+        "the employee does not already have one",
+        "flow",
+        "created"
+      ],
+      [
+        "if",
+        "flow",
+        "the employee does not already have one"
+      ],
+      [
+        "rejection",
+        "flow",
+        "receive"
+      ],
+      [
+        "approved",
+        "further specification",
+        "automatically"
+      ],
+      [
+        "the request is not finished within 30 days",
+        "flow",
+        "receives"
+      ],
+      [
+        "reviewed",
+        "further specification",
+        "for automatic approval"
+      ],
+      [
+        "receive",
+        "uses",
+        "an approval in progress email"
+      ],
+      [
+        "goes",
+        "uses",
+        "the reimbursement"
+      ],
+      [
+        "receives",
+        "flow",
+        "re-submit"
+      ],
+      [
+        "created",
+        "uses",
+        "a new account"
+      ],
+      [
+        "re-submit",
+        "flow",
+        "received"
+      ],
+      [
+        "If",
+        "flow",
+        "the request is not completed in 7 days"
+      ],
+      [
+        "In case of",
+        "same gateway",
+        "Otherwise"
+      ],
+      [
+        "require",
+        "actor performer",
+        "the supervisor"
+      ],
+      [
+        "reviewed",
+        "uses",
+        "The report"
+      ],
+      [
+        "In case of",
+        "flow",
+        "rejection"
+      ],
+      [
+        "whereas",
+        "flow",
+        "amounts equal to or over $200"
+      ],
+      [
+        "goes",
+        "further specification",
+        "to the employees direct deposit bank account"
+      ],
+      [
+        "Amounts under $200",
+        "flow",
+        "approved"
+      ],
+      [
+        "Otherwise",
+        "flow",
+        "goes"
+      ],
+      [
+        "whereas",
+        "flow",
+        "Amounts under $200"
+      ],
+      [
+        "receive",
+        "actor recipient",
+        "the employee"
+      ],
+      [
+        "If",
+        "flow",
+        "the request is not finished within 30 days"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "reviewed",
+        "uses",
+        "The report"
+      ],
+      [
+        "created",
+        "uses",
+        "a new account"
+      ],
+      [
+        "receive",
+        "uses",
+        "an approval in progress email"
+      ],
+      [
+        "receive",
+        "actor performer",
+        "the employees"
+      ],
+      [
+        "receives",
+        "uses",
+        "a rejection notice"
+      ],
+      [
+        "receives",
+        "uses",
+        "an approval in progress email"
+      ],
+      [
+        "receives",
+        "actor performer",
+        "the employees"
+      ],
+      [
+        "receive",
+        "uses",
+        "a rejection notice"
+      ],
+      [
+        "receive",
+        "actor performer",
+        "the employee"
+      ],
+      [
+        "receives",
+        "uses",
+        "an email cancellation notice"
+      ],
+      [
+        "receives",
+        "actor performer",
+        "the employee"
+      ],
+      [
+        "receive",
+        "uses",
+        "an email cancellation notice"
+      ]
+    ]
+  },
+  {
+    "text": "The MPON sents the dismissal to the MPOO . The MPOO reviews the dismissal . The MPOO opposes the dismissal of MPON or the MPOO confirmes the dismissal of the MPON .",
+    "gold_spo_list": [
+      [
+        "sents",
+        "flow",
+        "reviews"
+      ],
+      [
+        "reviews",
+        "uses",
+        "the dismissal"
+      ],
+      [
+        "sents",
+        "actor performer",
+        "The MPON"
+      ],
+      [
+        "reviews",
+        "actor performer",
+        "The MPOO"
+      ],
+      [
+        "or",
+        "flow",
+        "opposes"
+      ],
+      [
+        "reviews",
+        "flow",
+        "or"
+      ],
+      [
+        "or",
+        "flow",
+        "confirmes"
+      ],
+      [
+        "confirmes",
+        "actor performer",
+        "the MPOO"
+      ],
+      [
+        "opposes",
+        "actor performer",
+        "The MPOO"
+      ],
+      [
+        "sents",
+        "uses",
+        "the dismissal"
+      ],
+      [
+        "sents",
+        "actor recipient",
+        "the MPOO"
+      ],
+      [
+        "confirmes",
+        "uses",
+        "the dismissal"
+      ],
+      [
+        "opposes",
+        "uses",
+        "the dismissal"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "reviews",
+        "actor performer",
+        "The MPOO"
+      ],
+      [
+        "reviews",
+        "uses",
+        "the dismissal"
+      ],
+      [
+        "sents",
+        "actor performer",
+        "The MPOO"
+      ]
+    ]
+  },
+  {
+    "text": "The first step is to determine contact details of potential customers . This can be achieved in several ways . Sometimes , we buy details for cold calls , sometimes , our marketing staff participates in exhibitions and sometimes , you just happen to know somebody , who is interested in the product . Then we start calling the customer . That is done by the call center staff . They are determining the contact person and the budget which would be available for the project . Of course , asking the customer whether he is generally interested is also important . If this is not the case , we leave him alone , except if the potential project budget is huge . Then the head of development personally tries to acquire the customer . If the customer is interested in the end , the next step is a detailed online presentation . It is given either by a sales representative or by a pre-sales employee in case of a more technical presentation . Afterwards we are waiting for the customer to come back to us . If we are not contacted within 2 weeks , a sales representative is calling the customer . The last phase is the creation of a quotation .",
+    "gold_spo_list": [
+      [
+        "if",
+        "flow",
+        "the potential project budget is huge"
+      ],
+      [
+        "sometimes",
+        "flow",
+        "know"
+      ],
+      [
+        "determine",
+        "flow",
+        "Sometimes"
+      ],
+      [
+        "asking",
+        "actor recipient",
+        "the customer"
+      ],
+      [
+        "If",
+        "flow",
+        "creation"
+      ],
+      [
+        "determining",
+        "actor performer",
+        "They"
+      ],
+      [
+        "calling",
+        "actor recipient",
+        "the customer"
+      ],
+      [
+        "buy",
+        "uses",
+        "details for cold calls"
+      ],
+      [
+        "we are not contacted within 2 weeks",
+        "flow",
+        "calling"
+      ],
+      [
+        "Sometimes",
+        "flow",
+        "buy"
+      ],
+      [
+        "if",
+        "flow",
+        "leave"
+      ],
+      [
+        "acquire",
+        "actor performer",
+        "the head of development"
+      ],
+      [
+        "participates",
+        "actor performer",
+        "our marketing staff"
+      ],
+      [
+        "If",
+        "flow",
+        "we are not contacted within 2 weeks"
+      ],
+      [
+        "determine",
+        "uses",
+        "contact details"
+      ],
+      [
+        "calling",
+        "flow",
+        "creation"
+      ],
+      [
+        "If",
+        "flow",
+        "If"
+      ],
+      [
+        "Sometimes",
+        "same gateway",
+        "sometimes"
+      ],
+      [
+        "buy",
+        "flow",
+        "calling"
+      ],
+      [
+        "determining",
+        "uses",
+        "the budget"
+      ],
+      [
+        "waiting for",
+        "uses",
+        "the customer to come back to us"
+      ],
+      [
+        "sometimes",
+        "flow",
+        "participates"
+      ],
+      [
+        "waiting for",
+        "flow",
+        "If"
+      ],
+      [
+        "this is not the case",
+        "flow",
+        "if"
+      ],
+      [
+        "leave",
+        "uses",
+        "him"
+      ],
+      [
+        "know",
+        "flow",
+        "calling"
+      ],
+      [
+        "creation",
+        "uses",
+        "a quotation"
+      ],
+      [
+        "acquire",
+        "uses",
+        "the customer"
+      ],
+      [
+        "determining",
+        "uses",
+        "the contact person"
+      ],
+      [
+        "the customer is interested in the end",
+        "flow",
+        "given"
+      ],
+      [
+        "calling",
+        "actor performer",
+        "a sales representative"
+      ],
+      [
+        "given",
+        "flow",
+        "waiting for"
+      ],
+      [
+        "know",
+        "actor performer",
+        "you"
+      ],
+      [
+        "given",
+        "uses",
+        "a detailed online presentation"
+      ],
+      [
+        "acquire",
+        "flow",
+        "If"
+      ],
+      [
+        "calling",
+        "flow",
+        "determining"
+      ],
+      [
+        "buy",
+        "actor performer",
+        "we"
+      ],
+      [
+        "calling",
+        "actor performer",
+        "we"
+      ],
+      [
+        "If",
+        "flow",
+        "this is not the case"
+      ],
+      [
+        "participates",
+        "flow",
+        "calling"
+      ],
+      [
+        "know",
+        "uses",
+        "somebody , who is interested in the product"
+      ],
+      [
+        "the potential project budget is huge",
+        "flow",
+        "acquire"
+      ],
+      [
+        "If",
+        "flow",
+        "the customer is interested in the end"
+      ],
+      [
+        "asking",
+        "flow",
+        "If"
+      ],
+      [
+        "determining",
+        "flow",
+        "asking"
+      ],
+      [
+        "sometimes",
+        "same gateway",
+        "sometimes"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "If",
+        "flow",
+        "determine"
+      ],
+      [
+        "calling",
+        "uses",
+        "the customer"
+      ],
+      [
+        "If",
+        "flow",
+        "determining"
+      ],
+      [
+        "determining",
+        "actor performer",
+        "They"
+      ],
+      [
+        "acquire",
+        "uses",
+        "the customer"
+      ],
+      [
+        "determine",
+        "uses",
+        "contact details of potential customers"
+      ],
+      [
+        "determine",
+        "uses",
+        "the contact person"
+      ],
+      [
+        "determining",
+        "uses",
+        "the contact person"
+      ],
+      [
+        "determine",
+        "flow",
+        "If"
+      ],
+      [
+        "determining",
+        "flow",
+        "If"
+      ],
+      [
+        "determine",
+        "uses",
+        "contact person"
+      ],
+      [
+        "tries to acquire",
+        "uses",
+        "the customer"
+      ]
+    ]
+  },
+  {
+    "text": "The INQ transmits the transaction data request to the IP . The IP checks the request of the INQ . The IP answers the question of the INQ depending on the outcome of the examination , i.e . Transmission of data or rejection .",
+    "gold_spo_list": [
+      [
+        "answers",
+        "further specification",
+        "depending on the outcome of the examination"
+      ],
+      [
+        "answers",
+        "actor performer",
+        "The IP"
+      ],
+      [
+        "transmits",
+        "uses",
+        "the transaction data request"
+      ],
+      [
+        "checks",
+        "actor performer",
+        "The IP"
+      ],
+      [
+        "transmits",
+        "actor recipient",
+        "the IP"
+      ],
+      [
+        "transmits",
+        "flow",
+        "checks"
+      ],
+      [
+        "answers",
+        "uses",
+        "the question of the INQ"
+      ],
+      [
+        "checks",
+        "uses",
+        "the request of the INQ"
+      ],
+      [
+        "transmits",
+        "actor performer",
+        "The INQ"
+      ],
+      [
+        "checks",
+        "flow",
+        "answers"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "checks",
+        "uses",
+        "the request"
+      ],
+      [
+        "transmits",
+        "actor performer",
+        "the INQ"
+      ],
+      [
+        "transmits",
+        "uses",
+        "the transaction data request"
+      ],
+      [
+        "checks",
+        "actor performer",
+        "The IP"
+      ]
+    ]
+  },
+  {
+    "text": "The Police Report related to the car accident is searched within the Police Report database and put in a file together with the Claim Documentation . This file serves as input to a claims handler who calculates an initial claim estimate . Then , the claims handler creates an Action Plan based on an Action Plan Checklist available in the Document Management system . Based on the Action Plan , a claims manager tries to negotiate a settlement on the claim estimate . The claimant is informed of the outcome , which ends the process .",
+    "gold_spo_list": [
+      [
+        "put",
+        "flow",
+        "calculates"
+      ],
+      [
+        "put",
+        "further specification",
+        "in a file together with the Claim Documentation"
+      ],
+      [
+        "calculates",
+        "actor performer",
+        "who"
+      ],
+      [
+        "informed",
+        "uses",
+        "the outcome"
+      ],
+      [
+        "negotiate",
+        "flow",
+        "informed"
+      ],
+      [
+        "creates",
+        "actor performer",
+        "the claims handler"
+      ],
+      [
+        "creates",
+        "uses",
+        "an Action Plan"
+      ],
+      [
+        "informed",
+        "actor recipient",
+        "The claimant"
+      ],
+      [
+        "calculates",
+        "uses",
+        "an initial claim estimate"
+      ],
+      [
+        "creates",
+        "flow",
+        "negotiate"
+      ],
+      [
+        "negotiate",
+        "actor performer",
+        "a claims manager"
+      ],
+      [
+        "negotiate",
+        "uses",
+        "a settlement"
+      ],
+      [
+        "searched",
+        "further specification",
+        "within the Police Report database"
+      ],
+      [
+        "put",
+        "uses",
+        "The Police Report"
+      ],
+      [
+        "calculates",
+        "flow",
+        "creates"
+      ],
+      [
+        "searched",
+        "flow",
+        "put"
+      ],
+      [
+        "searched",
+        "uses",
+        "The Police Report"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "creates",
+        "actor performer",
+        "a claims handler"
+      ],
+      [
+        "tries to negotiate",
+        "flow",
+        "tries to negotiate"
+      ],
+      [
+        "creates",
+        "uses",
+        "an Action Plan"
+      ],
+      [
+        "calculates",
+        "uses",
+        "an initial claim estimate"
+      ],
+      [
+        "creates",
+        "flow",
+        "calculates"
+      ],
+      [
+        "tries to negotiate",
+        "actor performer",
+        "a claims manager"
+      ],
+      [
+        "calculates",
+        "actor performer",
+        "a claims handler"
+      ],
+      [
+        "calculates",
+        "flow",
+        "creates"
+      ],
+      [
+        "creates",
+        "actor performer",
+        "the claims handler"
+      ]
+    ]
+  },
+  {
+    "text": "In November of each year , the Coordination Unit at the Town Planning Authority drafts a schedule of meetings for the next calendar year and adds draft dates to all calendars . The Support Officer then checks the dates and suggests modifications . The Coordination Unit then rechecks all dates and looks for potential conflicts . The final schedule of meeting dates is sent to all the independent Committee Members by email , who then check their diaries and advise the Coordination Unit of any conflicts .",
+    "gold_spo_list": [
+      [
+        "check",
+        "flow",
+        "advise"
+      ],
+      [
+        "sent",
+        "uses",
+        "The final schedule of meeting dates"
+      ],
+      [
+        "sent",
+        "actor recipient",
+        "all the independent Committee Members"
+      ],
+      [
+        "sent",
+        "further specification",
+        "by email"
+      ],
+      [
+        "rechecks",
+        "actor performer",
+        "The Coordination Unit"
+      ],
+      [
+        "rechecks",
+        "flow",
+        "looks for"
+      ],
+      [
+        "drafts",
+        "flow",
+        "adds"
+      ],
+      [
+        "suggests",
+        "flow",
+        "rechecks"
+      ],
+      [
+        "sent",
+        "flow",
+        "check"
+      ],
+      [
+        "adds",
+        "actor performer",
+        "the Coordination Unit at the Town Planning Authority"
+      ],
+      [
+        "suggests",
+        "actor performer",
+        "The Support Officer"
+      ],
+      [
+        "suggests",
+        "uses",
+        "modifications"
+      ],
+      [
+        "drafts",
+        "actor performer",
+        "the Coordination Unit at the Town Planning Authority"
+      ],
+      [
+        "looks for",
+        "uses",
+        "potential conflicts"
+      ],
+      [
+        "check",
+        "actor performer",
+        "who"
+      ],
+      [
+        "looks for",
+        "flow",
+        "sent"
+      ],
+      [
+        "advise",
+        "actor recipient",
+        "the Coordination Unit"
+      ],
+      [
+        "checks",
+        "actor performer",
+        "The Support Officer"
+      ],
+      [
+        "advise",
+        "actor performer",
+        "who"
+      ],
+      [
+        "check",
+        "uses",
+        "their diaries"
+      ],
+      [
+        "adds",
+        "flow",
+        "checks"
+      ],
+      [
+        "rechecks",
+        "uses",
+        "all dates"
+      ],
+      [
+        "adds",
+        "uses",
+        "draft dates"
+      ],
+      [
+        "checks",
+        "flow",
+        "suggests"
+      ],
+      [
+        "checks",
+        "uses",
+        "the dates"
+      ],
+      [
+        "looks for",
+        "actor performer",
+        "The Coordination Unit"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "checks",
+        "uses",
+        "all dates"
+      ],
+      [
+        "suggests",
+        "actor performer",
+        "The Support Officer"
+      ],
+      [
+        "rechecks",
+        "uses",
+        "all dates"
+      ],
+      [
+        "rechecks",
+        "uses",
+        "the dates"
+      ],
+      [
+        "checks",
+        "uses",
+        "the dates"
+      ],
+      [
+        "checks",
+        "actor performer",
+        "The Support Officer"
+      ],
+      [
+        "check",
+        "flow",
+        "check"
+      ],
+      [
+        "drafts",
+        "uses",
+        "a schedule of meetings"
+      ],
+      [
+        "check",
+        "uses",
+        "their diaries"
+      ]
+    ]
+  },
+  {
+    "text": "An employee purchases a product or service he requires . For instance , a sales person on a trip rents a car . The employee submits an expense report with a list of items , along with the receipts for each item . A supervisor reviews the expense report and approves or rejects the report . Since the company has expense rules , there are circumstances where the supervisor can accept or reject the report upon first inspection . These rules could be automated , to reduce the workload on the supervisor . If the supervisor rejects the report , the employee , who submitted it , is given a chance to edit it , for example to correct errors or better describe an expense . If the supervisor approves the report , it goes to the treasurer . The treasurer checks that all the receipts have been submitted and match the items on the list . If all is in order , the treasurer accepts the expenses for processing ( including , e.g . , payment or refund , and accounting ) . If receipts are missing or do not match the report , he sends it back to the employee . If a report returns to the employee for corrections , it must again go to a supervisor , even if the supervisor previously approved the report . If the treasurer accepts the expenses for processing , the report moves to an automatic activity that links to a payment system . The process waits for the payment confirmation . After the payment is confirmed , the process ends .",
+    "gold_spo_list": [
+      [
+        "accepts",
+        "actor performer",
+        "the treasurer"
+      ],
+      [
+        "edit",
+        "uses",
+        "it"
+      ],
+      [
+        "approves or rejects",
+        "uses",
+        "the report"
+      ],
+      [
+        "sends",
+        "actor performer",
+        "he"
+      ],
+      [
+        "sends",
+        "actor recipient",
+        "the employee"
+      ],
+      [
+        "checks",
+        "actor performer",
+        "The treasurer"
+      ],
+      [
+        "purchases",
+        "uses",
+        "a product or service"
+      ],
+      [
+        "If",
+        "flow",
+        "all is in order"
+      ],
+      [
+        "the supervisor rejects the report",
+        "flow",
+        "edit"
+      ],
+      [
+        "If",
+        "same gateway",
+        "If"
+      ],
+      [
+        "goes",
+        "flow",
+        "checks"
+      ],
+      [
+        "reviews",
+        "actor performer",
+        "A supervisor"
+      ],
+      [
+        "goes",
+        "uses",
+        "it"
+      ],
+      [
+        "submits",
+        "actor performer",
+        "The employee"
+      ],
+      [
+        "If",
+        "flow",
+        "the supervisor approves the report"
+      ],
+      [
+        "accepts",
+        "flow",
+        "confirmed"
+      ],
+      [
+        "purchases",
+        "flow",
+        "submits"
+      ],
+      [
+        "receipts are missing or do not match the report",
+        "flow",
+        "sends"
+      ],
+      [
+        "goes",
+        "actor recipient",
+        "the treasurer"
+      ],
+      [
+        "If",
+        "flow",
+        "receipts are missing or do not match the report"
+      ],
+      [
+        "the supervisor approves the report",
+        "flow",
+        "goes"
+      ],
+      [
+        "submits",
+        "flow",
+        "reviews"
+      ],
+      [
+        "confirmed",
+        "uses",
+        "the payment"
+      ],
+      [
+        "sends",
+        "uses",
+        "it"
+      ],
+      [
+        "accepts",
+        "uses",
+        "the expenses"
+      ],
+      [
+        "approves or rejects",
+        "flow",
+        "If"
+      ],
+      [
+        "checks",
+        "flow",
+        "If"
+      ],
+      [
+        "reviews",
+        "uses",
+        "the expense report"
+      ],
+      [
+        "checks",
+        "uses",
+        "the receipts"
+      ],
+      [
+        "If",
+        "flow",
+        "the supervisor rejects the report"
+      ],
+      [
+        "reviews",
+        "flow",
+        "approves or rejects"
+      ],
+      [
+        "purchases",
+        "actor performer",
+        "An employee"
+      ],
+      [
+        "approves or rejects",
+        "actor performer",
+        "A supervisor"
+      ],
+      [
+        "submits",
+        "uses",
+        "an expense report"
+      ],
+      [
+        "all is in order",
+        "flow",
+        "accepts"
+      ],
+      [
+        "edit",
+        "actor performer",
+        "the employee"
+      ]
+    ],
+    "pred_spo_list": [
+      [
+        "accepts",
+        "actor performer",
+        "the treasurer"
+      ],
+      [
+        "purchases",
+        "actor performer",
+        "a sales person"
+      ],
+      [
+        "rents",
+        "actor performer",
+        "An employee"
+      ],
+      [
+        "submits",
+        "actor performer",
+        "An employee"
+      ],
+      [
+        "edit",
+        "uses",
+        "it"
+      ],
+      [
+        "rents",
+        "actor performer",
+        "a sales person"
+      ],
+      [
+        "submits",
+        "actor performer",
+        "a sales person"
+      ],
+      [
+        "accepts",
+        "flow",
+        "If"
+      ],
+      [
+        "accept",
+        "actor performer",
+        "the supervisor"
+      ],
+      [
+        "If",
+        "flow",
+        "or"
+      ],
+      [
+        "accept",
+        "actor performer",
+        "the employee"
+      ],
+      [
+        "checks",
+        "actor performer",
+        "The treasurer"
+      ],
+      [
+        "sends",
+        "actor performer",
+        "the treasurer"
+      ],
+      [
+        "accept or reject",
+        "actor performer",
+        "the supervisor"
+      ],
+      [
+        "accept or reject",
+        "actor performer",
+        "the employee"
+      ],
+      [
+        "accepts",
+        "actor performer",
+        "the supervisor"
+      ],
+      [
+        "accept",
+        "uses",
+        "the report"
+      ],
+      [
+        "If",
+        "flow",
+        "accepts"
+      ],
+      [
+        "reviews",
+        "actor performer",
+        "A supervisor"
+      ],
+      [
+        "submits",
+        "actor performer",
+        "The employee"
+      ],
+      [
+        "accept or reject",
+        "uses",
+        "the report"
+      ],
+      [
+        "accept",
+        "uses",
+        "the report. Since the company has expense rules, there are circumstances where the supervisor can accept or reject the report"
+      ],
+      [
+        "approves",
+        "uses",
+        "the report"
+      ],
+      [
+        "accepts",
+        "uses",
+        "the report"
+      ],
+      [
+        "reject",
+        "actor performer",
+        "the employee"
+      ],
+      [
+        "purchases",
+        "flow",
+        "purchases"
+      ],
+      [
+        "submits",
+        "uses",
+        "an expense report"
+      ],
+      [
+        "reject",
+        "actor performer",
+        "the supervisor"
+      ],
+      [
+        "accept or reject",
+        "uses",
+        "the report. Since the company has expense rules, there are circumstances where the supervisor can accept or reject the report"
+      ],
+      [
+        "purchases",
+        "flow",
+        "rents"
+      ],
+      [
+        "rejects",
+        "actor performer",
+        "the supervisor"
+      ],
+      [
+        "approves",
+        "uses",
+        "the report. Since the company has expense rules, there are circumstances where the supervisor can accept or reject the report"
+      ],
+      [
+        "reviews",
+        "uses",
+        "the report"
+      ],
+      [
+        "sends",
+        "actor performer",
+        "the employee"
+      ],
+      [
+        "rents",
+        "flow",
+        "purchases"
+      ],
+      [
+        "sends",
+        "actor performer",
+        "the supervisor"
+      ],
+      [
+        "approves",
+        "uses",
+        "the expense report"
+      ],
+      [
+        "reject",
+        "uses",
+        "the report"
+      ],
+      [
+        "rents",
+        "uses",
+        "a car"
+      ],
+      [
+        "sends",
+        "uses",
+        "it"
+      ],
+      [
+        "rejects",
+        "uses",
+        "the report"
+      ],
+      [
+        "checks",
+        "flow",
+        "If"
+      ],
+      [
+        "checks",
+        "uses",
+        "the receipts"
+      ],
+      [
+        "reviews",
+        "uses",
+        "the expense report"
+      ],
+      [
+        "reject",
+        "uses",
+        "the report. Since the company has expense rules, there are circumstances where the supervisor can accept or reject the report"
+      ],
+      [
+        "rejects",
+        "uses",
+        "the report. Since the company has expense rules, there are circumstances where the supervisor can accept or reject the report"
+      ],
+      [
+        "purchases",
+        "actor performer",
+        "An employee"
+      ],
+      [
+        "If",
+        "flow",
+        "If"
+      ],
+      [
+        "rejects",
+        "uses",
+        "the expense report"
+      ],
+      [
+        "rents",
+        "uses",
+        "a product or service he requires. For instance, a sales person on a trip rents a car"
+      ],
+      [
+        "or",
+        "flow",
+        "If"
+      ]
+    ]
+  }
+]

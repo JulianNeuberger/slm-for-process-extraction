@@ -1,0 +1,77 @@
+2025-11-27 07:10:02,722 Reading data from data/datasets/pet/43
+2025-11-27 07:10:02,722 Train: data/datasets/pet/43/train.txt
+2025-11-27 07:10:02,722 Dev: data/datasets/pet/43/dev.txt
+2025-11-27 07:10:02,722 Test: data/datasets/pet/43/test.txt
+2025-11-27 07:10:02,826 {b'<unk>': 0, b'O': 1, b'B-activity_data': 2, b'I-activity_data': 3, b'E-activity_data': 4, b'S-activity': 5, b'B-activity': 6, b'I-activity': 7, b'E-activity': 8, b'B-actor': 9, b'I-actor': 10, b'E-actor': 11, b'S-xor_gateway': 12, b'B-condition_specification': 13, b'I-condition_specification': 14, b'E-condition_specification': 15, b'S-activity_data': 16, b'S-condition_specification': 17, b'B-further_specification': 18, b'I-further_specification': 19, b'E-further_specification': 20, b'B-and_gateway': 21, b'I-and_gateway': 22, b'E-and_gateway': 23, b'S-and_gateway': 24, b'S-actor': 25, b'B-xor_gateway': 26, b'I-xor_gateway': 27, b'E-xor_gateway': 28, b'S-further_specification': 29, b'<START>': 30, b'<STOP>': 31}
+2025-11-27 07:10:02,826 Corpus: 311 train + 78 dev + 73 test sentences
+2025-11-27 07:10:53,630 Model Size: 1841604781
+Corpus: 311 train + 78 dev + 73 test sentences
+2025-11-27 07:10:53,631 ----------------------------------------------------------------------------------------------------
+2025-11-27 07:10:56,702 loading file data/resources/taggers/combined/43/best-model.pt
+2025-11-27 07:11:20,502 Testing using best model ...
+2025-11-27 07:11:20,505 Setting embedding mask to the best action: tensor([1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.], device='cuda:0')
+['/home/ai4-admin/.flair/embeddings/lm-jw300-backward-v0.1.pt', '/home/ai4-admin/.flair/embeddings/lm-jw300-forward-v0.1.pt', '/home/ai4-admin/.flair/embeddings/news-backward-0.4.1.pt', '/home/ai4-admin/.flair/embeddings/news-forward-0.4.1.pt', 'Char', 'Word: en', 'Word: glove', 'bert-base-cased', 'bert-base-multilingual-cased', 'bert-large-cased', 'elmo-original', 'xlm-roberta-large-finetuned-conll03-english', 'xlnet-large-cased']
+2025-11-27 07:11:21,182 /home/ai4-admin/.flair/embeddings/lm-jw300-backward-v0.1.pt 43087046
+2025-11-27 07:11:21,561 /home/ai4-admin/.flair/embeddings/lm-jw300-forward-v0.1.pt 43087046
+2025-11-27 07:11:21,929 /home/ai4-admin/.flair/embeddings/news-backward-0.4.1.pt 18257500
+2025-11-27 07:11:22,121 /home/ai4-admin/.flair/embeddings/news-forward-0.4.1.pt 18257500
+2025-11-27 07:11:22,327 bert-base-cased 108310272
+2025-11-27 07:11:22,327 mean
+2025-11-27 07:11:23,006 bert-base-multilingual-cased 177853440
+2025-11-27 07:11:23,006 mean
+2025-11-27 07:11:24,035 bert-large-cased 333579264
+2025-11-27 07:11:24,035 mean
+2025-11-27 07:11:25,821 elmo-original 0
+2025-11-27 07:11:26,374 xlm-roberta-large-finetuned-conll03-english 559890432
+2025-11-27 07:11:26,374 mean
+2025-11-27 07:11:28,373 xlnet-large-cased 360268800
+2025-11-27 07:11:28,373 first
+2025-11-27 07:11:30,342 Finished Embeddings Assignments
+prediction_mode: True, embedding_selector: True, use_rl: True, use_gumbel: False
+prediction_mode: True, embedding_selector: True, use_rl: True, use_gumbel: False
+prediction_mode: True, embedding_selector: True, use_rl: True, use_gumbel: False
+2025-11-27 07:11:30,584 3/3
+2025-11-27 07:11:30,587 0.7025	0.705	0.7037
+2025-11-27 07:11:30,587 
+MICRO_AVG: acc 0.5429 - f1-score 0.7037
+MACRO_AVG: acc 0.4247 - f1-score 0.5451
+activity   tp: 71 - fp: 9 - fn: 9 - tn: 71 - precision: 0.8875 - recall: 0.8875 - accuracy: 0.7978 - f1-score: 0.8875
+activity_data tp: 45 - fp: 53 - fn: 28 - tn: 45 - precision: 0.4592 - recall: 0.6164 - accuracy: 0.3571 - f1-score: 0.5263
+actor      tp: 69 - fp: 7 - fn: 26 - tn: 69 - precision: 0.9079 - recall: 0.7263 - accuracy: 0.6765 - f1-score: 0.8070
+condition_specification tp: 5 - fp: 5 - fn: 2 - tn: 5 - precision: 0.5000 - recall: 0.7143 - accuracy: 0.4167 - f1-score: 0.5882
+further_specification tp: 0 - fp: 3 - fn: 9 - tn: 0 - precision: 0.0000 - recall: 0.0000 - accuracy: 0.0000 - f1-score: 0.0000
+xor_gateway tp: 6 - fp: 6 - fn: 8 - tn: 6 - precision: 0.5000 - recall: 0.4286 - accuracy: 0.3000 - f1-score: 0.4616
+2025-11-27 07:11:30,587 ----------------------------------------------------------------------------------------------------
+2025-11-27 07:11:30,587 ----------------------------------------------------------------------------------------------------
+2025-11-27 07:11:30,587 current corpus: ColumnCorpus-Pet_1
+2025-11-27 07:11:30,593 /home/ai4-admin/.flair/embeddings/lm-jw300-backward-v0.1.pt 43087046
+2025-11-27 07:11:30,785 /home/ai4-admin/.flair/embeddings/lm-jw300-forward-v0.1.pt 43087046
+2025-11-27 07:11:30,983 /home/ai4-admin/.flair/embeddings/news-backward-0.4.1.pt 18257500
+2025-11-27 07:11:31,053 /home/ai4-admin/.flair/embeddings/news-forward-0.4.1.pt 18257500
+2025-11-27 07:11:31,160 bert-base-cased 108310272
+2025-11-27 07:11:31,160 mean
+2025-11-27 07:11:31,370 bert-base-multilingual-cased 177853440
+2025-11-27 07:11:31,371 mean
+2025-11-27 07:11:31,555 bert-large-cased 333579264
+2025-11-27 07:11:31,555 mean
+2025-11-27 07:11:31,879 elmo-original 0
+2025-11-27 07:11:32,207 xlm-roberta-large-finetuned-conll03-english 559890432
+2025-11-27 07:11:32,207 mean
+2025-11-27 07:11:34,159 xlnet-large-cased 360268800
+2025-11-27 07:11:34,159 first
+2025-11-27 07:11:34,654 Finished Embeddings Assignments
+prediction_mode: True, embedding_selector: True, use_rl: True, use_gumbel: False
+prediction_mode: True, embedding_selector: True, use_rl: True, use_gumbel: False
+prediction_mode: True, embedding_selector: True, use_rl: True, use_gumbel: False
+2025-11-27 07:11:34,917 3/3
+2025-11-27 07:11:34,920 0.7	0.705	0.7025
+2025-11-27 07:11:34,920 
+MICRO_AVG: acc 0.5414 - f1-score 0.7025
+MACRO_AVG: acc 0.4231 - f1-score 0.5438000000000001
+activity   tp: 71 - fp: 9 - fn: 9 - tn: 71 - precision: 0.8875 - recall: 0.8875 - accuracy: 0.7978 - f1-score: 0.8875
+activity_data tp: 45 - fp: 54 - fn: 28 - tn: 45 - precision: 0.4545 - recall: 0.6164 - accuracy: 0.3543 - f1-score: 0.5232
+actor      tp: 69 - fp: 8 - fn: 26 - tn: 69 - precision: 0.8961 - recall: 0.7263 - accuracy: 0.6699 - f1-score: 0.8023
+condition_specification tp: 5 - fp: 5 - fn: 2 - tn: 5 - precision: 0.5000 - recall: 0.7143 - accuracy: 0.4167 - f1-score: 0.5882
+further_specification tp: 0 - fp: 2 - fn: 9 - tn: 0 - precision: 0.0000 - recall: 0.0000 - accuracy: 0.0000 - f1-score: 0.0000
+xor_gateway tp: 6 - fp: 6 - fn: 8 - tn: 6 - precision: 0.5000 - recall: 0.4286 - accuracy: 0.3000 - f1-score: 0.4616
+

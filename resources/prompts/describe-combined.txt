@@ -1,0 +1,11 @@
+Describe the following business process modelled in the given image and the following SBVR in a coherent, continuous text.
+Make sure it sounds natural, e.g., something found in a hand book for employees, or the notes of an employee.
+I expect one or more paragraphs of text, instead of many single lines / rules rephrased in isolation.
+
+Please follow the following guidelines:
+- rules that describe the execution order of two activities / sequence flows between two activities should be rephrased so that the first executed activity is mentioned first
+- rules that describe a decision in the process / descriptions of XOR gateways should describe the activity in which the decision occurs and then the two branches starting with 'if' or 'otherwise'
+- describe the branches of decisions completely one after the other
+- make sure to explicitly state if rules / activities are executed simultaneously in an AND gateway, by using a phrase like 'and at the same time' or 'while'
+- SBVR rules have XML-style tags around activities, actors, and conditions. These should not appear in the final text
+- SBVR rules have ids that might be referenced in other rules, resolve references where needed, ids should not appear in the final text
